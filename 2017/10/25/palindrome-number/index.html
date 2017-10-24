@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
-  <title>Archives | FX-Ti&#39;s Blog</title>
+  <title>palindrome-number | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Some ideas about the tech...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="FX-Ti&#39;s Blog">
-<meta property="og:url" content="http://www.fxti.xyz/archives/index.html">
+  <meta name="description" content="Palindrome Number – LeetCode 9ProblemDescriptionDetermine whether an integer is a palindrome. Do this without extra space. Some hints:Could negative integers be palindromes? (ie, -1) If you are thinki">
+<meta property="og:type" content="article">
+<meta property="og:title" content="palindrome-number">
+<meta property="og:url" content="http://www.fxti.xyz/2017/10/25/palindrome-number/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Some ideas about the tech...">
+<meta property="og:description" content="Palindrome Number – LeetCode 9ProblemDescriptionDetermine whether an integer is a palindrome. Do this without extra space. Some hints:Could negative integers be palindromes? (ie, -1) If you are thinki">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-24T18:34:55.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FX-Ti&#39;s Blog">
-<meta name="twitter:description" content="Some ideas about the tech...">
+<meta name="twitter:title" content="palindrome-number">
+<meta name="twitter:description" content="Palindrome Number – LeetCode 9ProblemDescriptionDetermine whether an integer is a palindrome. Do this without extra space. Some hints:Could negative integers be palindromes? (ie, -1) If you are thinki">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -153,130 +154,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-palindrome-number" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/26/roman-to-integer/" class="archive-article-date">
-  	<time datetime="2017-10-26T10:26:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/26/roman-to-integer/">roman-to-integer</a>
+    <h1 class="article-title" itemprop="name">
+      palindrome-number
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/25/palindrome-number/" class="archive-article-date">
+        
+        <a href="/2017/10/25/palindrome-number/" class="archive-article-date">
   	<time datetime="2017-10-25T10:27:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/25/palindrome-number/">palindrome-number</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Palindrome-Number-–-LeetCode-9"><a href="#Palindrome-Number-–-LeetCode-9" class="headerlink" title="Palindrome Number – LeetCode 9"></a>Palindrome Number – LeetCode 9</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">        <span class="keyword">int</span> div = <span class="number">1</span>;  </div><div class="line">        <span class="keyword">while</span> (x / div &gt;= <span class="number">10</span>) </div><div class="line">            div *= <span class="number">10</span>;  </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;  </div><div class="line">            <span class="keyword">int</span> l = x / div;    </div><div class="line">            <span class="keyword">int</span> r = x % <span class="number">10</span>;  </div><div class="line">            <span class="keyword">if</span> (l != r) </div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            x = (x % div) / <span class="number">10</span>;  </div><div class="line">            div /= <span class="number">100</span>;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>; </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>判断是否为回文数，注意负数都不是回文数。同时LeetCode官方也提示了要注意溢出的问题，并额外要求空间复杂度是$O(1)$。这使得将int变量转换为string变量的想法落空。于是采用先获取int变量宽度然后双向取出对应位的值进行对比的做法。时间复杂度$O(\log_{10}{n})$，空间复杂度$O(1)$。<br>耗时$132$ ms,排名$17.25\%$。<br>同时发现每次提交得到的耗时结果都不一样，玄学…</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2017/10/25/palindrome-number/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/24/reverse-integer/" class="archive-article-date">
-  	<time datetime="2017-10-24T05:30:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/10/26/roman-to-integer/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          roman-to-integer
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/24/reverse-integer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">reverse-integer</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/24/reverse-integer/">reverse-integer</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/23/two-sum/" class="archive-article-date">
-  	<time datetime="2017-10-23T03:52:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/two-sum/">two-sum</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -302,8 +324,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

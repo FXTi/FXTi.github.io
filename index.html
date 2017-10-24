@@ -155,6 +155,144 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-roman-to-integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/26/roman-to-integer/">roman-to-integer</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/26/roman-to-integer/" class="archive-article-date">
+  	<time datetime="2017-10-26T10:26:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Roman-to-Integer-–-LeetCode-13"><a href="#Roman-to-Integer-–-LeetCode-13" class="headerlink" title="Roman to Integer – LeetCode 13"></a>Roman to Integer – LeetCode 13</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; convert;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;si: s)&#123;</div><div class="line">            <span class="keyword">switch</span>(si)&#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'I'</span>: convert.push_back(<span class="number">1</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'X'</span>: convert.push_back(<span class="number">10</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'C'</span>: convert.push_back(<span class="number">100</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'M'</span>: convert.push_back(<span class="number">1000</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'V'</span>: convert.push_back(<span class="number">5</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'L'</span>: convert.push_back(<span class="number">50</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'D'</span>: convert.push_back(<span class="number">500</span>); <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(convert.size() == <span class="number">1</span>) <span class="keyword">return</span> convert[<span class="number">0</span>];</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sign(convert.size(),<span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span>(convert[<span class="number">0</span>] &lt; convert[<span class="number">1</span>]) sign[<span class="number">0</span>] = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != convert.size() - <span class="number">1</span>; ++i)&#123;</div><div class="line">            <span class="keyword">if</span>((convert[i] &lt; convert[i+<span class="number">1</span>]) ) sign[i] = <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != convert.size(); ++i)</div><div class="line">            sum += sign[i] * convert[i];</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求将罗马数字转换成数字，难点在于在大数字的左右，小数字可能是正的也可能是负的。这个版本从头向尾解析，选择使用两个vector分别记录值和正负符号。最后加和汇总，思路同样很直接。时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$82$ ms,排名$53.18\%$。</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>这个版本不变思路，选择从尾向头进行解析，这样就可以在得到符号的同时直接求和，避免了vector创建等等的时间消耗。同样的，时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$52$ ms,排名$9.85\%$。<br>LeetCode平台测试得到的结果时长依旧有波动。</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> now, prev = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">switch</span>(s[i])&#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'I'</span>: now = <span class="number">1</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'X'</span>: now = <span class="number">10</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'C'</span>: now = <span class="number">100</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'M'</span>: now = <span class="number">1000</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'V'</span>: now = <span class="number">5</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'L'</span>: now = <span class="number">50</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'D'</span>: now = <span class="number">500</span>; <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(now &lt; prev) sum -= now;</div><div class="line">            <span class="keyword">else</span> sum += now;</div><div class="line">            prev = now;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/26/roman-to-integer/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-palindrome-number" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/palindrome-number/">palindrome-number</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/25/palindrome-number/" class="archive-article-date">
+  	<time datetime="2017-10-25T10:27:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Palindrome-Number-–-LeetCode-9"><a href="#Palindrome-Number-–-LeetCode-9" class="headerlink" title="Palindrome Number – LeetCode 9"></a>Palindrome Number – LeetCode 9</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
+<p>Some hints:<br>Could negative integers be palindromes? (ie, -1)</p>
+<p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
+<p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
+<p>There is a more generic way of solving this problem.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">        <span class="keyword">int</span> div = <span class="number">1</span>;  </div><div class="line">        <span class="keyword">while</span> (x / div &gt;= <span class="number">10</span>) </div><div class="line">            div *= <span class="number">10</span>;  </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;  </div><div class="line">            <span class="keyword">int</span> l = x / div;    </div><div class="line">            <span class="keyword">int</span> r = x % <span class="number">10</span>;  </div><div class="line">            <span class="keyword">if</span> (l != r) </div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            x = (x % div) / <span class="number">10</span>;  </div><div class="line">            div /= <span class="number">100</span>;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>; </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>判断是否为回文数，注意负数都不是回文数。同时LeetCode官方也提示了要注意溢出的问题，并额外要求空间复杂度是$O(1)$。这使得将int变量转换为string变量的想法落空。于是采用先获取int变量宽度然后双向取出对应位的值进行对比的做法。时间复杂度$O(\log_{10}{n})$，空间复杂度$O(1)$。<br>耗时$132$ ms,排名$17.25\%$。<br>同时发现每次提交得到的耗时结果都不一样，玄学…</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/25/palindrome-number/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-reverse-integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -179,7 +317,7 @@
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
 <p>Note: The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>; <span class="keyword">bool</span> flag = <span class="literal">false</span>;</div><div class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span>) &#123;x *= <span class="number">-1</span>; flag = <span class="literal">true</span>;&#125;</div><div class="line">        <span class="keyword">while</span>(x &gt; <span class="number">9</span>)&#123;</div><div class="line">            result *= <span class="number">10</span>;</div><div class="line">            result += x % <span class="number">10</span>;</div><div class="line">            x /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        result *= <span class="number">10</span>;</div><div class="line">        result = flag?-(result + x):(result+x);</div><div class="line">        <span class="keyword">if</span>((result &gt; <span class="number">2147483647</span>) || (result &lt;  <span class="number">-2147483648</span>))</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>用循环依次取出各位数字然后倒序输出。很标准的思路，不过要考虑到负数和溢出的问题。这里因为是int变量，所以选择使用long变量来容纳再用Int_Max和Int_Min来判断。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时12ms，排名85.02%。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>用循环依次取出各位数字然后倒序输出。很标准的思路，不过要考虑到负数和溢出的问题。这里因为是int变量，所以选择使用long变量来容纳再用Int_Max和Int_Min来判断。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时$12$ ms$，排名$$14.98\%$。</p>
 <h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路</p>
 
       
@@ -248,8 +386,8 @@
 <p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
 </blockquote>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != nums.size(); ++i)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j != nums.size(); ++j)&#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]+nums[j] == target)&#123;</div><div class="line">                    result.push_back(i);</div><div class="line">                    result.push_back(j);</div><div class="line">                    <span class="keyword">return</span> result;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>从数组nums的第一项开始寻找能加和成为target的另一项，简单粗暴。时间复杂度$O(n^2$)，空间复杂度$O(1)$。<br>耗时189ms，排名22.92%。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>利用HashMap中查找操作的理论时间复杂度仅为$O(1)$来省去嵌套遍历的$O(n)$。通过建立一张表来对应所需要的<code>nums[i] - target</code>这一值，是以空间换时间的手段。 时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时9ms，排名54.25%。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>从数组nums的第一项开始寻找能加和成为target的另一项，简单粗暴。时间复杂度$O(n^2$)，空间复杂度$O(1)$。<br>耗时$189$ ms，排名$77.08\%$。</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>利用HashMap中查找操作的理论时间复杂度仅为$O(1)$来省去嵌套遍历的$O(n)$。通过建立一张表来对应所需要的<code>nums[i] - target</code>这一值，是以空间换时间的手段。 时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$9$ ms，排名$45.75\%$。</p>
 <h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; val2index;</div><div class="line">            </div><div class="line">        <span class="comment">// Map first index to value</span></div><div class="line">        val2index[nums[<span class="number">0</span>]] = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; nums.size(); ++i) &#123;</div><div class="line">            <span class="comment">// Find Complements in map</span></div><div class="line">            <span class="keyword">int</span> complement = target - nums[i];</div><div class="line">            <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;::const_iterator found = val2index.find(complement);</div><div class="line">            <span class="keyword">if</span> (found != val2index.end()) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;found-&gt;second,i&#125;);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            <span class="comment">// Map all index of nums to values</span></div><div class="line">            val2index[nums[i]] = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       

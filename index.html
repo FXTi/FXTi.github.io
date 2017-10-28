@@ -147,6 +147,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-valid-parentheses" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/valid-parentheses/">valid-parentheses</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/28/valid-parentheses/" class="archive-article-date">
+  	<time datetime="2017-10-28T04:37:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Valid-Parentheses-–-LeetCode-20"><a href="#Valid-Parentheses-–-LeetCode-20" class="headerlink" title="Valid Parentheses – LeetCode 20"></a>Valid Parentheses – LeetCode 20</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> little = <span class="number">0</span>, square = <span class="number">0</span>, big = <span class="number">0</span>, end  = s.size(), level = <span class="number">2</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != end; ++i)&#123;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'('</span>) &#123;little += level++;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">')'</span>) little -= --level;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'['</span>) &#123; square += level++;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">']'</span>) square -= --level;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'&#123;'</span>) &#123; big += level++;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'&#125;'</span>) big -= --level;</div><div class="line">            &#125;</div><div class="line">		<span class="keyword">return</span> !(little || square || big);</div><div class="line">    &#125; </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求验证字符串的括号是否闭合，使用三个int变量记录左右括号，同时使用level来记录括号的层级。例如([{}])，就可视作( 1 [ 2 { 3 } 2 ] 1 )。最后对三个int变量进行判断即可得到答案。因为需要完整遍历字符串，所以时间复杂度恒为$O(n)$，空间复杂度是$O(1)$。<br>耗时$3$ ms，排名$90.48\%$。</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>既然括号是临近匹配的，那么就可以使用FIFO的数据结构来进行管理，于是可以使用Stack。STL的Stack都会用，那么下面就用手动模拟的试试。相对与原方案，优势在于在发现括号不正确匹配时可以提前返回，节省一部分开销。时间复杂度依旧为$O(n)$，空间复杂度是$O(1)$。<br>耗时$3$ ms，排名$90.48\%$。</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span>  </div><div class="line"><span class="keyword">public</span>:  </div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> top=<span class="number">-1</span>,index=<span class="number">0</span>,length=s.size();  </div><div class="line">        <span class="keyword">char</span>* <span class="built_in">stack</span>=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*length);  </div><div class="line">        <span class="keyword">while</span>(index&lt;length)&#123;  </div><div class="line">            <span class="keyword">if</span>(s[index]==<span class="string">')'</span>)&#123;  </div><div class="line">                <span class="keyword">if</span>(top&gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">stack</span>[top]==<span class="string">'('</span>)top--;  </div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[index]==<span class="string">'&#125;'</span>)&#123;  </div><div class="line">                <span class="keyword">if</span>(top&gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">stack</span>[top]==<span class="string">'&#123;'</span>)top--;  </div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[index]==<span class="string">']'</span>)&#123;  </div><div class="line">                <span class="keyword">if</span>(top&gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">stack</span>[top]==<span class="string">'['</span>)top--;  </div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            &#125;<span class="keyword">else</span> <span class="built_in">stack</span>[++top]=s[index];  </div><div class="line">            index++;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> top==<span class="number">-1</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/28/valid-parentheses/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-longest-common-prefix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

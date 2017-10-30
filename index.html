@@ -147,6 +147,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-remove-duplicates-from-sorted-array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/30/remove-duplicates-from-sorted-array/">remove-duplicates-from-sorted-array</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/30/remove-duplicates-from-sorted-array/" class="archive-article-date">
+  	<time datetime="2017-10-30T04:21:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Remove-Duplicates-from-Sorted-Array-–-LeetCode-26"><a href="#Remove-Duplicates-from-Sorted-Array-–-LeetCode-26" class="headerlink" title="Remove Duplicates from Sorted Array – LeetCode 26"></a>Remove Duplicates from Sorted Array – LeetCode 26</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Given input array nums = [1,1,2],</p>
+<p>Note: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Orignal"><a href="#Orignal" class="headerlink" title="Orignal"></a>Orignal</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">unsigned</span> size = nums.size(), result = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> last = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != nums.size(); ++i)&#123;</div><div class="line">            <span class="keyword">int</span> tmp = nums[i];</div><div class="line">            <span class="keyword">if</span>(last != tmp)&#123;</div><div class="line">                nums[result] = tmp;</div><div class="line">                ++result;</div><div class="line">                last = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求对已排序的数列进行去重并返回长度，基础思路就是遍历，缓存上一个值和下一个做比较，一旦发现不同的就替换上一个重复的数字。相当与<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/solution/" target="_blank" rel="external">官方解</a>的双指针法，网上的思路也都是这样。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时$26$ ms，排名$33.76\%$</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>虽然还没看到更好的思路，不过在不限制空间复杂度的情况下可以使用STL中的Set来去重，可以大大简化代码。时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$32$ ms，排名$64.67\%$。</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">		<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; result(nums.begin(),nums.end());</div><div class="line">		copy(result.begin(),result.end(),nums.begin());</div><div class="line">		<span class="keyword">return</span> result.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/30/remove-duplicates-from-sorted-array/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="merge-two-sorted-lists" class="article article-type-merge  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

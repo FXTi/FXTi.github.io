@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
   <title>longest-common-prefix | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Longest Common Prefix – LeetCode 14ProblemDescriptionWrite a function to find the longest common prefix string amongst an array of strings. AnswerOriginalCode1234567891011121314class Solution &amp;#123;pu">
+  <meta name="description" content="Longest Common Prefix – LeetCode 14ProblemDescriptionWrite a function to find the longest common prefix string amongst an array of strings.">
 <meta name="keywords" content="LeetCode-Easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="longest-common-prefix">
 <meta property="og:url" content="http://www.fxti.xyz/2017/10/27/longest-common-prefix/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Longest Common Prefix – LeetCode 14ProblemDescriptionWrite a function to find the longest common prefix string amongst an array of strings. AnswerOriginalCode1234567891011121314class Solution &amp;#123;pu">
+<meta property="og:description" content="Longest Common Prefix – LeetCode 14ProblemDescriptionWrite a function to find the longest common prefix string amongst an array of strings.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-27T11:22:40.530Z">
+<meta property="og:updated_time" content="2017-10-30T12:46:39.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="longest-common-prefix">
-<meta name="twitter:description" content="Longest Common Prefix – LeetCode 14ProblemDescriptionWrite a function to find the longest common prefix string amongst an array of strings. AnswerOriginalCode1234567891011121314class Solution &amp;#123;pu">
+<meta name="twitter:description" content="Longest Common Prefix – LeetCode 14ProblemDescriptionWrite a function to find the longest common prefix string amongst an array of strings.">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -168,6 +168,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Longest-Common-Prefix-–-LeetCode-14"><a href="#Longest-Common-Prefix-–-LeetCode-14" class="headerlink" title="Longest Common Prefix – LeetCode 14"></a>Longest Common Prefix – LeetCode 14</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<a id="more"></a>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(strs.size() == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">string</span>();</div><div class="line">        <span class="keyword">int</span> tmp, result = strs[<span class="number">0</span>].size(),width = result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != strs.size(); ++i)&#123;</div><div class="line">            tmp = (width &lt;= result) ? width : result;</div><div class="line">            <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(;strs[<span class="number">0</span>][j] == strs[i][j] &amp;&amp; j != tmp; ++j) ;</div><div class="line">            <span class="keyword">if</span>(result &gt; j) result = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>,result);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求最长前缀，采用的是从第一个字符串开始对其vector从头向尾进行横向遍历寻找最长前缀的方案。<br>最坏情况下，时间复杂度为$O(m \times n)$，$m$为字符串长度，$n$为字符串个数，空间复杂度是$O(1)$。<br>耗时$6$ ms，排名$70.16\%$。</p>
 <h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>这个思路来自LeetCode的官方Solution中的Vertical scanning。<br>最坏情况下，时间复杂度为$O(m \times n)$，$m$为字符串长度，$n$为字符串个数，空间复杂度是$O(1)$。但相较原方案将节省多余的横向遍历，带来更小的时间开销。<br>更多有趣思路在<a href="https://leetcode.com/problems/longest-common-prefix/solution/" target="_blank" rel="external">LeetCode官方解</a>，虽然实际性能不如这个方案，但依旧值得一看。<br>耗时$6$ ms，排名$70.16\%$。</p>

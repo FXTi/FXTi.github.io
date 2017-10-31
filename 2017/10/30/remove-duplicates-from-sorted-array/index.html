@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
 <meta property="og:description" content="Remove Duplicates from Sorted Array – LeetCode 26ProblemDescriptionGiven a sorted array, remove the duplicates in place such that each element appear only once and return the new length. Do not alloca">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-29T12:32:29.520Z">
+<meta property="og:updated_time" content="2017-10-30T12:47:34.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="remove-duplicates-from-sorted-array">
 <meta name="twitter:description" content="Remove Duplicates from Sorted Array – LeetCode 26ProblemDescriptionGiven a sorted array, remove the duplicates in place such that each element appear only once and return the new length. Do not alloca">
@@ -169,6 +169,7 @@
       
         <h1 id="Remove-Duplicates-from-Sorted-Array-–-LeetCode-26"><a href="#Remove-Duplicates-from-Sorted-Array-–-LeetCode-26" class="headerlink" title="Remove Duplicates from Sorted Array – LeetCode 26"></a>Remove Duplicates from Sorted Array – LeetCode 26</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<a id="more"></a> 
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Given input array nums = [1,1,2],</p>
 <p>Note: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Orignal"><a href="#Orignal" class="headerlink" title="Orignal"></a>Orignal</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">unsigned</span> size = nums.size(), result = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> last = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != nums.size(); ++i)&#123;</div><div class="line">            <span class="keyword">int</span> tmp = nums[i];</div><div class="line">            <span class="keyword">if</span>(last != tmp)&#123;</div><div class="line">                nums[result] = tmp;</div><div class="line">                ++result;</div><div class="line">                last = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -257,6 +258,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/10/31/remove-element/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          remove-element
+        
+      </div>
+    </a>
   
   
     <a href="/2017/10/29/two-sorted-lists/" id="article-nav-older" class="article-nav-link-wrap">

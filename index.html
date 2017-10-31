@@ -147,6 +147,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-remove-element" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/31/remove-element/">remove-element</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/31/remove-element/" class="archive-article-date">
+  	<time datetime="2017-10-31T10:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Remove-Element-–-LeetCode-27"><a href="#Remove-Element-–-LeetCode-27" class="headerlink" title="Remove Element – LeetCode 27"></a>Remove Element – LeetCode 27</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array and a value, remove all instances of that value in place and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+        
+          <a class="article-more-a" href="/2017/10/31/remove-element/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/31/remove-element/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-remove-duplicates-from-sorted-array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -169,13 +247,9 @@
       
         <h1 id="Remove-Duplicates-from-Sorted-Array-–-LeetCode-26"><a href="#Remove-Duplicates-from-Sorted-Array-–-LeetCode-26" class="headerlink" title="Remove Duplicates from Sorted Array – LeetCode 26"></a>Remove Duplicates from Sorted Array – LeetCode 26</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Given input array nums = [1,1,2],</p>
-<p>Note: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Orignal"><a href="#Orignal" class="headerlink" title="Orignal"></a>Orignal</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">unsigned</span> size = nums.size(), result = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span>(size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> last = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != nums.size(); ++i)&#123;</div><div class="line">            <span class="keyword">int</span> tmp = nums[i];</div><div class="line">            <span class="keyword">if</span>(last != tmp)&#123;</div><div class="line">                nums[result] = tmp;</div><div class="line">                ++result;</div><div class="line">                last = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求对已排序的数列进行去重并返回长度，基础思路就是遍历，缓存上一个值和下一个做比较，一旦发现不同的就替换上一个重复的数字。相当与<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/solution/" target="_blank" rel="external">官方解</a>的双指针法，网上的思路也都是这样。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时$26$ ms，排名$33.76\%$</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>虽然还没看到更好的思路，不过在不限制空间复杂度的情况下可以使用STL中的Set来去重，可以大大简化代码。时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$32$ ms，排名$64.67\%$。</p>
-<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">		<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; result(nums.begin(),nums.end());</div><div class="line">		copy(result.begin(),result.end(),nums.begin());</div><div class="line">		<span class="keyword">return</span> result.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/10/30/remove-duplicates-from-sorted-array/#more">more >></a>
+        
       
 
       
@@ -249,10 +323,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Merge-Two-Sorted-Lists-–-LeetCode-21"><a href="#Merge-Two-Sorted-Lists-–-LeetCode-21" class="headerlink" title="Merge Two Sorted Lists – LeetCode 21"></a>Merge Two Sorted Lists – LeetCode 21</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for singly-linked list.</span></div><div class="line"><span class="comment"> * struct ListNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     ListNode *next;</span></div><div class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></div><div class="line"><span class="comment"> * &#125;;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>((l1 == <span class="literal">nullptr</span>) &amp;&amp; (l2 == <span class="literal">nullptr</span>)) <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        ListNode *dummyRoot = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode *ptr = dummyRoot;</div><div class="line">        <span class="keyword">while</span>((l1 != <span class="literal">nullptr</span>) || (l2 != <span class="literal">nullptr</span>))&#123;</div><div class="line">            <span class="keyword">if</span>(l1 == <span class="literal">nullptr</span>) &#123;ptr-&gt;next = <span class="keyword">new</span> ListNode(l2-&gt;val); ptr = ptr-&gt;next; l2 = l2-&gt;next; <span class="keyword">continue</span>;&#125;</div><div class="line">            <span class="keyword">if</span>(l2 == <span class="literal">nullptr</span>) &#123;ptr-&gt;next = <span class="keyword">new</span> ListNode(l1-&gt;val); ptr = ptr-&gt;next; l1 = l1-&gt;next; <span class="keyword">continue</span>;&#125;</div><div class="line">            <span class="keyword">if</span>(l1-&gt;val &lt; l2-&gt;val) &#123;ptr-&gt;next = <span class="keyword">new</span> ListNode(l1-&gt;val); ptr = ptr-&gt;next; l1 = l1-&gt;next;&#125;</div><div class="line">                <span class="keyword">else</span> &#123;ptr-&gt;next = <span class="keyword">new</span> ListNode(l2-&gt;val); ptr = ptr-&gt;next; l2 = l2-&gt;next;&#125;</div><div class="line">        &#125;</div><div class="line">        ptr = dummyRoot-&gt;next;</div><div class="line">        <span class="keyword">delete</span> dummyRoot;</div><div class="line">        <span class="keyword">return</span> ptr;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求合并两个已排序的List，没有难度，单纯的遍历拼接，只需注意DummyRoot的处理就行了。不过事后看了不少答案都倾向复用参数已有的ListNode部分。我认为这个函数不应该引用原有的l1和l2，因为可能会因此造成潜在的问题，比如资源的不正确访问和释放。时间复杂度是$O(m + n)$，m和n分别为两个List的长度，空间复杂度是$O(1)$。<br>耗时$9$ ms，排名$38.42\%$。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>另外的思路是递归解，就算了。</p>
-
+        
+          <a class="article-more-a" href="/2017/10/29/two-sorted-lists/#more">more >></a>
+        
       
 
       
@@ -327,11 +400,9 @@
       
         <h1 id="Valid-Parentheses-–-LeetCode-20"><a href="#Valid-Parentheses-–-LeetCode-20" class="headerlink" title="Valid Parentheses – LeetCode 20"></a>Valid Parentheses – LeetCode 20</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
 <p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> little = <span class="number">0</span>, square = <span class="number">0</span>, big = <span class="number">0</span>, end  = s.size(), level = <span class="number">2</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != end; ++i)&#123;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'('</span>) &#123;little += level++;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">')'</span>) little -= --level;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'['</span>) &#123; square += level++;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">']'</span>) square -= --level;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'&#123;'</span>) &#123; big += level++;&#125;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'&#125;'</span>) big -= --level;</div><div class="line">            &#125;</div><div class="line">		<span class="keyword">return</span> !(little || square || big);</div><div class="line">    &#125; </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求验证字符串的括号是否闭合，使用三个int变量记录左右括号，同时使用level来记录括号的层级。例如([{}])，就可视作( 1 [ 2 { 3 } 2 ] 1 )。最后对三个int变量进行判断即可得到答案。因为需要完整遍历字符串，所以时间复杂度恒为$O(n)$，空间复杂度是$O(1)$。<br>耗时$3$ ms，排名$90.48\%$。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>既然括号是临近匹配的，那么就可以使用FIFO的数据结构来进行管理，于是可以使用Stack。STL的Stack都会用，那么下面就用手动模拟的试试。相对与原方案，优势在于在发现括号不正确匹配时可以提前返回，节省一部分开销。时间复杂度依旧为$O(n)$，空间复杂度是$O(1)$。<br>耗时$3$ ms，排名$90.48\%$。</p>
-<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span>  </div><div class="line"><span class="keyword">public</span>:  </div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;  </div><div class="line">        <span class="keyword">int</span> top=<span class="number">-1</span>,index=<span class="number">0</span>,length=s.size();  </div><div class="line">        <span class="keyword">char</span>* <span class="built_in">stack</span>=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*length);  </div><div class="line">        <span class="keyword">while</span>(index&lt;length)&#123;  </div><div class="line">            <span class="keyword">if</span>(s[index]==<span class="string">')'</span>)&#123;  </div><div class="line">                <span class="keyword">if</span>(top&gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">stack</span>[top]==<span class="string">'('</span>)top--;  </div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[index]==<span class="string">'&#125;'</span>)&#123;  </div><div class="line">                <span class="keyword">if</span>(top&gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">stack</span>[top]==<span class="string">'&#123;'</span>)top--;  </div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s[index]==<span class="string">']'</span>)&#123;  </div><div class="line">                <span class="keyword">if</span>(top&gt;=<span class="number">0</span> &amp;&amp; <span class="built_in">stack</span>[top]==<span class="string">'['</span>)top--;  </div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            &#125;<span class="keyword">else</span> <span class="built_in">stack</span>[++top]=s[index];  </div><div class="line">            index++;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> top==<span class="number">-1</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/10/28/valid-parentheses/#more">more >></a>
+        
       
 
       
@@ -405,11 +476,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Longest-Common-Prefix-–-LeetCode-14"><a href="#Longest-Common-Prefix-–-LeetCode-14" class="headerlink" title="Longest Common Prefix – LeetCode 14"></a>Longest Common Prefix – LeetCode 14</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(strs.size() == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">string</span>();</div><div class="line">        <span class="keyword">int</span> tmp, result = strs[<span class="number">0</span>].size(),width = result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != strs.size(); ++i)&#123;</div><div class="line">            tmp = (width &lt;= result) ? width : result;</div><div class="line">            <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(;strs[<span class="number">0</span>][j] == strs[i][j] &amp;&amp; j != tmp; ++j) ;</div><div class="line">            <span class="keyword">if</span>(result &gt; j) result = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>,result);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求最长前缀，采用的是从第一个字符串开始对其vector从头向尾进行横向遍历寻找最长前缀的方案。<br>最坏情况下，时间复杂度为$O(m \times n)$，$m$为字符串长度，$n$为字符串个数，空间复杂度是$O(1)$。<br>耗时$6$ ms，排名$70.16\%$。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>这个思路来自LeetCode的官方Solution中的Vertical scanning。<br>最坏情况下，时间复杂度为$O(m \times n)$，$m$为字符串长度，$n$为字符串个数，空间复杂度是$O(1)$。但相较原方案将节省多余的横向遍历，带来更小的时间开销。<br>更多有趣思路在<a href="https://leetcode.com/problems/longest-common-prefix/solution/" target="_blank" rel="external">LeetCode官方解</a>，虽然实际性能不如这个方案，但依旧值得一看。<br>耗时$6$ ms，排名$70.16\%$。</p>
-<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(strs.size() == <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">string</span>();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != strs[<span class="number">0</span>].size(); ++i)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j != strs.size(); ++j)&#123;</div><div class="line">                <span class="keyword">if</span>(i == strs[j].size()) <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>,i);</div><div class="line">                <span class="keyword">if</span>(strs[j][i] != strs[<span class="number">0</span>][i]) <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>,i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>,strs[<span class="number">0</span>].size());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/10/27/longest-common-prefix/#more">more >></a>
+        
       
 
       
@@ -484,11 +553,9 @@
       
         <h1 id="Roman-to-Integer-–-LeetCode-13"><a href="#Roman-to-Integer-–-LeetCode-13" class="headerlink" title="Roman to Integer – LeetCode 13"></a>Roman to Integer – LeetCode 13</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a roman numeral, convert it to an integer.</p>
 <p>Input is guaranteed to be within the range from 1 to 3999.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; convert;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;si: s)&#123;</div><div class="line">            <span class="keyword">switch</span>(si)&#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'I'</span>: convert.push_back(<span class="number">1</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'X'</span>: convert.push_back(<span class="number">10</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'C'</span>: convert.push_back(<span class="number">100</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'M'</span>: convert.push_back(<span class="number">1000</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'V'</span>: convert.push_back(<span class="number">5</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'L'</span>: convert.push_back(<span class="number">50</span>); <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'D'</span>: convert.push_back(<span class="number">500</span>); <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(convert.size() == <span class="number">1</span>) <span class="keyword">return</span> convert[<span class="number">0</span>];</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sign(convert.size(),<span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span>(convert[<span class="number">0</span>] &lt; convert[<span class="number">1</span>]) sign[<span class="number">0</span>] = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i != convert.size() - <span class="number">1</span>; ++i)&#123;</div><div class="line">            <span class="keyword">if</span>((convert[i] &lt; convert[i+<span class="number">1</span>]) ) sign[i] = <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != convert.size(); ++i)</div><div class="line">            sum += sign[i] * convert[i];</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>要求将罗马数字转换成数字，难点在于在大数字的左右，小数字可能是正的也可能是负的。这个版本从头向尾解析，选择使用两个vector分别记录值和正负符号。最后加和汇总，思路同样很直接。时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$82$ ms,排名$53.18\%$。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>这个版本不变思路，选择从尾向头进行解析，这样就可以在得到符号的同时直接求和，避免了vector创建等等的时间消耗。同样的，时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$52$ ms,排名$9.85\%$。<br>LeetCode平台测试得到的结果时长依旧有波动。</p>
-<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> now, prev = <span class="number">0</span>, sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">switch</span>(s[i])&#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'I'</span>: now = <span class="number">1</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'X'</span>: now = <span class="number">10</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'C'</span>: now = <span class="number">100</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'M'</span>: now = <span class="number">1000</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'V'</span>: now = <span class="number">5</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'L'</span>: now = <span class="number">50</span>; <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> <span class="string">'D'</span>: now = <span class="number">500</span>; <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(now &lt; prev) sum -= now;</div><div class="line">            <span class="keyword">else</span> sum += now;</div><div class="line">            prev = now;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2017/10/26/roman-to-integer/#more">more >></a>
+        
       
 
       
@@ -566,10 +633,9 @@
 <p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p>
 <p>You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case?</p>
 <p>There is a more generic way of solving this problem.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">        <span class="keyword">int</span> div = <span class="number">1</span>;  </div><div class="line">        <span class="keyword">while</span> (x / div &gt;= <span class="number">10</span>) </div><div class="line">            div *= <span class="number">10</span>;  </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;  </div><div class="line">            <span class="keyword">int</span> l = x / div;    </div><div class="line">            <span class="keyword">int</span> r = x % <span class="number">10</span>;  </div><div class="line">            <span class="keyword">if</span> (l != r) </div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">            x = (x % div) / <span class="number">10</span>;  </div><div class="line">            div /= <span class="number">100</span>;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>; </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>判断是否为回文数，注意负数都不是回文数。同时LeetCode官方也提示了要注意溢出的问题，并额外要求空间复杂度是$O(1)$。这使得将int变量转换为string变量的想法落空。于是采用先获取int变量宽度然后双向取出对应位的值进行对比的做法。时间复杂度$O(\log_{10}{n})$，空间复杂度$O(1)$。<br>耗时$132$ ms,排名$17.25\%$。<br>同时发现每次提交得到的耗时结果都不一样，玄学…</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路</p>
-
+        
+          <a class="article-more-a" href="/2017/10/25/palindrome-number/#more">more >></a>
+        
       
 
       
@@ -622,166 +688,10 @@
 
 
   
-    <article id="post-reverse-integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/reverse-integer/">reverse-integer</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/24/reverse-integer/" class="archive-article-date">
-  	<time datetime="2017-10-24T05:30:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Reverse-Integer-–-LeetCode-7"><a href="#Reverse-Integer-–-LeetCode-7" class="headerlink" title="Reverse Integer – LeetCode 7"></a>Reverse Integer – LeetCode 7</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Reverse digits of an integer.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Example1: x = 123, return 321<br>Example2: x = -123, return -321</p>
-<p>Note: The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>; <span class="keyword">bool</span> flag = <span class="literal">false</span>;</div><div class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span>) &#123;x *= <span class="number">-1</span>; flag = <span class="literal">true</span>;&#125;</div><div class="line">        <span class="keyword">while</span>(x &gt; <span class="number">9</span>)&#123;</div><div class="line">            result *= <span class="number">10</span>;</div><div class="line">            result += x % <span class="number">10</span>;</div><div class="line">            x /= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        result *= <span class="number">10</span>;</div><div class="line">        result = flag?-(result + x):(result+x);</div><div class="line">        <span class="keyword">if</span>((result &gt; <span class="number">2147483647</span>) || (result &lt;  <span class="number">-2147483648</span>))</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>用循环依次取出各位数字然后倒序输出。很标准的思路，不过要考虑到负数和溢出的问题。这里因为是int变量，所以选择使用long变量来容纳再用Int_Max和Int_Min来判断。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时$12$ ms$，排名$$14.98\%$。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/24/reverse-integer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-two-sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/23/two-sum/">two-sum</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/23/two-sum/" class="archive-article-date">
-  	<time datetime="2017-10-23T03:52:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Two-Sum-–-LeetCode-1"><a href="#Two-Sum-–-LeetCode-1" class="headerlink" title="Two Sum – LeetCode 1"></a>Two Sum – LeetCode 1</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.<br>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><blockquote>
-<p>Given nums = [2, 7, 11, 15], target = 9,<br>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i != nums.size(); ++i)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j != nums.size(); ++j)&#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]+nums[j] == target)&#123;</div><div class="line">                    result.push_back(i);</div><div class="line">                    result.push_back(j);</div><div class="line">                    <span class="keyword">return</span> result;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>从数组nums的第一项开始寻找能加和成为target的另一项，简单粗暴。时间复杂度$O(n^2$)，空间复杂度$O(1)$。<br>耗时$189$ ms，排名$77.08\%$。</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>利用HashMap中查找操作的理论时间复杂度仅为$O(1)$来省去嵌套遍历的$O(n)$。通过建立一张表来对应所需要的<code>nums[i] - target</code>这一值，是以空间换时间的手段。 时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$9$ ms，排名$45.75\%$。</p>
-<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; val2index;</div><div class="line">            </div><div class="line">        <span class="comment">// Map first index to value</span></div><div class="line">        val2index[nums[<span class="number">0</span>]] = <span class="number">0</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; nums.size(); ++i) &#123;</div><div class="line">            <span class="comment">// Find Complements in map</span></div><div class="line">            <span class="keyword">int</span> complement = target - nums[i];</div><div class="line">            <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;::const_iterator found = val2index.find(complement);</div><div class="line">            <span class="keyword">if</span> (found != val2index.end()) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;found-&gt;second,i&#125;);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            <span class="comment">// Map all index of nums to values</span></div><div class="line">            val2index[nums[i]] = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/23/two-sum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 

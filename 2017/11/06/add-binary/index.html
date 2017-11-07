@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
-  <title>Plus One | FX-Ti&#39;s Blog</title>
+  <title>add-binary | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Plus One – LeetCode 66ProblemDescriptionGiven a non-negative integer represented as a non-empty array of digits, plus one to the integer. You may assume the integer do not contain any leading zero, ex">
+  <meta name="description" content="Add BinaryProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
 <meta name="keywords" content="LeetCode-Easy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Plus One">
-<meta property="og:url" content="http://www.fxti.xyz/2017/11/05/plus-one/index.html">
+<meta property="og:title" content="add-binary">
+<meta property="og:url" content="http://www.fxti.xyz/2017/11/06/add-binary/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Plus One – LeetCode 66ProblemDescriptionGiven a non-negative integer represented as a non-empty array of digits, plus one to the integer. You may assume the integer do not contain any leading zero, ex">
+<meta property="og:description" content="Add BinaryProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-04T22:11:18.116Z">
+<meta property="og:updated_time" content="2017-11-05T10:13:53.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Plus One">
-<meta name="twitter:description" content="Plus One – LeetCode 66ProblemDescriptionGiven a non-negative integer represented as a non-empty array of digits, plus one to the integer. You may assume the integer do not contain any leading zero, ex">
+<meta name="twitter:title" content="add-binary">
+<meta name="twitter:description" content="Add BinaryProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -147,33 +147,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-plus-one" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-add-binary" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Plus One
+      add-binary
     </h1>
   
 
         
-        <a href="/2017/11/05/plus-one/" class="archive-article-date">
-  	<time datetime="2017-11-05T14:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-05</time>
+        <a href="/2017/11/06/add-binary/" class="archive-article-date">
+  	<time datetime="2017-11-06T02:05:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Plus-One-–-LeetCode-66"><a href="#Plus-One-–-LeetCode-66" class="headerlink" title="Plus One – LeetCode 66"></a>Plus One – LeetCode 66</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a non-negative integer represented as a <strong>non-empty</strong> array of digits, plus one to the integer.</p>
-<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list.</p>
+        <h1 id="Add-Binary"><a href="#Add-Binary" class="headerlink" title="Add Binary"></a>Add Binary</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two binary strings, return their sum (also a binary string).</p>
 <a id="more"></a> 
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; plusOne(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;digits) &#123;</div><div class="line">        ++digits[digits.size() - <span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">if</span>(i == <span class="number">0</span> &amp;&amp; digits[i] == <span class="number">10</span>) &#123;digits[<span class="number">0</span>] = <span class="number">0</span>; digits.insert(digits.begin(), <span class="number">1</span>);&#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (digits[i] == <span class="number">10</span>) &#123;digits[i] = <span class="number">0</span>; digits[i - <span class="number">1</span>] = digits[i - <span class="number">1</span>] + <span class="number">1</span>;&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> digits;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用在末尾加一然后，从尾至头传播进位。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时$3$ ms，排名$88.57\%$</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>这题，这方法，够了。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>For example,<br>a = “11”<br>b = “1”<br>Return “100”.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">addBinary</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> &amp;result = (a.size() &gt; b.size())? a: b;</div><div class="line">        <span class="built_in">string</span> &amp;other = (a.size() &lt;= b.size())? a: b;</div><div class="line">        <span class="keyword">int</span> diff = result.size() - other.size();</div><div class="line">        <span class="keyword">int</span> push = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = other.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">if</span>(result[i+diff] == <span class="string">'1'</span> &amp;&amp; other[i] == <span class="string">'1'</span>)&#123;result[i+diff] = (<span class="keyword">char</span>)(push+<span class="string">'0'</span>); push = <span class="number">1</span>;&#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(result[i+diff] == <span class="string">'0'</span> &amp;&amp; other[i] == <span class="string">'0'</span>)&#123;result[i+diff] = (<span class="keyword">char</span>)(push+<span class="string">'0'</span>); push = <span class="number">0</span>;&#125;</div><div class="line">            <span class="keyword">else</span> &#123;<span class="keyword">if</span>(push) &#123;result[i+diff] = <span class="string">'0'</span>; push = <span class="number">1</span>;&#125; <span class="keyword">else</span> &#123;result[i+diff] = <span class="string">'1'</span>;&#125;&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = diff - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">if</span>(result[i] == <span class="string">'1'</span>) &#123;<span class="keyword">if</span>(push)&#123;result[i] = <span class="string">'0'</span>; push = <span class="number">1</span>;&#125; <span class="keyword">else</span> &#123;result[i] = <span class="string">'1'</span>; push = <span class="number">0</span>;&#125;&#125; <span class="keyword">else</span> &#123;result[i] = (<span class="keyword">char</span>)(push+<span class="string">'0'</span>); push = <span class="number">0</span>;&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(push) &#123;result.insert(result.begin(), <span class="string">'1'</span>);&#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>简单使用两个循环分别处理两个字符串的共有段和私有段，从尾向头传播。时间复杂度$O(n)$，空间复杂度$O(1)$。<br>耗时$3$ ms，排名$77.79\%$</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>使用恰当的取值和下标控制来统一计算过程，且简化加和和进位在同一个变量，这是目前看到的同样复杂度下最漂亮的解法。<br>耗时$3$ ms，排名$88.57\%$</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">addBinary</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="built_in">string</span> s = <span class="string">""</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> c = <span class="number">0</span>, i = a.size() - <span class="number">1</span>, j = b.size() - <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || c == <span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            c += i &gt;= <span class="number">0</span> ? a[i --] - <span class="string">'0'</span> : <span class="number">0</span>;</div><div class="line">            c += j &gt;= <span class="number">0</span> ? b[j --] - <span class="string">'0'</span> : <span class="number">0</span>;</div><div class="line">            s = <span class="keyword">char</span>(c % <span class="number">2</span> + <span class="string">'0'</span>) + s;</div><div class="line">            c /= <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
 
@@ -243,7 +243,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2017/11/05/plus-one/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2017/11/06/add-binary/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,18 +257,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/06/add-binary/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          add-binary
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/04/length-of-last-word/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">length-of-last-word</div>
+    <a href="/2017/11/05/plus-one/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Plus One</div>
       <i class="icon-circle-right"></i>
     </a>
   

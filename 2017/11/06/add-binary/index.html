@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
   <title>add-binary | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Add BinaryProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
+  <meta name="description" content="Add Binary – LeetCode 67ProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
 <meta name="keywords" content="LeetCode-Easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="add-binary">
 <meta property="og:url" content="http://www.fxti.xyz/2017/11/06/add-binary/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Add BinaryProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
+<meta property="og:description" content="Add Binary – LeetCode 67ProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-05T10:13:53.050Z">
+<meta property="og:updated_time" content="2017-11-07T11:23:35.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="add-binary">
-<meta name="twitter:description" content="Add BinaryProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
+<meta name="twitter:description" content="Add Binary – LeetCode 67ProblemDescriptionGiven two binary strings, return their sum (also a binary string).">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -167,7 +167,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Add-Binary"><a href="#Add-Binary" class="headerlink" title="Add Binary"></a>Add Binary</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two binary strings, return their sum (also a binary string).</p>
+        <h1 id="Add-Binary-–-LeetCode-67"><a href="#Add-Binary-–-LeetCode-67" class="headerlink" title="Add Binary – LeetCode 67"></a>Add Binary – LeetCode 67</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two binary strings, return their sum (also a binary string).</p>
 <a id="more"></a> 
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>For example,<br>a = “11”<br>b = “1”<br>Return “100”.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">addBinary</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> &amp;result = (a.size() &gt; b.size())? a: b;</div><div class="line">        <span class="built_in">string</span> &amp;other = (a.size() &lt;= b.size())? a: b;</div><div class="line">        <span class="keyword">int</span> diff = result.size() - other.size();</div><div class="line">        <span class="keyword">int</span> push = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = other.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">if</span>(result[i+diff] == <span class="string">'1'</span> &amp;&amp; other[i] == <span class="string">'1'</span>)&#123;result[i+diff] = (<span class="keyword">char</span>)(push+<span class="string">'0'</span>); push = <span class="number">1</span>;&#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(result[i+diff] == <span class="string">'0'</span> &amp;&amp; other[i] == <span class="string">'0'</span>)&#123;result[i+diff] = (<span class="keyword">char</span>)(push+<span class="string">'0'</span>); push = <span class="number">0</span>;&#125;</div><div class="line">            <span class="keyword">else</span> &#123;<span class="keyword">if</span>(push) &#123;result[i+diff] = <span class="string">'0'</span>; push = <span class="number">1</span>;&#125; <span class="keyword">else</span> &#123;result[i+diff] = <span class="string">'1'</span>;&#125;&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = diff - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">            <span class="keyword">if</span>(result[i] == <span class="string">'1'</span>) &#123;<span class="keyword">if</span>(push)&#123;result[i] = <span class="string">'0'</span>; push = <span class="number">1</span>;&#125; <span class="keyword">else</span> &#123;result[i] = <span class="string">'1'</span>; push = <span class="number">0</span>;&#125;&#125; <span class="keyword">else</span> &#123;result[i] = (<span class="keyword">char</span>)(push+<span class="string">'0'</span>); push = <span class="number">0</span>;&#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(push) &#123;result.insert(result.begin(), <span class="string">'1'</span>);&#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -256,6 +256,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/11/07/sqrt/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          sqrt
+        
+      </div>
+    </a>
   
   
     <a href="/2017/11/05/plus-one/" id="article-nav-older" class="article-nav-link-wrap">

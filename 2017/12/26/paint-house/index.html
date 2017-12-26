@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
-  <title>Tag: LeetCode-Easy | FX-Ti&#39;s Blog</title>
+  <title>paint-house | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Some ideas about the tech...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="FX-Ti&#39;s Blog">
-<meta property="og:url" content="http://www.fxti.xyz/tags/LeetCode-Easy/page/5/index.html">
+  <meta name="description" content="Paint House – LeetCode 256ProblemDescriptionThere are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain colo">
+<meta name="keywords" content="LeetCode-Easy,Locked">
+<meta property="og:type" content="article">
+<meta property="og:title" content="paint-house">
+<meta property="og:url" content="http://www.fxti.xyz/2017/12/26/paint-house/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Some ideas about the tech...">
+<meta property="og:description" content="Paint House – LeetCode 256ProblemDescriptionThere are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain colo">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-25T12:56:49.540Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FX-Ti&#39;s Blog">
-<meta name="twitter:description" content="Some ideas about the tech...">
+<meta name="twitter:title" content="paint-house">
+<meta name="twitter:description" content="Paint House – LeetCode 256ProblemDescriptionThere are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain colo">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -145,36 +147,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-paint-house" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      paint-house
+    </h1>
+  
+
+        
+        <a href="/2017/12/26/paint-house/" class="archive-article-date">
+  	<time datetime="2017-12-26T04:51:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Paint-House-–-LeetCode-256"><a href="#Paint-House-–-LeetCode-256" class="headerlink" title="Paint House – LeetCode 256"></a>Paint House – LeetCode 256</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.</p>
+<p>The cost of painting each house with a certain color is represented by a n x 3 cost matrix. For example, costs[0][0] is the cost of painting house 0 with color red; costs[1][2] is the cost of painting house 1 with color green, and so on… Find the minimum cost to paint all houses.</p>
+<a id="more"></a> 
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minCost</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; costs)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = costs.size();</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">3</span>; ++j)&#123;</div><div class="line">                costs[i][j] += min(costs[i<span class="number">-1</span>][(j+<span class="number">1</span>)%<span class="number">3</span>], costs[i<span class="number">-1</span>][(j+<span class="number">2</span>)%<span class="number">3</span>]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> min(costs[n<span class="number">-1</span>][<span class="number">0</span>], min(costs[n<span class="number">-1</span>][<span class="number">1</span>], costs[n<span class="number">-1</span>][<span class="number">2</span>]));</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用DP,递归式是costs[i][j] == costs[i][j] + min(costs[i-1][(j+1)%3], costs[i-1][(j+2)%3])，就是下一个颜色由上一个方案的两个可选颜色中选出，最后从三个最终方案中选出最终的最优答案，妙。时间复杂度$O(n)$，空间复杂度$O(1)$。</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/28/count-primes/" class="archive-article-date">
-  	<time datetime="2017-11-28T07:36:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/28/count-primes/">count-primes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,254 +188,113 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/27/remove-linked-list-elements/" class="archive-article-date">
-  	<time datetime="2017-11-27T02:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/27/remove-linked-list-elements/">remove-linked-list-elements</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Locked</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2017/12/26/paint-house/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/26/happy-number/" class="archive-article-date">
-  	<time datetime="2017-11-26T08:40:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/25/meeting-rooms/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">meeting-rooms</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/26/happy-number/">happy-number</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/25/linked-list-cycle/" class="archive-article-date">
-  	<time datetime="2017-11-25T08:07:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/linked-list-cycle/">linked-list-cycle</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/24/single-number/" class="archive-article-date">
-  	<time datetime="2017-11-24T04:06:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/24/single-number/">single-number</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/23/valid-palindrome/" class="archive-article-date">
-  	<time datetime="2017-11-23T02:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/23/valid-palindrome/">valid-palindrome</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/22/best-time-to-buy-and-sell-stock-ii/" class="archive-article-date">
-  	<time datetime="2017-11-22T04:34:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/22/best-time-to-buy-and-sell-stock-ii/">best-time-to-buy-and-sell-stock-ii</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/LeetCode-Easy/page/4/">&laquo; Prev</a><a class="page-number" href="/tags/LeetCode-Easy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/LeetCode-Easy/page/3/">3</a><a class="page-number" href="/tags/LeetCode-Easy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/tags/LeetCode-Easy/page/6/">6</a><a class="page-number" href="/tags/LeetCode-Easy/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/tags/LeetCode-Easy/page/10/">10</a><a class="extend next" rel="next" href="/tags/LeetCode-Easy/page/6/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -456,9 +321,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

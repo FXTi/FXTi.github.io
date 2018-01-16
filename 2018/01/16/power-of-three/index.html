@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
-  <title>range-sum-query-immutable | FX-Ti&#39;s Blog</title>
+  <title>power-of-three | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Range Sum Query - Immutable – LeetCode 303ProblemDescriptionGiven an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.">
+  <meta name="description" content="Power of Three – LeetCode 326ProblemDescriptionGiven an integer, write a function to determine if it is a power of three.">
 <meta name="keywords" content="LeetCode-Easy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="range-sum-query-immutable">
-<meta property="og:url" content="http://www.fxti.xyz/2018/01/12/range-sum-query-immutable/index.html">
+<meta property="og:title" content="power-of-three">
+<meta property="og:url" content="http://www.fxti.xyz/2018/01/16/power-of-three/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Range Sum Query - Immutable – LeetCode 303ProblemDescriptionGiven an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.">
+<meta property="og:description" content="Power of Three – LeetCode 326ProblemDescriptionGiven an integer, write a function to determine if it is a power of three.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-11T15:34:27.550Z">
+<meta property="og:updated_time" content="2018-01-15T14:30:00.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="range-sum-query-immutable">
-<meta name="twitter:description" content="Range Sum Query - Immutable – LeetCode 303ProblemDescriptionGiven an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.">
+<meta name="twitter:title" content="power-of-three">
+<meta name="twitter:description" content="Power of Three – LeetCode 326ProblemDescriptionGiven an integer, write a function to determine if it is a power of three.">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -147,33 +147,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-range-sum-query-immutable" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-power-of-three" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      range-sum-query-immutable
+      power-of-three
     </h1>
   
 
         
-        <a href="/2018/01/12/range-sum-query-immutable/" class="archive-article-date">
-  	<time datetime="2018-01-12T07:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-12</time>
+        <a href="/2018/01/16/power-of-three/" class="archive-article-date">
+  	<time datetime="2018-01-16T05:35:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Range-Sum-Query-Immutable-–-LeetCode-303"><a href="#Range-Sum-Query-Immutable-–-LeetCode-303" class="headerlink" title="Range Sum Query - Immutable – LeetCode 303"></a>Range Sum Query - Immutable – LeetCode 303</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.</p>
+        <h1 id="Power-of-Three-–-LeetCode-326"><a href="#Power-of-Three-–-LeetCode-326" class="headerlink" title="Power of Three – LeetCode 326"></a>Power of Three – LeetCode 326</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an integer, write a function to determine if it is a power of three.</p>
 <a id="more"></a> 
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Given nums = [-2, 0, 3, -5, 2, -1]</p>
-<p>sumRange(0, 2) -&gt; 1<br>sumRange(2, 5) -&gt; -1<br>sumRange(0, 5) -&gt; -3</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> &#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">map</span>&#123;<span class="number">0</span>&#125;;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    NumArray(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, acc = <span class="number">0</span>; i != nums.size(); ++i)&#123;</div><div class="line">            acc += nums[i];</div><div class="line">            <span class="built_in">map</span>.push_back(acc);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">map</span>[j+<span class="number">1</span>] - <span class="built_in">map</span>[i];</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Your NumArray object will be instantiated and called as such:</span></div><div class="line"><span class="comment"> * NumArray obj = new NumArray(nums);</span></div><div class="line"><span class="comment"> * int param_1 = obj.sumRange(i,j);</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>因为不可变所以建立一个缓存，用空间换时间，对于map[n] = num[1] + … + num[n]，然后自然可得sumRange(i,j) = map[j] - map[i]。时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$163$ ms，排名$16.83\%$</p>
-<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路。</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span>(n &amp;&amp; n % <span class="number">3</span> == <span class="number">0</span>) n /= <span class="number">3</span>;</div><div class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>最简单的方法，循环除3进行判断，时间复杂度$O(log_{3}{n})$，空间复杂度$O(1)$。<br>耗时$83$ ms，排名$91.05\%$</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>已知int的表示范围，直接生成容纳范围内的因数只有3 的最大值，符合要求的书与之取模结果应该是0。时间复杂度$O(1)$，空间复杂度$O(1)$。<br>耗时$76$ ms，排名$84.37\%$</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPowerOfThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> n &gt; <span class="number">0</span> &amp;&amp; !(<span class="number">1162261467</span> % n);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
 
@@ -243,7 +242,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2018/01/12/range-sum-query-immutable/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2018/01/16/power-of-three/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,18 +256,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/16/power-of-three/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          power-of-three
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/11/flip-game/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">flip-game</div>
+    <a href="/2018/01/12/range-sum-query-immutable/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">range-sum-query-immutable</div>
       <i class="icon-circle-right"></i>
     </a>
   

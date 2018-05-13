@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
-  <title>longest-uncommon-subsequence-i | FX-Ti&#39;s Blog</title>
+  <title>minimum-absolute-difference-in-BST | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Longest Uncommon Subsequence I – LeetCode 521ProblemDescriptionGiven a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subseq">
+  <meta name="description" content="Minimum Absolute Difference in BST – LeetCode 530ProblemDescriptionGiven a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.">
 <meta name="keywords" content="LeetCode-Easy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="longest-uncommon-subsequence-i">
-<meta property="og:url" content="http://www.fxti.xyz/2018/05/12/longest-uncommon-subsequence-i/index.html">
+<meta property="og:title" content="minimum-absolute-difference-in-BST">
+<meta property="og:url" content="http://www.fxti.xyz/2018/05/13/minimum-absolute-difference-in-BST/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Longest Uncommon Subsequence I – LeetCode 521ProblemDescriptionGiven a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subseq">
+<meta property="og:description" content="Minimum Absolute Difference in BST – LeetCode 530ProblemDescriptionGiven a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-12T18:37:04.352Z">
+<meta property="og:updated_time" content="2018-05-13T12:23:42.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="longest-uncommon-subsequence-i">
-<meta name="twitter:description" content="Longest Uncommon Subsequence I – LeetCode 521ProblemDescriptionGiven a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subseq">
+<meta name="twitter:title" content="minimum-absolute-difference-in-BST">
+<meta name="twitter:description" content="Minimum Absolute Difference in BST – LeetCode 530ProblemDescriptionGiven a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -147,32 +147,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-longest-uncommon-subsequence-i" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-minimum-absolute-difference-in-BST" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      longest-uncommon-subsequence-i
+      minimum-absolute-difference-in-BST
     </h1>
   
 
         
-        <a href="/2018/05/12/longest-uncommon-subsequence-i/" class="archive-article-date">
-  	<time datetime="2018-05-12T10:32:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
+        <a href="/2018/05/13/minimum-absolute-difference-in-BST/" class="archive-article-date">
+  	<time datetime="2018-05-13T04:20:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Longest-Uncommon-Subsequence-I-–-LeetCode-521"><a href="#Longest-Uncommon-Subsequence-I-–-LeetCode-521" class="headerlink" title="Longest Uncommon Subsequence I – LeetCode 521"></a>Longest Uncommon Subsequence I – LeetCode 521</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.</p>
-<p>A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.</p>
-<p>The input will be two strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn’t exist, return -1.</p>
+        <h1 id="Minimum-Absolute-Difference-in-BST-–-LeetCode-530"><a href="#Minimum-Absolute-Difference-in-BST-–-LeetCode-530" class="headerlink" title="Minimum Absolute Difference in BST – LeetCode 530"></a>Minimum Absolute Difference in BST – LeetCode 530</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.</p>
 <a id="more"></a> 
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findLUSlength</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> a == b ? <span class="number">-1</span> : max(a.size(), b.size());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>求最大不同子串，直接取出更大的大小，枚举几个情况就知道了，这是愚人节出的题，服气。时间复杂度$O(1)$，空间复杂度$O(1)$。<br>耗时$3$ ms，排名$3.2\%$</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for a binary tree node.</span></div><div class="line"><span class="comment"> * struct TreeNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     TreeNode *left;</span></div><div class="line"><span class="comment"> *     TreeNode *right;</span></div><div class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></div><div class="line"><span class="comment"> * &#125;;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> min_dif = INT_MAX, val = <span class="number">-1</span>;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMinimumDifference</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root-&gt;left != <span class="literal">NULL</span>) getMinimumDifference(root-&gt;left);</div><div class="line">        <span class="keyword">if</span> (val &gt;= <span class="number">0</span>) min_dif = min(min_dif, root-&gt;val - val);</div><div class="line">        val = root-&gt;val;</div><div class="line">        <span class="keyword">if</span> (root-&gt;right != <span class="literal">NULL</span>) getMinimumDifference(root-&gt;right);</div><div class="line">        <span class="keyword">return</span> min_dif;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>遍历节点，计算临近节点值的最小差即可。时间复杂度$O(n)$，空间复杂度$O(log{n})$。<br>耗时$22$ ms，排名$11.39\%$</p>
 <h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路。</p>
 
       
@@ -243,7 +241,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2018/05/12/longest-uncommon-subsequence-i/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2018/05/13/minimum-absolute-difference-in-BST/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,18 +255,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/13/minimum-absolute-difference-in-BST/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          minimum-absolute-difference-in-BST
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/29/detect-capital/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">detect-capital</div>
+    <a href="/2018/05/12/longest-uncommon-subsequence-i/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">longest-uncommon-subsequence-i</div>
       <i class="icon-circle-right"></i>
     </a>
   

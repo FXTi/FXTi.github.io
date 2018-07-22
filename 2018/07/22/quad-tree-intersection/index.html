@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.fxti.xyz">
-  <title>Archives | FX-Ti&#39;s Blog</title>
+  <title>quad-tree-intersection | FX-Ti&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Some ideas about the tech...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="FX-Ti&#39;s Blog">
-<meta property="og:url" content="http://www.fxti.xyz/archives/index.html">
+  <meta name="description" content="Quad Tree Intersection – LeetCode 558ProblemDescriptionA quadtree is a tree data in which each internal node has exactly four children: topLeft, topRight, bottomLeft and bottomRight. Quad trees are of">
+<meta name="keywords" content="LeetCode-Easy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="quad-tree-intersection">
+<meta property="og:url" content="http://www.fxti.xyz/2018/07/22/quad-tree-intersection/index.html">
 <meta property="og:site_name" content="FX-Ti&#39;s Blog">
-<meta property="og:description" content="Some ideas about the tech...">
+<meta property="og:description" content="Quad Tree Intersection – LeetCode 558ProblemDescriptionA quadtree is a tree data in which each internal node has exactly four children: topLeft, topRight, bottomLeft and bottomRight. Quad trees are of">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-22T12:13:31.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FX-Ti&#39;s Blog">
-<meta name="twitter:description" content="Some ideas about the tech...">
+<meta name="twitter:title" content="quad-tree-intersection">
+<meta name="twitter:description" content="Quad Tree Intersection – LeetCode 558ProblemDescriptionA quadtree is a tree data in which each internal node has exactly four children: topLeft, topRight, bottomLeft and bottomRight. Quad trees are of">
   
     <link rel="alternative" href="/atom.xml" title="FX-Ti&#39;s Blog" type="application/atom+xml">
   
@@ -145,36 +147,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-quad-tree-intersection" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      quad-tree-intersection
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/22/quad-tree-intersection/" class="archive-article-date">
+
+        
+        <a href="/2018/07/22/quad-tree-intersection/" class="archive-article-date">
   	<time datetime="2018-07-22T04:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/22/quad-tree-intersection/">quad-tree-intersection</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Quad-Tree-Intersection-–-LeetCode-558"><a href="#Quad-Tree-Intersection-–-LeetCode-558" class="headerlink" title="Quad Tree Intersection – LeetCode 558"></a>Quad Tree Intersection – LeetCode 558</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>A quadtree is a tree data in which each internal node has exactly four children: topLeft, topRight, bottomLeft and bottomRight. Quad trees are often used to partition a two-dimensional space by recursively subdividing it into four quadrants or regions.</p>
+<p>We want to store True/False information in our quad tree. The quad tree is used to represent a N * N boolean grid. For each node, it will be subdivided into four children nodes until the values in the region it represents are all the same. Each node has another two boolean attributes : isLeaf and val. isLeaf is true if and only if the node is a leaf node. The val attribute for a leaf node contains the value of the region it represents.</p>
+<a id="more"></a> 
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">// Definition for a QuadTree node.</span></div><div class="line"><span class="comment">class Node &#123;</span></div><div class="line"><span class="comment">public:</span></div><div class="line"><span class="comment">    bool val;</span></div><div class="line"><span class="comment">    bool isLeaf;</span></div><div class="line"><span class="comment">    Node* topLeft;</span></div><div class="line"><span class="comment">    Node* topRight;</span></div><div class="line"><span class="comment">    Node* bottomLeft;</span></div><div class="line"><span class="comment">    Node* bottomRight;</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">    Node() &#123;&#125;</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">    Node(bool _val, bool _isLeaf, Node* _topLeft, Node* _topRight, Node* _bottomLeft, Node* _bottomRight) &#123;</span></div><div class="line"><span class="comment">        val = _val;</span></div><div class="line"><span class="comment">        isLeaf = _isLeaf;</span></div><div class="line"><span class="comment">        topLeft = _topLeft;</span></div><div class="line"><span class="comment">        topRight = _topRight;</span></div><div class="line"><span class="comment">        bottomLeft = _bottomLeft;</span></div><div class="line"><span class="comment">        bottomRight = _bottomRight;</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">&#125;;</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">Node* <span class="title">intersect</span><span class="params">(Node* quadTree1, Node* quadTree2)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!quadTree1 &amp;&amp; !quadTree2) </div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        <span class="keyword">if</span> (!quadTree1 || !quadTree2) </div><div class="line">            <span class="keyword">return</span> quadTree1 ? quadTree1 : quadTree2;</div><div class="line">        <span class="keyword">if</span> (quadTree1-&gt;isLeaf) </div><div class="line">            <span class="keyword">return</span> quadTree1-&gt;val ? quadTree1 : quadTree2;</div><div class="line">        <span class="keyword">if</span> (quadTree2-&gt;isLeaf) </div><div class="line">            <span class="keyword">return</span> quadTree2-&gt;val ? quadTree2 : quadTree1;</div><div class="line">        quadTree1-&gt;topLeft = intersect(quadTree1-&gt;topLeft, quadTree2-&gt;topLeft);</div><div class="line">        quadTree1-&gt;topRight = intersect(quadTree1-&gt;topRight, quadTree2-&gt;topRight);</div><div class="line">        quadTree1-&gt;bottomLeft = intersect(quadTree1-&gt;bottomLeft, quadTree2-&gt;bottomLeft);</div><div class="line">        quadTree1-&gt;bottomRight = intersect(quadTree1-&gt;bottomRight, quadTree2-&gt;bottomRight);</div><div class="line">        </div><div class="line">		<span class="keyword">if</span>((!quadTree1-&gt;topLeft &amp;&amp; !quadTree1-&gt;topRight </div><div class="line">            &amp;&amp; !quadTree1-&gt;bottomLeft &amp;&amp; !quadTree1-&gt;bottomRight) ||</div><div class="line">			((quadTree1-&gt;topLeft-&gt;isLeaf &amp;&amp; quadTree1-&gt;topRight-&gt;isLeaf </div><div class="line">              &amp;&amp; quadTree1-&gt;bottomLeft-&gt;isLeaf &amp;&amp; quadTree1-&gt;bottomRight-&gt;isLeaf) &amp;&amp; </div><div class="line">             ((quadTree1-&gt;topLeft-&gt;val &amp;&amp; quadTree1-&gt;topRight-&gt;val &amp;&amp; quadTree1-&gt;bottomLeft-&gt;val </div><div class="line">               &amp;&amp; quadTree1-&gt;bottomLeft-&gt;val &amp;&amp; quadTree1-&gt;bottomRight-&gt;val) || </div><div class="line">              !(quadTree1-&gt;topLeft-&gt;val || quadTree1-&gt;topRight-&gt;val </div><div class="line">                || quadTree1-&gt;bottomLeft-&gt;val || quadTree1-&gt;bottomRight-&gt;val))))&#123;</div><div class="line">            quadTree1 -&gt; isLeaf = <span class="literal">true</span>;</div><div class="line">            quadTree1 -&gt; val = quadTree1 -&gt; topLeft -&gt; val;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> quadTree1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>需要谨慎考虑传入两指针的状态，然后是递归后获取的四指针的状态可否合一，一旦少了就错了。时间复杂度$O(n)$，空间复杂度$O(n)$。<br>耗时$104$ ms，排名$17.65\%$</p>
+<h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>还没看到更好的思路。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,250 +192,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.fxti.xyz/2018/07/22/quad-tree-intersection/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/21/reverse-words-in-a-string-iii/" class="archive-article-date">
-  	<time datetime="2018-07-21T01:37:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/21/reverse-words-in-a-string-iii/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">reverse-words-in-a-string-iii</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/21/reverse-words-in-a-string-iii/">reverse-words-in-a-string-iii</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/21/student-attendance-record-i/" class="archive-article-date">
-  	<time datetime="2018-07-21T01:22:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/21/student-attendance-record-i/">student-attendance-record-i</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/20/diameter-of-binary-tree/" class="archive-article-date">
-  	<time datetime="2018-07-20T06:52:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/20/diameter-of-binary-tree/">diameter-of-binary-tree</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/20/reverse-string-ii/" class="archive-article-date">
-  	<time datetime="2018-07-20T05:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/20/reverse-string-ii/">reverse-string-ii</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/19/convert-bst-to-greater-tree/" class="archive-article-date">
-  	<time datetime="2018-07-19T06:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/19/convert-bst-to-greater-tree/">convert-bst-to-greater-tree</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/19/k-diff-pairs-in-an-array/" class="archive-article-date">
-  	<time datetime="2018-07-19T06:39:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/19/k-diff-pairs-in-an-array/">k-diff-pairs-in-an-array</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode-Easy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/20/">20</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -456,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/FXTi/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/FXTi/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/FXTi/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/FXTi/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/FXTi/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/FXTi/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://fxti.github.io/categories/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T16:40:56.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/FXTi/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fxti.github.io/categories/">
+
+
+
+
+
+  <title>xiaomi-router-analysis | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/FXTi/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/FXTi/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/FXTi/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/FXTi/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fxti.github.io/FXTi/2018/11/14/xiaomi-router-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/FXTi/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">xiaomi-router-analysis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-14T14:44:37+00:00">2018-11-14</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="初探小米路由器固件"><a href="#初探小米路由器固件" class="headerlink" title="初探小米路由器固件"></a>初探小米路由器固件</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今年双十一小米路由器出货量不少，为了避免重复前人做过的事情，所以就选择了较少人分析的小米</p>
+<a id="more"></a> 
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>刚开始尝试使用firmadyne自动化完成，但是结果总是不能令人满意，于是手动进行吧</p>
+<p>选用如下工具：</p>
+<ul>
+<li>Firmware-mod-kit</li>
+<li>QEMU</li>
+<li>BINWALK</li>
+<li>IDA PRO</li>
+</ul>
+<h3 id="FMK安装"><a href="#FMK安装" class="headerlink" title="FMK安装"></a>FMK安装</h3><p>链接：<a href="https://github.com/rampageX/firmware-mod-kit" target="_blank" rel="noopener">https://github.com/rampageX/firmware-mod-kit</a></p>
+<p>安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git build-essential zlib1g-dev liblzma-dev python-magic</span><br><span class="line">$ git clone https://github.com/rampageX/firmware-mod-kit.git</span><br></pre></td></tr></table></figure></p>
+<p>其余的视为常用软件，安装过程略过</p>
+<h2 id="固件提取"><a href="#固件提取" class="headerlink" title="固件提取"></a>固件提取</h2><p>固件下载: <a href="http://bigota.miwifi.com/xiaoqiang/rom/r1cl/miwifi_r1cl_firmware_82b5c_2.7.81.bin" target="_blank" rel="noopener">http://bigota.miwifi.com/xiaoqiang/rom/r1cl/miwifi_r1cl_firmware_82b5c_2.7.81.bin</a></p>
+<p>直接拷贝到firmware-mod-kit目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./extract-firmware.sh http://bigota.miwifi.com/xiaoqiang/rom/r1cl/miwifi_r1cl_firmware_82b5c_2.7.81.bin</span><br></pre></td></tr></table></figure>
+<p>生成的解包过的内容会存放在firmware-mod-kit/fmk下面</p>
+<img src="/FXTi/2018/11/14/xiaomi-router-analysis/rootfs.png">
+<h2 id="系统模拟"><a href="#系统模拟" class="headerlink" title="系统模拟"></a>系统模拟</h2><p>提取出了根目录的文件，就是时候启动虚拟机模拟运行了</p>
+<p>这里使用QEMU进行模拟</p>
+<p>进入bin文件夹查看busybox的相关信息</p>
+<img src="/FXTi/2018/11/14/xiaomi-router-analysis/busybox.png">
+<p>确认是32位的mipsel的系统，于是对应进行模拟</p>
+<h3 id="下载环境"><a href="#下载环境" class="headerlink" title="下载环境"></a>下载环境</h3><p>首先需要下载对应的QEMU镜像文件，直接全部下载该链接下的文件</p>
+<p><a href="https://people.debian.org/~aurel32/qemu/mipsel/" target="_blank" rel="noopener">https://people.debian.org/~aurel32/qemu/mipsel/</a></p>
+<h3 id="启动环境"><a href="#启动环境" class="headerlink" title="启动环境"></a>启动环境</h3><p>之后运行如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-mipsel -M malta -kernel vmlinux-2.6.32-5-4kc-malta -hda debian_squeeze_mipsel_standard.qcow2 -append &quot;root=/dev/sda1 console=tty0&quot; -netdev user,id=mynet0,hostfwd=tcp::2222-:22,hostfwd=tcp::8080-:80 -device e1000,netdev=mynet0</span><br></pre></td></tr></table></figure>
+<p>该命令开启了一台QEMU模拟的MISPEL虚拟机，32位的，同时把22和80端口分别映射到8080和2222端口上用来和主机通信</p>
+<img src="/FXTi/2018/11/14/xiaomi-router-analysis/qemu.png">
+<h3 id="部署文件"><a href="#部署文件" class="headerlink" title="部署文件"></a>部署文件</h3><p>现在需要把固件中的文件部署到虚拟机中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd fmk</span><br><span class="line">tar zcvf ./rootfs.tar.gz ./rootfs/*</span><br><span class="line">sftp -P 2222 ./rootfs.tar.gz root@localhost:/root/rootfs.tar.gz</span><br></pre></td></tr></table></figure>
+<p>这样就打包了rootfs下所有的文件并通过ssh上传到了虚拟机中</p>
+<p>然后在虚拟机中操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf ./rootfs.tar.gz</span><br><span class="line">chroot rootfs /bin/ash</span><br></pre></td></tr></table></figure>
+<p>就进入了路由器固件的模拟环境</p>
+<img src="/FXTi/2018/11/14/xiaomi-router-analysis/chroot.png">
+<h3 id="尝试运行"><a href="#尝试运行" class="headerlink" title="尝试运行"></a>尝试运行</h3><p>但是这样还不够，我们还需要路由器里对应的服务运行起来，于是我们查找它的启动脚本</p>
+<p>这是/etc/inittab中的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">::sysinit:/etc/init.d/rcS S boot</span><br><span class="line">::shutdown:/etc/init.d/rcS K shutdown</span><br><span class="line">::askfirst:/bin/ash --login</span><br></pre></td></tr></table></figure>
+<p>可以看到/etc/init.d/rcS S boot，于是运行之，但是发现大量和nvram相关的报错。</p>
+<p>只好进行调查，但是现有能找到的方案是劫持libnvram.so的，尝试后无果，陷入僵局。</p>
+<p>喝口茶仔细看了先相关的调用脚本发现使用的是/usr/sbin/nvram这个二进制文件，开启IDA载入文件发现</p>
+<img src="/FXTi/2018/11/14/xiaomi-router-analysis/nvram.png">
+<p>这个程序应该是小米工程师自己写的助手程序，内部直接通过读写/dev/nvram实现，估计程序不过百行。</p>
+<p>于是思路出现了，自己通过C++编写等同的程序再交叉编译到mispel32进行模拟，欺骗过启动过程。</p>
+<p>限于时间，还没来得及实现</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>现有的自动化框架依旧有其局限，同时路由器固件本身就针对不同的硬件平台和功能需求作出了相当程度的定制修改，个人认为软件模拟仿真不如直接硬件仿真来的直接。或许还是软件提取出来硬件分析+硬件实时调试追溯双管其下效率较高。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/FXTi/2018/08/11/baseball-game/" rel="next" title="baseball-game">
+                <i class="fa fa-chevron-left"></i> baseball-game
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/FXTi/archives/">
+              
+                  <span class="site-state-item-count">168</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/FXTi/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初探小米路由器固件"><span class="nav-number">1.</span> <span class="nav-text">初探小米路由器固件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.2.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FMK安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">FMK安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固件提取"><span class="nav-number">1.3.</span> <span class="nav-text">固件提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统模拟"><span class="nav-number">1.4.</span> <span class="nav-text">系统模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载环境"><span class="nav-number">1.4.1.</span> <span class="nav-text">下载环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动环境"><span class="nav-number">1.4.2.</span> <span class="nav-text">启动环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署文件"><span class="nav-number">1.4.3.</span> <span class="nav-text">部署文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试运行"><span class="nav-number">1.4.4.</span> <span class="nav-text">尝试运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/FXTi/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/FXTi/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/FXTi/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/FXTi/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/FXTi/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/FXTi/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/FXTi/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/FXTi/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/FXTi/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/FXTi/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

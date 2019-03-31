@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://http://blog.fxti.xyz/categories/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T16:40:56.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://http://blog.fxti.xyz/categories/">
+
+
+
+
+
+  <title>wepoll-source-code-analysis | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://blog.fxti.xyz/2019/03/24/wepoll-source-code-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">wepoll-source-code-analysis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-24T20:30:01+00:00">2019-03-24</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Wepoll-Source-code-analysis"><a href="#Wepoll-Source-code-analysis" class="headerlink" title="Wepoll Source code analysis"></a>Wepoll Source code analysis</h1><p>For GSoc’s tokio project.</p>
+<a id="more"></a> 
+<h2 id="Fundamental-data-struct"><a href="#Fundamental-data-struct" class="headerlink" title="Fundamental data struct"></a>Fundamental data struct</h2><h3 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h3><p>Simple bidirectional queue with a dummy node to simplify code as default.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">queue_node</span> &#123;</span></span><br><span class="line">  <span class="keyword">queue_node_t</span>* prev;</span><br><span class="line">  <span class="keyword">queue_node_t</span>* next;</span><br><span class="line">&#125; <span class="keyword">queue_node_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">queue</span> &#123;</span></span><br><span class="line">  <span class="keyword">queue_node_t</span> head;</span><br><span class="line">&#125; <span class="keyword">queue_t</span>;</span><br></pre></td></tr></table></figure>
+<p>Wepoll has implemented api to add new node to front and back of existed queue in O(1) time. </p>
+<h3 id="ts-tree"><a href="#ts-tree" class="headerlink" title="ts_tree"></a>ts_tree</h3><p>Wepoll implement red black tree and provide thread-safe version of it. Thread-safe red black binary tree is used to manage <code>port_state</code> which related to certain IOCP port. The <code>ts_tree_node</code> is embedded in <code>port_state</code> and contained in a local <code>ts_tree</code> called <strong>epoll__handle_tree</strong>. It manage all IOCP port and provide access to associated <code>port_state</code> by looking for the <code>HANDLE</code> returned from <code>CreateIoCompletionPort()</code>.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ts_tree</span> &#123;</span></span><br><span class="line">  <span class="keyword">tree_t</span> tree;</span><br><span class="line">  SRWLOCK lock;</span><br><span class="line">&#125; <span class="keyword">ts_tree_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ts_tree_node</span> &#123;</span></span><br><span class="line">  <span class="keyword">tree_node_t</span> tree_node;</span><br><span class="line">  <span class="keyword">reflock_t</span> reflock; <span class="comment">// Reference counted</span></span><br><span class="line">&#125; <span class="keyword">ts_tree_node_t</span>;</span><br></pre></td></tr></table></figure>
+<p>The <code>ts_tree</code> is guarded by <code>SRWLOCK</code> to control read/write of it. And <code>ts_tree_node</code> is managed by <code>reflock</code> to control its lifetime.  Under normal operation, threads increase and decrease the reference count, which are wait-free operations. The reflock normally prevents a chunk of memory from being freed, but does allow the chunk of memory to eventually be released in a coordinated fashion.</p>
+<h2 id="epoll-create"><a href="#epoll-create" class="headerlink" title="epoll_create()"></a>epoll_create()</h2><p>The <code>epoll_create()</code> and <code>epoll_create1</code> ignore their variables and call <code>epoll__create</code>. In <code>epoll__create</code>, it create a new port by calling <code>CreateIoCompletionPort</code>, initialing <code>port_state</code> struct and adding this new <code>port_state</code> to <code>epoll__handle_tree</code>.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">port_state_t</span>* port_new(HANDLE* iocp_out) &#123;</span><br><span class="line">  <span class="keyword">port_state_t</span>* port_state;</span><br><span class="line">  HANDLE iocp;</span><br><span class="line"></span><br><span class="line">  port_state = port__alloc();</span><br><span class="line">  iocp = port__create_iocp(); <span class="comment">//call CreateIoCompletionPort() to complete its work</span></span><br><span class="line">  <span class="built_in">memset</span>(port_state, <span class="number">0</span>, <span class="keyword">sizeof</span> *port_state);</span><br><span class="line"></span><br><span class="line">  port_state-&gt;iocp = iocp;</span><br><span class="line">  tree_init(&amp;port_state-&gt;sock_tree);</span><br><span class="line">  queue_init(&amp;port_state-&gt;sock_update_queue);</span><br><span class="line">  queue_init(&amp;port_state-&gt;sock_deleted_queue);</span><br><span class="line">  queue_init(&amp;port_state-&gt;poll_group_queue);</span><br><span class="line">  <span class="comment">//The ts_tree_node struct embedded</span></span><br><span class="line">  ts_tree_node_init(&amp;port_state-&gt;handle_tree_node);</span><br><span class="line">  <span class="comment">//This port_state can be acquired with pointer of handle_tree_node</span></span><br><span class="line">  <span class="comment">//Since the offset of head of port_state to handle_tree_node is fixed</span></span><br><span class="line">  <span class="comment">//The address of port_state can be calculated from this:</span></span><br><span class="line">  <span class="comment">//address_of_port_state = pointer_to_handle_tree_node - offset</span></span><br><span class="line">  InitializeCriticalSection(&amp;port_state-&gt;lock);</span><br><span class="line"></span><br><span class="line">  *iocp_out = iocp;</span><br><span class="line">  <span class="keyword">return</span> port_state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The <code>port_new</code> function take care of <code>port_state</code> initialization.</p>
+<h2 id="epoll-ctl"><a href="#epoll-ctl" class="headerlink" title="epoll_ctl()"></a>epoll_ctl()</h2><p>First, <code>epoll_ctl</code> find the <code>port_state</code> specified by HANDLE and increase the reference count associated to it.</p>
+<p>Second, enter the critical section and compplete the work according to <code>op</code>:</p>
+<ul>
+<li><p>EPOLL_CTL_ADD<br>The <code>port__ctl_add</code> create a new <code>sock_state</code> and get <code>ws_base_socket</code> &amp; <code>poll_group</code> for new <code>sock_state</code>, then add it to the <code>port_state</code>‘s tree struct to manage it. </p>
+</li>
+<li><p>EPOLL_CTL_MOD<br>The <code>port__ctl_mod</code> get associated <code>sock_state</code>, set event on it, and add it to the <code>sock_update_queue</code> waiting for updates. Then called <code>port__update_events_if_polling</code>…</p>
+</li>
+<li><p>EPOLL_CTL_DEL<br>The <code>port__ctl_del</code> get <code>sock_state</code> in <code>port_state</code> by SOCKET, and delete this <code>sock_state</code>. If this socket’s polling request is still pending, cancel it:</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CancelIoEx() may fail with ERROR_NOT_FOUND if the overlapped operation has</span></span><br><span class="line"><span class="comment">   * already completed. This is not a problem and we proceed normally. */</span></span><br><span class="line">  <span class="keyword">if</span> (!HasOverlappedIoCompleted(&amp;sock_state-&gt;overlapped) &amp;&amp;</span><br><span class="line">      !CancelIoEx(afd_helper_handle, &amp;sock_state-&gt;overlapped) &amp;&amp;</span><br><span class="line">      GetLastError() != ERROR_NOT_FOUND)</span><br><span class="line">    return_map_error(<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
+<p>And remove it from <code>port_state</code>‘s update queue and tree struct managing related <code>sock_state</code>. If the poll request still needs to complete, the sock_state object can’t be free()d yet. So it’s added to <code>port_state</code> deleted socket queue.</p>
+<h2 id="epoll-wait"><a href="#epoll-wait" class="headerlink" title="epoll_wait()"></a>epoll_wait()</h2><p>First, <code>epoll_ctl</code> find the <code>port_state</code> specified by HANDLE and increase the reference count associated to it.</p>
+<p>Second, choose the appropriate timeout and location for storing iocp_event(on stack or on heap). Then begin the loop, dequeue completion packets until either at least one interesting event has been discovered, or the timeout is reached.</p>
+<p>In detail, it update all <code>sock_state</code> in <code>port_state</code>‘s update_queue in the proper way. And In detail, it update all <code>sock_state</code> in <code>port_state</code>‘s update_queue in the proper way. And then waits for pending I/O operations that are associated with the specified completion port to complete by <code>GetQueuedCompletionStatusEx</code>. Store the iocp events returned in the location decided before. Iterate each event and process it by calling <code>sock_feed_event</code>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sock_feed_event</span><span class="params">(<span class="keyword">port_state_t</span>* port_state,</span></span></span><br><span class="line"><span class="function"><span class="params">                    OVERLAPPED* overlapped,</span></span></span><br><span class="line"><span class="function"><span class="params">                    struct epoll_event* ev)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">sock_state_t</span>* sock_state =</span><br><span class="line">      container_of(overlapped, <span class="keyword">sock_state_t</span>, overlapped);</span><br><span class="line">  AFD_POLL_INFO* poll_info = &amp;sock_state-&gt;poll_info;</span><br><span class="line">  <span class="keyword">uint32_t</span> epoll_events = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  sock_state-&gt;poll_status = SOCK__POLL_IDLE;</span><br><span class="line">  sock_state-&gt;pending_events = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (sock_state-&gt;delete_pending) &#123;</span><br><span class="line">    <span class="comment">/* Socket has been deleted earlier and can now be freed. */</span></span><br><span class="line">    <span class="keyword">return</span> sock__delete(port_state, sock_state, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((NTSTATUS) overlapped-&gt;Internal == STATUS_CANCELLED) &#123;</span><br><span class="line">    <span class="comment">/* The poll request was cancelled by CancelIoEx. */</span></span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!NT_SUCCESS(overlapped-&gt;Internal)) &#123;</span><br><span class="line">    <span class="comment">/* The overlapped request itself failed in an unexpected way. */</span></span><br><span class="line">    epoll_events = EPOLLERR;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (poll_info-&gt;NumberOfHandles &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">/* This poll operation succeeded but didn't report any socket events. */</span></span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (poll_info-&gt;Handles[<span class="number">0</span>].Events &amp; AFD_POLL_LOCAL_CLOSE) &#123;</span><br><span class="line">    <span class="comment">/* The poll operation reported that the socket was closed. */</span></span><br><span class="line">    <span class="keyword">return</span> sock__delete(port_state, sock_state, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">/* Events related to our socket were reported. */</span></span><br><span class="line">    epoll_events =</span><br><span class="line">        sock__afd_events_to_epoll_events(poll_info-&gt;Handles[<span class="number">0</span>].Events);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Requeue the socket so a new poll request will be submitted. */</span></span><br><span class="line">  port_request_socket_update(port_state, sock_state);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Filter out events that the user didn't ask for. */</span></span><br><span class="line">  epoll_events &amp;= sock_state-&gt;user_events;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Return if there are no epoll events to report. */</span></span><br><span class="line">  <span class="keyword">if</span> (epoll_events == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* If the the socket has the EPOLLONESHOT flag set, unmonitor all events,</span></span><br><span class="line"><span class="comment">   * even EPOLLERR and EPOLLHUP. But always keep looking for closed sockets. */</span></span><br><span class="line">  <span class="keyword">if</span> (sock_state-&gt;user_events &amp; EPOLLONESHOT)</span><br><span class="line">    sock_state-&gt;user_events = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  ev-&gt;data = sock_state-&gt;user_data;</span><br><span class="line">  ev-&gt;events = epoll_events;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If EPOLLONESHOT is set, clear all events flag.</p>
+<p>Finally, if there’s still polling, update events in <code>port_state</code>‘s update_queue.</p>
+<h2 id="epoll-close"><a href="#epoll-close" class="headerlink" title="epoll_close()"></a>epoll_close()</h2><p>First, <code>epoll_close</code> find the <code>port_state</code> specified by HANDLE and increase the reference count associated to it. And close the IOCP port associated with itself.</p>
+<p>Then, force delete all <code>sock_state</code> in both <code>sock_tree</code> and <code>sock_deleted_queue</code>. And clear all <code>poll_group</code> in <code>sock_state</code> and the afd handler in them as well.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/12/radare2-reverse-self-modified-binary/" rel="next" title="radare2-reverse-self-modified-binary">
+                <i class="fa fa-chevron-left"></i> radare2-reverse-self-modified-binary
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/31/Transformers-debugging-wp/" rel="prev" title="Transformers-debugging-wp">
+                Transformers-debugging-wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">172</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Wepoll-Source-code-analysis"><span class="nav-number">1.</span> <span class="nav-text">Wepoll Source code analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fundamental-data-struct"><span class="nav-number">1.1.</span> <span class="nav-text">Fundamental data struct</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#queue"><span class="nav-number">1.1.1.</span> <span class="nav-text">queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ts-tree"><span class="nav-number">1.1.2.</span> <span class="nav-text">ts_tree</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll-create"><span class="nav-number">1.2.</span> <span class="nav-text">epoll_create()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll-ctl"><span class="nav-number">1.3.</span> <span class="nav-text">epoll_ctl()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll-wait"><span class="nav-number">1.4.</span> <span class="nav-text">epoll_wait()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll-close"><span class="nav-number">1.5.</span> <span class="nav-text">epoll_close()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

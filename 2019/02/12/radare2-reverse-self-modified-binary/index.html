@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://http://blog.fxti.xyz/categories/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T16:40:56.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://http://blog.fxti.xyz/categories/">
+
+
+
+
+
+  <title>radare2-reverse-self-modified-binary | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://http://blog.fxti.xyz/2019/02/12/radare2-reverse-self-modified-binary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">radare2-reverse-self-modified-binary</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T13:30:58+00:00">2019-02-12</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="用Radare2逆向一个自修改的二进制文件"><a href="#用Radare2逆向一个自修改的二进制文件" class="headerlink" title="用Radare2逆向一个自修改的二进制文件"></a>用Radare2逆向一个自修改的二进制文件</h1><p>译自：</p>
+<blockquote>
+<p><a href="https://www.megabeets.net/reversing-a-self-modifying-binary-with-radare2/" target="_blank" rel="noopener">https://www.megabeets.net/reversing-a-self-modifying-binary-with-radare2/</a></p>
+</blockquote>
+<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>写这篇文章花了我三个月，我的TODO列表上有太多的任务以致于这篇文章被放到了最后才开始写。上周我下定决心，到周日我就写完这篇文章。然后我做到了，给你们带来了又一篇Radare2的指南。</p>
+<p>今天我们要完成一个有趣的挑战，名叫”packedup”，是ad3l为r2con2017比赛写的。这不是我为r2con比赛写的第一篇writeup，你也可以看看<a href="https://www.megabeets.net/reverse-engineering-a-gameboy-rom-with-radare2/" target="_blank" rel="noopener">用Radare2逆向一个GameboyROM</a>，确保你不会错过我赢得那次比赛的过程中的收获与体会。</p>
+<p>这篇文章是为已经熟悉Radare2的人所写的。如果你不是，我建议你从系列“Radare2之旅”的<a href="https://www.megabeets.net/a-journey-into-radare-2-part-1/" target="_blank" rel="noopener">第一部分</a>(<a href="https://www.anquanke.com/post/id/86850" target="_blank" rel="noopener">安全客</a>)开始。</p>
+<p>闲话少叙，让我们开始分析这个二进制文件。</p>
+<a id="more"></a> 
+<img src="/FXTi/2019/02/12/radare2-reverse-self-modified-binary/r2.png">
+<h2 id="获取Radare2"><a href="#获取Radare2" class="headerlink" title="获取Radare2"></a>获取Radare2</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Radare2的开发非常迅速，这个项目每天都在更新所以建议你使用最新的github版本，不要使用stable版，因为有时候stable版可能还没有最新的github 版稳定。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/radare/radare2.git</span><br><span class="line">$ <span class="built_in">cd</span> radare2</span><br><span class="line">$ ./sys/install.sh</span><br></pre></td></tr></table></figure>
+<p>如果你不想使用github版，或者想要每个平台(Windows,OS X,iOS,等等)相对应的二进制文件，那就点击<a href="http://radare.org/r/down.html" target="_blank" rel="noopener">Radare2下载页面</a>去下载。</p>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><p>正如前面所说的，强烈建议使用从git仓库获取的最新版的r2。这样你只需要用git执行如下指令就行了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./sys/install.sh</span><br></pre></td></tr></table></figure>
+<p>我经常通过定时任务在早上自动更新Radare2，这样每天用的都是最新版。如果你经常用Radare2，我建议你也这么做。</p>
+<h3 id="packedup"><a href="#packedup" class="headerlink" title="packedup"></a>packedup</h3><p>你可以从<a href="https://github.com/ITAYC0HEN/A-journey-into-Radare2/blob/master/Generic/packedup%20-%20Self-modifying%20binary/packedup" target="_blank" rel="noopener">这里</a>下载packedup。我建议你给这个仓库一个星星(★)来获得这个系列的更多更新。</p>
+<p>首先运行一下这个文件看看情况。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./packedup </span><br><span class="line">Welcome to packedup <span class="keyword">for</span> r2crackmes :)</span><br><span class="line">Flag &lt;&lt; MEGABEETS     </span><br><span class="line">Try again!</span><br></pre></td></tr></table></figure>
+<p>packedup执行后要求我们输入flag。它很可能之后进行一些计算来确定我们是否输入了正确的flag。我输入”MEGABEETS”然后输出了错误信息”Try again!”</p>
+<h2 id="开始逆向！"><a href="#开始逆向！" class="headerlink" title="开始逆向！"></a>开始逆向！</h2><p>开始我们最喜欢的部分，用Radare2打开文件然后弄清楚它怎么检查提交的flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ r2 ./packedup</span><br><span class="line">— Here be dragons.</span><br><span class="line">[0x004004d0]&gt; aaa</span><br><span class="line">[x] Analyze all flags starting with sym. and entry0 (aa)</span><br><span class="line">[x] Analyze len bytes of instructions <span class="keyword">for</span> references (aar)</span><br><span class="line">[x] Analyze <span class="keyword">function</span> calls (aac)</span><br><span class="line">[*] Use -AA or aaaa to perform additional experimental analysis.</span><br><span class="line">[x] Constructing a <span class="keyword">function</span> name <span class="keyword">for</span> fcn.* and sym.func.* <span class="built_in">functions</span> (aan)</span><br></pre></td></tr></table></figure>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我经常起手执行<code>aa</code>(分析全部)或者<code>aas</code>(分析函数、符号等)。这缩写有些误导因为实际上分析任务很繁杂(具体可以查看<code>aa?</code>)，但这对于我测试过的二进制文件这已经够了。因为这次文件小，我直接通过<code>aaa</code>一次搞定。你也能通过<code>-A</code>参数来运行radare2来启动执行<code>aaa</code>(例如<code>r2 -A ./packedup</code>)。</p>
+<blockquote>
+<p>注意：正如我在前一篇博文中提到过的，因为分析过程非常复杂，所以启动执行<code>aaa</code>并非推荐实践。具体可以看看我在这个<a href="https://reverseengineering.stackexchange.com/a/16115/18698" target="_blank" rel="noopener">回答</a>中的详细解释。</p>
+</blockquote>
+<h3 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h3><p>用Radare2打开文件后，自动定位到程序入口点。但在开始分析代码之前最好先看看文件信息。Radare2可以用<code>i</code>指令显示信息(为了可读行简化过了)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[0x004004d0]&gt; i</span><br><span class="line">...</span><br><span class="line">file ./packedup</span><br><span class="line">format elf64</span><br><span class="line">iorw <span class="literal">false</span></span><br><span class="line">mode -r-x</span><br><span class="line">size 0x1878</span><br><span class="line">humansz 6.1K</span><br><span class="line"><span class="built_in">type</span> EXEC (Executable file)</span><br><span class="line">arch x86</span><br><span class="line">...</span><br><span class="line">bintype elf</span><br><span class="line">bits 64</span><br><span class="line">...</span><br><span class="line">endian little</span><br><span class="line">...</span><br><span class="line">intrp /lib64/ld-linux-x86-64.so.2</span><br><span class="line">lang c</span><br><span class="line">...</span><br><span class="line">machine AMD x86-64 architecture</span><br><span class="line">stripped <span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>i</code>指令用来显示已打开文件的信息。该指令使用<code>rabin2</code>这个radare2框架中的信息提取工具。Radare2提供了该文件的大量信息。用<code>i?</code>指令查看更多子命令。</p>
+</blockquote>
+<p>packedup是个64位去符号表ELF文件。有意思，继续分析。</p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>我最喜欢开始分析的方式之一便是查找可疑的字符串，尤其是引用这些字符串的位置。用<code>iz</code>列出data区段的全部字符串：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[0x004004d0]&gt; iz</span><br><span class="line">001 0x000007d0 0x004007d0 46 47 (.rodata) ascii Welcome to packedup <span class="keyword">for</span> r2crackmes :)\nFlag &lt;&lt;</span><br><span class="line">002 0x00000800 0x00400800 11 12 (.rodata) ascii Try again!\n</span><br><span class="line">003 0x0000080d 0x0040080d 26 27 (.rodata) ascii Yep! you got the flag  \n</span><br></pre></td></tr></table></figure>
+<p>不错，可以看到banner字符串以及成功和失败信息。再看看是哪里的代码引用了它们，我们可以使用Radare2内置的循环机制：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0x004004d0]&gt; axt @@ str.*</span><br><span class="line">main 0x400619 [data] mov esi, str.Welcome_to_packedup_for_r2crackmes_:___Flag</span><br><span class="line">main 0x4006b8 [data] mov esi, str.Try_again</span><br><span class="line">main 0x4006de [data] mov esi, str.Yep__you_got_the_flag_:</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这条指令展现了Radare2更多的特性。<code>axt</code>指令用来查找引用这个地址有关的代码或数据引用(可查看<code>ax?</code>)。<br><code>@@</code>类似于迭代器符号，用来对于一个列表中的每一个偏移地址重复执行指令(可查看<code>@@?</code>)。然后<code>str.*</code>是对于所有<code>str.</code>开始的标记的通配符。<br>所以这一整条指令不仅列出了字符串本身还包括引用它们的函数名和相关的代码位置。</p>
+</blockquote>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>之前的字符串都是由main函数所引用的，为了导航到对应位置要使用seek指令<code>s</code>。通过在几乎所有指令后加<code>?</code>就能看到详细的帮助信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[0x08048370]&gt; s?</span><br><span class="line">|Usage: s  <span class="comment"># Seek commands</span></span><br><span class="line">| s                 Print current address</span><br><span class="line">| s addr            Seek to address</span><br><span class="line">| s-                Undo seek</span><br><span class="line">| s- n              Seek n bytes backward</span><br><span class="line">| s–                Seek blocksize bytes backward</span><br><span class="line">| s+                Redo seek</span><br><span class="line">| s+ n              Seek n bytes forward</span><br><span class="line">| s++               Seek blocksize bytes forward</span><br><span class="line">| s[j*=]            List undo seek <span class="built_in">history</span> (JSON, =list, *r2)</span><br><span class="line">| s/ DATA           Search <span class="keyword">for</span> next occurrence of ‘DATA’</span><br><span class="line">| s/x 9091          Search <span class="keyword">for</span> next occurrence of \x90\x91</span><br><span class="line">| s.hexoff          Seek honoring a base from core-&gt;offset</span><br><span class="line">| sa [[+-]a] [asz]  Seek asz (or bsize) aligned to addr</span><br><span class="line">| sb                Seek aligned to bb start</span><br><span class="line">| sC[?] string      Seek to comment matching given string</span><br><span class="line">| sf                Seek to next <span class="keyword">function</span> (f-&gt;addr+f-&gt;size)</span><br><span class="line">| sf <span class="keyword">function</span>       Seek to address of specified <span class="keyword">function</span></span><br><span class="line">| sg/sG             Seek begin (sg) or end (sG) of section or file</span><br><span class="line">| sl[?] [+-]line    Seek to line</span><br><span class="line">| sn/sp             Seek next/prev scr.nkey</span><br><span class="line">| so [N]            Seek to N next opcode(s)</span><br><span class="line">| sr pc             Seek to register</span><br></pre></td></tr></table></figure>
+<p>所以基本上，seek指令接受地址或者数学表达式作为参数。定位到main函数很简单，直接执行<code>s main</code>即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[0x004004d0]&gt; s main</span><br><span class="line">[0x0040060c]&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="反汇编"><a href="#反汇编" class="headerlink" title="反汇编"></a>反汇编</h3><p>现在位于main函数需要打印汇编代码看看。Radare2提供了多种方式反汇编一个函数。可以用<code>pdf</code>(显示函数反汇编)或者交互性更强的可视化模式(<code>v</code>)和图形模式(<code>VV</code>)，选哪个你喜欢就好。我惯用可视化模式因为信息更加丰富，交互性也好。我在<a href="https://www.megabeets.net/a-journey-into-radare-2-part-1/" target="_blank" rel="noopener">上一篇</a>详细讲解过，所以这里只是使用。</p>
+<img src="/FXTi/2019/02/12/radare2-reverse-self-modified-binary/visual.png">
+<p>让我们看看main函数的开始部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt; pdf</span><br><span class="line">╭ (fcn) main 244</span><br><span class="line">│   main ();</span><br><span class="line">│           ; var int local_10h @ rbp-0x10</span><br><span class="line">│           ; var int local_ch @ rbp-0xc</span><br><span class="line">│           ; var int local_8h @ rbp-0x8</span><br><span class="line">│              ; JMP XREF from 0x00400605 (entry2.init)</span><br><span class="line">│              ; DATA XREF from 0x004004ed (entry0)</span><br><span class="line">│           0x0040060c      55             push rbp</span><br><span class="line">│           0x0040060d      4889e5         mov rbp, rsp</span><br><span class="line">│           0x00400610      4883ec10       sub rsp, 0x10</span><br><span class="line">│              ; DATA XREF from 0x00400653 (main)</span><br><span class="line">│              ; DATA XREF from 0x004005e7 (entry2.init)</span><br><span class="line">│           0x00400614      ba30000000     mov edx, 0x30</span><br><span class="line">│           0x00400619      bed0074000     mov esi, str.Welcome_to_packedup_for_r2crackmes_:___Flag ; 0x4007d0 ; “Welcome to packedup <span class="keyword">for</span> r2crackmes :)\nFlag &lt;&lt; “</span><br><span class="line">│           0x0040061e      bf01000000     mov edi, 1</span><br><span class="line">│           0x00400623      b800000000     mov eax, 0</span><br><span class="line">│           0x00400628      e853feffff     call sym.imp.write      ; ssize_t write(int fd, void *ptr, size_t nbytes)</span><br><span class="line">│           0x0040062d      ba2c000000     mov edx, 0x2c           ; ‘,’ ; 44</span><br><span class="line">│           0x00400632      be80106000     mov esi, 0x601080</span><br><span class="line">│           0x00400637      bf00000000     mov edi, 0</span><br><span class="line">│           0x0040063c      b800000000     mov eax, 0</span><br><span class="line">│           0x00400641      e84afeffff     call sym.imp.read       ; ssize_t <span class="built_in">read</span>(int fildes, void *buf, size_t nbyte)</span><br><span class="line">│           0x00400646      4898           cdqe</span><br><span class="line">│           0x00400648      488945f8       mov qword [local_8h], rax</span><br><span class="line">│           0x0040064c      c745f0000000.  mov dword [local_10h], 0</span><br><span class="line">│           0x00400653      b814064000     mov eax, 0x400614</span><br><span class="line">│           0x00400658      bbf6064000     mov ebx, 0x4006f6</span><br><span class="line">│           0x0040065d      29c3           sub ebx, eax</span><br><span class="line">│           0x0040065f      31c9           xor ecx, ecx</span><br></pre></td></tr></table></figure>
+<p>在函数初始化之后，能看到参数传递到<code>write()</code>打印出banner信息然后另一个参数传递给<code>read()</code>从stdin读取输入。<code>read()</code>从stdin读取0x2c(十进制:44)字节存储到位于0x601080的缓冲区。假设flag很可能长为44个字符，重命名保存输入的地址来方便自己识别。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt; f loc.our_input = 0x601080</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>f</code>用来为一个特定地址创建flag(标记)。更多信息可查看<code>f?</code>并阅读<a href="https://radare.gitbooks.io/radare2book/content/basic_commands/flags.html" target="_blank" rel="noopener">这一章</a>。</p>
+</blockquote>
+<p>然后程序保存读入字节数到一个本地变量。在<em>0x400653</em>地址<em>0x400614</em>存入<code>eax</code>，地址<em>0x4006f6</em>存入<code>ebx</code>。第一个地址是main函数初始化部分之后的地址，第二个是main函数返回之前的地址。之后<code>ebx</code>减去<code>eax</code>所以<code>ebx</code>中存储着两个地址的差值。</p>
+<p>下一部分，程序使用在一个循环中使用自身的代码计算出了一个初始值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">…</span><br><span class="line"></span><br><span class="line">│           0x00400653      b814064000     mov eax, 0x400614</span><br><span class="line">│           0x00400658      bbf6064000     mov ebx, 0x4006f6</span><br><span class="line">│           0x0040065d      29c3           sub ebx, eax</span><br><span class="line">│           0x0040065f      31c9           xor ecx, ecx</span><br><span class="line">│              ; JMP XREF from 0x0040066b (main)</span><br><span class="line">│       ╭─&gt; 0x00400661      670208         add cl, byte [eax]</span><br><span class="line">│       ⁝   0x00400664      c1c904         ror ecx, 4</span><br><span class="line">│       ⁝   0x00400667      ffc0           inc eax</span><br><span class="line">│       ⁝   0x00400669      ffcb           dec ebx</span><br><span class="line">│       ╰─&lt; 0x0040066b      75f4           jne 0x400661</span><br><span class="line">│           0x0040066d      89ca           mov edx, ecx</span><br><span class="line"></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<p>在下个循环中能看到程序在验证输入。首先看看最相关的部分</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">│           0x0040066d      89ca           mov edx, ecx</span><br><span class="line">│           0x0040066f      89d0           mov eax, edx</span><br><span class="line">│           0x00400671      8945f0         mov dword [local_10h], eax</span><br><span class="line">│           0x00400674      c745f42c0000.  mov dword [local_ch], 0x2c  ; ‘,’ ; 44</span><br><span class="line">│              ; JMP XREF from 0x004006f4 (main)</span><br><span class="line">│           0x0040067b      8b45f0         mov eax, dword [local_10h]</span><br><span class="line">│           0x0040067e      89c0           mov eax, eax</span><br><span class="line">│           0x00400680      d1c0           rol eax, 1</span><br><span class="line">│           0x00400682      8945f0         mov dword [local_10h], eax</span><br><span class="line">│           0x00400685      8b45f0         mov eax, dword [local_10h]</span><br><span class="line">│           0x00400688      0fb6d0         movzx edx, al</span><br><span class="line">│           0x0040068b      8b45f4         mov eax, dword [local_ch]</span><br><span class="line">│           0x0040068e      83e801         sub eax, 1</span><br><span class="line">│           0x00400691      4898           cdqe</span><br><span class="line">│           0x00400693      0fb688801060.  movzx ecx, byte [rax + 0x601080] ; [0x601080:1]=0</span><br><span class="line">│           0x0040069a      8b45f4         mov eax, dword [local_ch]</span><br><span class="line">│           0x0040069d      83e801         sub eax, 1</span><br><span class="line">│           0x004006a0      4898           cdqe</span><br><span class="line">│           0x004006a2      0fb680a00740.  movzx eax, byte [rax + 0x4007a0] ; [0x4007a0:1]=15</span><br><span class="line">│           0x004006a9      31c8           xor eax, ecx</span><br><span class="line">│           0x004006ab      0fb6c0         movzx eax, al</span><br><span class="line">│           0x004006ae      39c2           cmp edx, eax</span><br><span class="line">│       ╭─&lt; 0x004006b0      741c           je 0x4006ce</span><br></pre></td></tr></table></figure>
+<p>在之前循环中计算的初始值被移入<code>edx</code>(<em>0x40066d</em>)，之后又先进入<code>eax</code>再进入<code>[local_10h]</code>。再进入验证循环，初始值从<code>[local_10h]</code>到<code>eax</code>，然后<code>eax</code>被左移1字节(<em>0x400680</em>)然后再次被移到<code>[local_10h]</code>。在<em>0x400688</em>低字节<code>al</code>中的值被移到<code>edx</code>。在<em>0x400693</em>程序从输入取1字节到<code>ecx</code>。在<em>0x4006a2</em>，程序从<code>[rax + 0x4007a0]</code>取1字节到<code>eax</code>。看看<code>0x4007a0</code>有什么：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt; px 44 @ 0x4007a0</span><br><span class="line">– offset –   0 1  2 3  4 5  6 7  8 9  A B  C D  E F  0123456789ABCDEF</span><br><span class="line">0x004007a0  0fc9 a886 ace0 1893 8aaf 91a2 e464 7a5a  .............dzZ</span><br><span class="line">0x004007b0  088b a89a b4d1 1f84 b4d1 7152 1c8a 80d2  ..........qR....</span><br><span class="line">0x004007c0  1495 8297 80d2 1f90 8f91 93a6            ............</span><br></pre></td></tr></table></figure>
+<p>不错，这是预定义的44字节数组，定然用在了比较过程中。给它取个名字叫<code>loc.predefined_array</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt; f loc.predefined_array = 0x4007a0</span><br></pre></td></tr></table></figure>
+<p>再继续之前提醒一下，<code>edx</code>保存着移位过的初始值，<code>eax</code>保存着<code>loc.predefined_array[0x2c-1]</code>的1字节内容,<code>ecx</code>保存着输入字符串的最后一个字符。</p>
+<p>在<em>0x4006a9</em>，<code>ecx</code>和<code>eax</code>位异或结果存储在<code>eax</code>。然后<code>al</code>拓展到<code>eax</code>并且和<code>edx</code>比较(移位过的初始值)。可以写出如下Python伪代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">key = 0x???????? <span class="comment"># Our initial_value</span></span><br><span class="line">our_input = <span class="string">"A"</span> * 44</span><br><span class="line">predefined_array = [0x0fc9, ... ,0x93a6]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> ( ord(our_input[-1]) ^ predefined_array[-1] ) == ( key &amp; 0xff ):</span><br><span class="line">    <span class="built_in">return</span> True</span><br></pre></td></tr></table></figure>
+<p>如果结果相等，比如<code>ecx ^ eax == edx</code>，循环以输入的倒数第二个字母和<code>loc.predefined_array[0x2c-2]</code>开始并且和<code>rol(key)</code>比较。<code>key</code>实际上是左移的<code>initial_value</code>，正因为这个值每次左移都会改变所以被称为<code>key</code>。</p>
+<h3 id="第一次求解"><a href="#第一次求解" class="headerlink" title="第一次求解"></a>第一次求解</h3><p>首先我们定义一个函数完成左移：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rotate left lambda</span></span><br><span class="line">rol = <span class="keyword">lambda</span> val, r_bits, max_bits: \</span><br><span class="line">    (val &lt;&lt; r_bits%max_bits) &amp; (<span class="number">2</span>**max_bits<span class="number">-1</span>) | \</span><br><span class="line">    ((val &amp; (<span class="number">2</span>**max_bits<span class="number">-1</span>)) &gt;&gt; (max_bits-(r_bits%max_bits)))</span><br></pre></td></tr></table></figure>
+<p>然后创建出预定义的数组，用Radare2完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt;  pcp 44 @ 0x4007a0</span><br><span class="line">import struct</span><br><span class="line">buf = struct.pack (“44B”, *[</span><br><span class="line">0x0f,0xc9,0xa8,0x86,0xac,0xe0,0x18,0x93,0x8a,0xaf,0x91,</span><br><span class="line">0xa2,0xe4,0x64,0x7a,0x5a,0x08,0x8b,0xa8,0x9a,0xb4,0xd1,</span><br><span class="line">0x1f,0x84,0xb4,0xd1,0x71,0x52,0x1c,0x8a,0x80,0xd2,0x14,</span><br><span class="line">0x95,0x82,0x97,0x80,0xd2,0x1f,0x90,0x8f,0x91,0x93,0xa6])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>pc</code>子命令用来按字节通过C, Python, Javascript等语言的格式输出文件内数据(详细可看<code>pc?</code>)。</p>
+</blockquote>
+<p>把这个加入脚本并定义变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Byte array from 0x004007A0, modified from the generated results of `pcp 44 @ 0x4007a0`</span></span><br><span class="line">arr =[<span class="number">0x0F</span>, <span class="number">0xC9</span>, <span class="number">0xA8</span>, <span class="number">0x86</span>, <span class="number">0xAC</span>, <span class="number">0xE0</span>, <span class="number">0x18</span>, <span class="number">0x93</span>, <span class="number">0x8A</span>, <span class="number">0xAF</span>, <span class="number">0x91</span>, <span class="number">0xA2</span>, <span class="number">0xE4</span>, <span class="number">0x64</span>, <span class="number">0x7A</span>, <span class="number">0x5A</span>, <span class="number">0x08</span>, <span class="number">0x8B</span>, <span class="number">0xA8</span>, <span class="number">0x9A</span>, <span class="number">0xB4</span>, <span class="number">0xD1</span>, <span class="number">0x1F</span>, <span class="number">0x84</span>, <span class="number">0xB4</span>, <span class="number">0xD1</span>, <span class="number">0x71</span>, <span class="number">0x52</span>, <span class="number">0x1C</span>, <span class="number">0x8A</span>, <span class="number">0x80</span>, <span class="number">0xD2</span>, <span class="number">0x14</span>, <span class="number">0x95</span>, <span class="number">0x82</span>, <span class="number">0x97</span>, <span class="number">0x80</span>, <span class="number">0xD2</span>, <span class="number">0x1F</span>, <span class="number">0x90</span>, <span class="number">0x8F</span>, <span class="number">0x91</span>, <span class="number">0x93</span>, <span class="number">0xA6</span>]</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Initial key value </span></span><br><span class="line">key = <span class="number">0xdc77df87</span></span><br><span class="line"> </span><br><span class="line">flag = []</span><br></pre></td></tr></table></figure>
+<p>最后实现逻辑然后组合在一起：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rotate left lambda</span></span><br><span class="line">rol = <span class="keyword">lambda</span> val, r_bits, max_bits: \</span><br><span class="line">    (val &lt;&lt; r_bits%max_bits) &amp; (<span class="number">2</span>**max_bits<span class="number">-1</span>) | \</span><br><span class="line">    ((val &amp; (<span class="number">2</span>**max_bits<span class="number">-1</span>)) &gt;&gt; (max_bits-(r_bits%max_bits)))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Byte array from 0x004007A0, modified from the generated results of `pcp 44 @ 0x4007a0`</span></span><br><span class="line">arr =[<span class="number">0x0F</span>, <span class="number">0xC9</span>, <span class="number">0xA8</span>, <span class="number">0x86</span>, <span class="number">0xAC</span>, <span class="number">0xE0</span>, <span class="number">0x18</span>, <span class="number">0x93</span>, <span class="number">0x8A</span>, <span class="number">0xAF</span>, <span class="number">0x91</span>, <span class="number">0xA2</span>, <span class="number">0xE4</span>, <span class="number">0x64</span>, <span class="number">0x7A</span>, <span class="number">0x5A</span>, <span class="number">0x08</span>, <span class="number">0x8B</span>, <span class="number">0xA8</span>, <span class="number">0x9A</span>, <span class="number">0xB4</span>, <span class="number">0xD1</span>, <span class="number">0x1F</span>, <span class="number">0x84</span>, <span class="number">0xB4</span>, <span class="number">0xD1</span>, <span class="number">0x71</span>, <span class="number">0x52</span>, <span class="number">0x1C</span>, <span class="number">0x8A</span>, <span class="number">0x80</span>, <span class="number">0xD2</span>, <span class="number">0x14</span>, <span class="number">0x95</span>, <span class="number">0x82</span>, <span class="number">0x97</span>, <span class="number">0x80</span>, <span class="number">0xD2</span>, <span class="number">0x1F</span>, <span class="number">0x90</span>, <span class="number">0x8F</span>, <span class="number">0x91</span>, <span class="number">0x93</span>, <span class="number">0xA6</span>]</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Initial key value </span></span><br><span class="line">key = 0x????????</span><br><span class="line"> </span><br><span class="line">flag = []</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Iterate the array backwards</span></span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> reversed(arr):</span><br><span class="line">    <span class="comment"># rol the key </span></span><br><span class="line">    key = rol(key,<span class="number">1</span>,<span class="number">32</span>)</span><br><span class="line">    <span class="comment"># xor the 8 lower bits of the key with current byte in array</span></span><br><span class="line">    char = chr(b ^ (key &amp; <span class="number">0xff</span>))</span><br><span class="line">    <span class="comment"># Add char to final flag</span></span><br><span class="line">    flag.insert(<span class="number">0</span>, char)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> <span class="string">'[+] Flag: '</span>, <span class="string">''</span>.join(flag)</span><br></pre></td></tr></table></figure>
+<p>不错，现在只需要获取初始值就行了。应该在初始值生成循环后下断点然后查看即可。Radare2调试模式启动<code>r2 -d packedup</code>或者已经在radare2里就用<code>ood</code>指令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt;  ood</span><br><span class="line">Process with PID 1236 started…</span><br><span class="line">File dbg:///home/beet/Desktop/Security/r2con/crackmes/packedup reopened <span class="keyword">in</span> <span class="built_in">read</span>-write mode</span><br><span class="line">= attach 1236 1236</span><br><span class="line">[0x7fb45818cf30]&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>ood</code>指令将在调试模式重新打开当前文件。它是<code>oo</code>指令(负责处理已打开文件)的子指令。</p>
+</blockquote>
+<p>可以看到当前定位被更改成了<code>0x7fb45818cf30</code>，这是动态加载器(ld.so)内存中的地址。通过<code>dm.</code>指令就能方便的知道:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[0x7fb45818cf30]&gt; dm.</span><br><span class="line">/usr/lib/ld-2.26.so</span><br><span class="line">dm. is used to show the</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>dm.</code>用来显示当前地址映射到的区块名。用<code>dm</code>能列出当前进程的内存映射信息，用<code>dm?</code>能看到更多子指令。</p>
+</blockquote>
+<p>已知循环尾端在<code>0x0040066d</code>，计算结果在<code>ecx</code>，正要移到<code>edx</code>。设定断点来查看<code>ecx</code>内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[0x7fb45818cf30]&gt; db 0x40066d</span><br><span class="line">[0x7fb45818cf30]&gt; dc</span><br><span class="line">Welcome to packedup <span class="keyword">for</span> r2crackmes 🙂</span><br><span class="line">Flag &lt;&lt; Blah_blah_blah</span><br><span class="line">hit breakpoint at: 40066d</span><br><span class="line"></span><br><span class="line">[0x0040066d]&gt; dr ecx</span><br><span class="line">0xd477d83e</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>db</code>负责设定调试断点，<code>db?</code>可看到其子指令。<br><code>dc</code>负责调试时继续执行。<br><code>dr</code>负责显示调试时寄存器的值，<code>db?</code>可看到其子指令。<br><code>d?</code>可以看和调试相关的所有指令</p>
+</blockquote>
+<p>那么把初始值填入脚本<code>key = 0xd477d83e</code>并执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">beet:~$ python answer.py</span><br><span class="line">[+] Flag:  Hj.xIgYj&#123;u]J*l=ok\S6?TJbgh</span><br></pre></td></tr></table></figure>
+<p>什么？这flag看起来不可能是对的。分析过程肯定哪里出了问题！</p>
+<p>哦对了！我怎么没想到！还记得之前说过的吗？</p>
+<blockquote>
+<p>下一部分，程序使用在一个循环中使用自身的代码计算出了一个初始值。</p>
+</blockquote>
+<p>把这个给忘了。使用软断点<code>db 0x40066d</code>事实上在代码中加入了<code>CC</code>(INT3)，这改变了原始代码导致了初始值计算出错。INT3指令生成一个特殊的单字节汇编指令<code>CC</code>用来调用调试器完成(异常)处理。</p>
+<h3 id="第二次求解"><a href="#第二次求解" class="headerlink" title="第二次求解"></a>第二次求解</h3><p>所以这次使用<a href="https://reverseengineering.stackexchange.com/questions/16544/detecting-hardware-breakpoints/16547#16547" target="_blank" rel="noopener">硬断点</a>，禁用之前设定的软断点并设置硬断点:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[0x40066d]&gt; db- 0x40066d</span><br><span class="line">[0x40066d]&gt; ood</span><br><span class="line">Process with PID 1317 started…</span><br><span class="line">File dbg:///home/beet/Desktop/Security/r2con/crackmes/packedup reopened <span class="keyword">in</span> <span class="built_in">read</span>-write mode</span><br><span class="line">= attach 1317 1317</span><br><span class="line"></span><br><span class="line">[0x7fcb28f77f30]&gt; drx 1 0x0040066d 1 x</span><br><span class="line">[0x7fcb28f77f30]&gt; dc</span><br><span class="line">Welcome to packedup <span class="keyword">for</span> r2crackmes </span><br><span class="line">Flag &lt;&lt; Blah_Megabeets_Blahaaa</span><br><span class="line"></span><br><span class="line">[0x0040066d]&gt; dr ecx</span><br><span class="line">0xdc77df87</span><br></pre></td></tr></table></figure>
+<p>重新填入初始值并再次尝试:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">beet:~$ python answer.py</span><br><span class="line">[+] Flag: [<span class="string">'\xc8'</span>, <span class="string">'*'</span>, <span class="string">'\xd9'</span>, <span class="string">'&gt;'</span>, <span class="string">'p'</span>, <span class="string">'\x0e'</span>, <span class="string">'\xef'</span>, <span class="string">'h'</span>, <span class="string">'\xf7'</span>, <span class="string">'\x91'</span>, <span class="string">'\x8e'</span>, <span class="string">'\xad'</span>, <span class="string">'c'</span>, <span class="string">'\xa7'</span>, <span class="string">'\x9b</span></span><br></pre></td></tr></table></figure>
+<p>别这样啊…又错了。我还遗漏了什么？</p>
+<p>既然还在调试模式，那么从验证循环的开始<code>0x0040067b</code>单步执行检查一遍。</p>
+<p>汇编:<code>0x00400680 d1c8 ror eax, 1</code><br>解释:</p>
+<blockquote>
+<p>然后在<em>0x00400680</em>，<code>eax</code>被左移了1字节</p>
+</blockquote>
+<p>慢着！之前分析是<strong>左</strong>移1字节(<code>rol eax, 1</code>)，但现在是<strong>右</strong>移1字节(<code>ror eax, 1</code>)？！难怪得到了错误的flag，但是这是什么时候改变的？</p>
+<p>为了弄明白这个问题，在<code>0x00400680</code>上设定硬件断点检测<strong>写入</strong>访问来看看是什么时候改变的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[0x40066d]&gt; doo</span><br><span class="line">Process with PID 1611 started…</span><br><span class="line">File dbg:///home/beet/Desktop/Security/r2con/crackmes/packedup reopened <span class="keyword">in</span> <span class="built_in">read</span>-write mode</span><br><span class="line">= attach 1611 1611</span><br><span class="line"></span><br><span class="line">[0x7fc43ae24f30]&gt; drx 1 0x00400680 1 w</span><br><span class="line">[0x7fc43ae24f30]&gt; dc</span><br><span class="line">[0x00400600]&gt;</span><br></pre></td></tr></table></figure>
+<p>调试停止在<code>0x400600</code>，打印汇编看看:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[0x00400600]&gt; pd 1</span><br><span class="line">0x00400600   67c6406dc8   mov byte [eax + 0x6d], 0xc8</span><br></pre></td></tr></table></figure>
+<p>就是这个修改了该地址上的汇编指令，<code>rol eax, 1</code>对应的应该是<code>dlc0</code>，这里改成了<code>dlc8</code>！我们可以使用radare2反汇编16进制字符串看看:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[0x00400600]&gt; pad d1c0</span><br><span class="line">rol eax, 1</span><br><span class="line">[0x00400600]&gt; <span class="comment"># changed to</span></span><br><span class="line">[0x00400600]&gt; pad d1c8</span><br><span class="line">ror eax, 1</span><br></pre></td></tr></table></figure>
+<p>打印整个函数看看:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[0x00400600]&gt; pdf</span><br><span class="line">╭ (fcn) entry2.init 77</span><br><span class="line">│   entry2.init ();</span><br><span class="line">│           0x004005bd      90             nop</span><br><span class="line">│           0x004005be      90             nop</span><br><span class="line">│           0x004005bf      90             nop</span><br><span class="line">│           0x004005c0      90             nop</span><br><span class="line">│           0x004005c1      b87d000000     mov eax, 0x7d               ; ‘&#125;’ ; 125</span><br><span class="line">│           0x004005c6      bbff0f0000     mov ebx, 0xfff</span><br><span class="line">│           0x004005cb      f7db           neg ebx</span><br><span class="line">│           0x004005cd      ffcb           dec ebx</span><br><span class="line">│           0x004005cf      81e314064000   and ebx, 0x400614</span><br><span class="line">│           0x004005d5      b9f6064000     mov ecx, 0x4006f6</span><br><span class="line">│           0x004005da      81e914064000   sub ecx, 0x400614</span><br><span class="line">│           0x004005e0      ba07000000     mov edx, 7</span><br><span class="line">│           0x004005e5      cd80           int 0x80</span><br><span class="line">│           0x004005e7      b814064000     mov eax, 0x400614</span><br><span class="line">│           0x004005ec      67c64050c1     mov byte [eax + 0x50], 0xc1 ; [0xc1:1]=255 ; 193</span><br><span class="line">│           0x004005f1      67c64051c1     mov byte [eax + 0x51], 0xc1 ; [0xc1:1]=255 ; 193</span><br><span class="line">│           0x004005f6      67c6405203     mov byte [eax + 0x52], 3</span><br><span class="line">│           0x004005fb      67c6406cd1     mov byte [eax + 0x6c], 0xd1 ; [0xd1:1]=255 ; 209</span><br><span class="line">;– rip:</span><br><span class="line">│           0x00400600      67c6406dc8     mov byte [eax + 0x6d], 0xc8 ; [0xc8:1]=255 ; 200</span><br><span class="line">╰       ╭─&lt; 0x00400605      e902000000     jmp main</span><br></pre></td></tr></table></figure>
+<p>可以看到这个函数被Radare2命名为<code>entry2.init</code>。能看到在<em>0x4005c1</em>上<code>0x7d</code>移入<code>eax</code>然后在<em>0x4005e5</em>上syscall(int 80)指令被执行。这调用了<code>mprotect</code>函数修改.text区段权限使其可写，之后再修改main函数中的<code>rol</code>变成<code>ror</code>。</p>
+<h4 id="init-array"><a href="#init-array" class="headerlink" title=".init_array"></a>.init_array</h4><p><code>entry2.init</code>是初始化函数，在main函数之前执行，这就是为什么会遗漏它。</p>
+<p>在执行到main函数之前，运行时链接器执行该程序初始化段(<code>.preinit_array</code>和<code>.init_array</code>)中保存的地址所指定的任意函数。这些函数通常是构造函数，同理<code>.fini_array</code>段中保存的是程序正常退出前需要执行的析构函数。</p>
+<p>Radare2同样是识别出了<code>.init_array</code>段:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[0x00400600]&gt; f~init_array</span><br><span class="line">0x00600e08 16 section..init_array</span><br><span class="line">0x00600e18 0 section_end..init_array</span><br><span class="line">[0x00400600]&gt; pxW 24 @ section..init_array</span><br><span class="line">0x00600e08 0x00400590 entry1.init</span><br><span class="line">0x00600e0c 0x00000000 section.</span><br><span class="line">0x00600e10 0x004005bd entry2.init</span><br><span class="line">0x00600e14 0x00000000 section.</span><br><span class="line">0x00600e18 0x00400570 entry3.fini</span><br><span class="line">0x00600e1c 0x00000000 section.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>f</code>用来列出radare创建的标记<br><code>~</code>是radare内建的grep<br><code>pxW</code>按16进制打印双字(32位)</p>
+</blockquote>
+<p>能看到其中有两个函数，包括<code>entry2.init</code>。</p>
+<p>顺带一提，在<code>gcc</code>中定义初始化函数可以使用这个类似的模板:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> __attribute__ ((constructor)) some_func() &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// code goes here</span></span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第三次求解"><a href="#第三次求解" class="headerlink" title="第三次求解"></a>第三次求解</h3><p>现在把脚本中的<code>rol</code>变成<code>ror</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rotate right lambda</span></span><br><span class="line">ror = <span class="keyword">lambda</span> val, r_bits, max_bits: \</span><br><span class="line">    ((val &amp; (<span class="number">2</span>**max_bits<span class="number">-1</span>)) &gt;&gt; r_bits%max_bits) | \</span><br><span class="line">    (val &lt;&lt; (max_bits-(r_bits%max_bits)) &amp; (<span class="number">2</span>**max_bits<span class="number">-1</span>))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Byte array from 0x004007A0, modified from the generated results of `pcp 44 @ 0x4007a0`</span></span><br><span class="line">arr = [</span><br><span class="line">    <span class="number">0x0F</span>, <span class="number">0xC9</span>, <span class="number">0xA8</span>, <span class="number">0x86</span>, <span class="number">0xAC</span>, <span class="number">0xE0</span>, <span class="number">0x18</span>, <span class="number">0x93</span>, <span class="number">0x8A</span>, <span class="number">0xAF</span>, <span class="number">0x91</span>, <span class="number">0xA2</span>,</span><br><span class="line">    <span class="number">0xE4</span>, <span class="number">0x64</span>, <span class="number">0x7A</span>, <span class="number">0x5A</span>, <span class="number">0x08</span>, <span class="number">0x8B</span>, <span class="number">0xA8</span>, <span class="number">0x9A</span>, <span class="number">0xB4</span>, <span class="number">0xD1</span>, <span class="number">0x1F</span>, <span class="number">0x84</span>,</span><br><span class="line">    <span class="number">0xB4</span>, <span class="number">0xD1</span>, <span class="number">0x71</span>, <span class="number">0x52</span>, <span class="number">0x1C</span>, <span class="number">0x8A</span>, <span class="number">0x80</span>, <span class="number">0xD2</span>, <span class="number">0x14</span>, <span class="number">0x95</span>, <span class="number">0x82</span>, <span class="number">0x97</span>,</span><br><span class="line">    <span class="number">0x80</span>, <span class="number">0xD2</span>, <span class="number">0x1F</span>, <span class="number">0x90</span>, <span class="number">0x8F</span>, <span class="number">0x91</span>, <span class="number">0x93</span>, <span class="number">0xA6</span></span><br><span class="line">]</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Initial key value</span></span><br><span class="line">key = <span class="number">0xdc77df87</span></span><br><span class="line"> </span><br><span class="line">flag = []</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Iterate the array backwards</span></span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> reversed(arr):</span><br><span class="line">    <span class="comment"># ror the key</span></span><br><span class="line">    key = ror(key, <span class="number">1</span>, <span class="number">32</span>)</span><br><span class="line">    <span class="comment"># xor the 8 lower bits of the key with current byte in array</span></span><br><span class="line">    char = chr(b ^ (key &amp; <span class="number">0xff</span>))</span><br><span class="line">    <span class="comment"># Add char to final flag</span></span><br><span class="line">    flag.insert(<span class="number">0</span>, char)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> <span class="string">'[+] Flag: '</span>, <span class="string">''</span>.join(flag)</span><br></pre></td></tr></table></figure>
+<p>第三次执行！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">beet:~$ python answer.py</span><br><span class="line">[+] Flag:  r2_is_for_packedup_things_like_linux_malware</span><br></pre></td></tr></table></figure>
+<p>求解完毕！</p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>如果你想更多了解Radare2建议看看Radare2之旅的<a href="https://www.megabeets.net/a-journey-into-radare-2-part-1/" target="_blank" rel="noopener">第一部分</a>和<a href="https://www.megabeets.net/a-journey-into-radare-2-part-2" target="_blank" rel="noopener">第二部分</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Translated/" rel="tag"># Translated</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/12/Decrypting-Dropshot-Malware-with-Radare2-and-Cutter–Part1/" rel="next" title="Decrypting-Dropshot-Malware-with-Radare2-and-Cutter–Part1">
+                <i class="fa fa-chevron-left"></i> Decrypting-Dropshot-Malware-with-Radare2-and-Cutter–Part1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/24/wepoll-source-code-analysis/" rel="prev" title="wepoll-source-code-analysis">
+                wepoll-source-code-analysis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">172</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用Radare2逆向一个自修改的二进制文件"><span class="nav-number">1.</span> <span class="nav-text">用Radare2逆向一个自修改的二进制文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-number">1.1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Radare2"><span class="nav-number">1.2.</span> <span class="nav-text">获取Radare2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级"><span class="nav-number">1.2.2.</span> <span class="nav-text">升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packedup"><span class="nav-number">1.2.3.</span> <span class="nav-text">packedup</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始逆向！"><span class="nav-number">1.3.</span> <span class="nav-text">开始逆向！</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.3.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取信息"><span class="nav-number">1.3.2.</span> <span class="nav-text">获取信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">1.3.3.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定位"><span class="nav-number">1.3.4.</span> <span class="nav-text">定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反汇编"><span class="nav-number">1.3.5.</span> <span class="nav-text">反汇编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一次求解"><span class="nav-number">1.3.6.</span> <span class="nav-text">第一次求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二次求解"><span class="nav-number">1.3.7.</span> <span class="nav-text">第二次求解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#init-array"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">.init_array</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三次求解"><span class="nav-number">1.3.8.</span> <span class="nav-text">第三次求解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾声"><span class="nav-number">1.4.</span> <span class="nav-text">尾声</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

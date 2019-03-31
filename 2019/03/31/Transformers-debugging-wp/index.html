@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/FXTi/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/FXTi/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/FXTi/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/FXTi/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/FXTi/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/FXTi/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="https://fxti.github.io/tags/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T16:41:18.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tags">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/FXTi/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fxti.github.io/tags/">
+
+
+
+
+
+  <title>Transformers-debugging-wp | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/FXTi/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/FXTi/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/FXTi/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/FXTi/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fxti.github.io/FXTi/2019/03/31/Transformers-debugging-wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/FXTi/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Transformers-debugging-wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T10:23:32+00:00">2019-03-31</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="看雪2019CTF-变形金刚WP"><a href="#看雪2019CTF-变形金刚WP" class="headerlink" title="看雪2019CTF-变形金刚WP"></a>看雪2019CTF-变形金刚WP</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前一直没有系统整理Android逆向方面的内容，这次借着这道题备份一下相关内容。</p>
+<p>主要包括安卓动态调试，环境模拟等</p>
+<a id="more"></a> 
+<h2 id="Java层坑点"><a href="#Java层坑点" class="headerlink" title="Java层坑点"></a>Java层坑点</h2><p><a href="Transformers.apk">Apk</a></p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/mainactivity.png">
+<p>在这里<code>MainActivity</code>拓展的并不是常见的<code>AppCompatActivity</code>，而是出题人自己编写的<code>AppCompiatActivity</code>。</p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/appcompiat.png">
+<p>关键在于出题人在<code>MainActivity</code>中定义onCreate()，然后在<code>AppCompiatActivity</code>中定义onStart()。带来的效果是onCreate()先执行然后被onStart()所覆盖。于是真正执行的逻辑位于<code>AppCompatActivity</code>中而非障眼法<code>MainActivity</code>。</p>
+<h2 id="Native层坑点"><a href="#Native层坑点" class="headerlink" title="Native层坑点"></a>Native层坑点</h2><p>核心的密码校验位于<code>liboo000oo.so</code>，但是打开之后导出的函数只有两个:</p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/exported.png">
+<p>查看<code>.init_array</code>发现:</p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/initarray.png">
+<p>于是查看做了什么初始化操作:</p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/init.png">
+<p>对于库内<code>.data</code>段内数据进行异或还原，这里实际上是解密了字符串。但在还不清楚的情况下可以自行进行还原。</p>
+<h3 id="加密还原"><a href="#加密还原" class="headerlink" title="加密还原"></a>加密还原</h3><h4 id="Radare2"><a href="#Radare2" class="headerlink" title="Radare2"></a>Radare2</h4><p>Radare2对于这种情况有专用指令<code>wox</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Usage: wo[asmdxoArl24]   [hexpairs] @ addr[!bsize]</span><br><span class="line">| wo[24aAdlmorwx]               without hexpair values, clipboard is used</span><br><span class="line">| wo2 [val]                     2=  2 byte endian swap</span><br><span class="line">| wo4 [val]                     4=  4 byte endian swap</span><br><span class="line">| woa [val]                     +=  addition (f.ex: woa 0102)</span><br><span class="line">| woA [val]                     &amp;=  and</span><br><span class="line">| wod [val]                     /=  divide</span><br><span class="line">| woD[algo] [key] [IV]          decrypt current block with given algo and key</span><br><span class="line">| woe [from to] [step] [wsz=1]  ..  create sequence</span><br><span class="line">| woE [algo] [key] [IV]         encrypt current block with given algo and key</span><br><span class="line">| wol [val]                     &lt;&lt;= <span class="built_in">shift</span> left</span><br><span class="line">| wom [val]                     *=  multiply</span><br><span class="line">| woo [val]                     |=  or</span><br><span class="line">| wop[DO] [arg]                 De Bruijn Patterns</span><br><span class="line">| wor [val]                     &gt;&gt;= <span class="built_in">shift</span> right</span><br><span class="line">| woR                           random bytes (<span class="built_in">alias</span> <span class="keyword">for</span> <span class="string">'wr $b'</span>)</span><br><span class="line">| wos [val]                     -=  substraction</span><br><span class="line">| wow [val]                     ==  write looped value (<span class="built_in">alias</span> <span class="keyword">for</span> <span class="string">'wb'</span>)</span><br><span class="line">| wox [val]                     ^=  xor  (f.ex: wox 0x90)</span><br></pre></td></tr></table></figure>
+<p>意思是write over，加上x之后就是对相应的地址进行异或处理，注意在r2的命令行参数中要加上<code>-w</code>参数来进行写入。</p>
+<p>命令样例<code>wox 0xa5 @ 0x4050!0x42</code>：其中<code>0xa5</code>是进行异或的值，感叹号之后跟的是重复次数。</p>
+<p>在理解解密流程的基础上不断重复就行了，要查看的话用<code>px 0x25 @ 0x4020</code>，不再解释。</p>
+<h4 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h4><p>使用QEMU也可以模拟arm环境让它自己进行解密，使用了别人已经做好兼容的项目环境：</p>
+<blockquote>
+<p><a href="https://github.com/AeonLucid/AndroidNativeEmu" target="_blank" rel="noopener">https://github.com/AeonLucid/AndroidNativeEmu</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> unicorn <span class="keyword">import</span> UC_HOOK_CODE</span><br><span class="line"><span class="keyword">from</span> unicorn.arm_const <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> androidemu.emulator <span class="keyword">import</span> Emulator</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize emulator</span></span><br><span class="line">emulator = Emulator()</span><br><span class="line">lib_module = emulator.load_library(<span class="string">"liboo000oo.so"</span>)</span><br><span class="line"></span><br><span class="line">emulator.call_symbol(lib_module, <span class="string">'.datadiv_decode5009363700628197108'</span>)</span><br><span class="line"></span><br><span class="line">cont = emulator.mu.mem_read( <span class="number">0xcbbcb000</span>+ <span class="number">0x4010</span>,<span class="number">0xd5</span>)</span><br><span class="line">print(<span class="string">''</span>.join(<span class="string">'&#123;:02x&#125; '</span>.format(x) <span class="keyword">for</span> x <span class="keyword">in</span> cont))</span><br></pre></td></tr></table></figure>
+<p>核心代码部分如上，执行了初始化函数，之后按照计算好的偏移dump出对应的数据，保存之后覆写即可。</p>
+<p>当然自带的库中还有更多的方便函数可以尝试。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">=&gt; Undefined external symbol: __cxa_finalize</span><br><span class="line">=&gt; Undefined external symbol: __cxa_atexit</span><br><span class="line">=&gt; Undefined external symbol: __aeabi_memclr</span><br><span class="line">=&gt; Undefined external symbol: __aeabi_memcpy8</span><br><span class="line">=&gt; Undefined external symbol: __stack_chk_fail</span><br><span class="line">=&gt; Undefined external symbol: __stack_chk_guard</span><br><span class="line">=&gt; Undefined external symbol: malloc</span><br><span class="line">=&gt; Undefined external symbol: strlen</span><br><span class="line">=&gt; Undefined external symbol: raise</span><br><span class="line">=&gt; Undefined external symbol: abort</span><br><span class="line">=&gt; Undefined external symbol: memcpy</span><br><span class="line">a0 f0 bc cb ca f0 bc cb d0 f0 bc cb 85 b7 bc cb 36 35 30 66 39 30 39 63 2d 37 32 31 37 2d 33 36 34 37 2d 39 33 33 31 2d 63 38 32 64 66 38 62 39 38 65 39 38 00 00 00 00 00 00 00 00 00 00 00 00 21 3a 23 24 25 26 28 29 2b 2d 2a 2f 60 7e 5f 5b 5d 7b 7d 3f 3c 3e 2c 2e 40 5e 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a 30 31 32 33 34 35 36 37 38 39 5c 27 3b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 61 6e 64 72 6f 69 64 2f 73 75 70 70 6f 72 74 2f 76 37 2f 61 70 70 2f 41 70 70 43 6f 6d 70 69 61 74 41 63 74 69 76 69 74 79 00 65 71 00 00 00 00 28 4c 6a 61 76 61 2f 6c 61 6e 67 2f 53 74 72 69 6e 67 3b 29 5a</span><br></pre></td></tr></table></figure>
+<p>这些是回显。</p>
+<h3 id="函数动态注册"><a href="#函数动态注册" class="headerlink" title="函数动态注册"></a>函数动态注册</h3><p>解密完成，但是没有eq函数的话程序是怎么执行的？</p>
+<p>答案是出题人在JNI_OnLoad函数中动态注册，通过<code>RegisterNatives</code>函数：</p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/jni_onload.png">
+<p>该函数的签名如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``art::JNI::RegisterNatives(_JNIEnv*, _jclass*, JNINativeMethod <span class="keyword">const</span>*, <span class="keyword">int</span>)</span><br></pre></td></tr></table></figure>
+<p>其中第三个参数是实际注册的Native方法，查看安卓源代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//https://android.googlesource.com/platform/libnativehelper/+/master/include_jni/jni.h#129 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> </span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* name; </span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* signature; </span><br><span class="line">	<span class="keyword">void</span>* fnPtr; </span><br><span class="line">&#125; JNINativeMethod;</span><br></pre></td></tr></table></figure>
+<p>分别是函数名，函数签名和函数指针，都是CString和C风格函数指针，对应在题目中就位于<code>off_4014</code>上。</p>
+<img src="/FXTi/2019/03/31/Transformers-debugging-wp/off4014.png">
+<p>查看对应的结构题，第一个0xCBBCF0CA对应函数名，可以看到是eq没有问题（注意之前QEMU部分提到过的偏移计算）。那么对应的第三个地址的位置就是eq函数的实际所在了。</p>
+<h3 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h3><p>在没有查明结构题定义之前绕了弯路，但是也学到了Frida这个工具。 Frida类似于pin之于x86调试，只不过实际的函数定义使用javascript，有些不适应。 </p>
+<p>Frida支持直接附加安卓程序进程，也可以从Frida进行创建之后先行hook再恢复程序执行。但是在直接root的小米5x上一旦调用spawn就会卡顿重启，于是只好刷机换成更加原生的系统。感谢室友和XDA论坛的帮助，先刷入TWRP，再三清之后刷入Pixel Experience这个ROM，还要刷入ROM提供的包来避免启动黑屏，最后刷入Magisk管理root。</p>
+<p>至此安卓9.0原生开发机准备完毕！</p>
+<p>Frida的阅读资料推荐这两篇</p>
+<blockquote>
+<p><a href="https://www.slideshare.net/ssusercf6665/frida-107244825" target="_blank" rel="noopener">https://www.slideshare.net/ssusercf6665/frida-107244825</a><br><a href="https://www.frida.re/docs/javascript-api/#memory" target="_blank" rel="noopener">https://www.frida.re/docs/javascript-api/#memory</a></p>
+</blockquote>
+<p>实际工作是预先在安卓端部署frida server在/data/local/tmp，赋予755权限之后执行。电脑端就可以通过CLI或者Python进行交互，Python中获取usb连接设备然后从Frida创建进程，附加，执行js脚本完成hook，最后恢复进程执行。</p>
+<p>实际脚本中的函数签名参考开发机中的<code>libart.so</code>进行过调整，使用<code>objdump -t</code>工具即可看到mangled之后的函数名。之后使用Frida提供的<code>objdump</code>函数打印对应地址数据，坑点在于arm体系结构中有ARM指令集和Thumb指令集2种，其中ARM指令为32位指令，按照4字节对齐存储，一条指令必须从4的整数倍地址来取；Thumb指令为16位指令，按2字节对齐存储，一条指令必须从偶数地址来取。</p>
+<p>而结构体中的地址末尾是5,在执行时会自动对齐到4,所以直接dump出的指令数据有缺失所以无法正常解析！</p>
+<p><a href="native.py">Frida script</a></p>
+<p>运行结果如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">frida % python ./native.py                                                                    fx-ti@DELL</span><br><span class="line">[*] Running CTF</span><br><span class="line">RegisterNativeMethods is at 0xe9869241</span><br><span class="line">android.support.v7.app.AppCompiatActivity<span class="comment">#eq(Ljava/lang/String;)Z@0xceab1785</span></span><br><span class="line">ceab1785  b5 03 af 2d e9 00 0f ad f5 07 7d be 49 79 44 09  ...-......&#125;.IyD.</span><br><span class="line">ceab1795  68 03 91 09 68 86 91 01 68 d1 f8 a4 32 11 46 00  h...h...h...2.F.</span><br><span class="line">ceab17a5  22 98 47 05 90 b9 48 78 44 ff f7 84 ef 82 46 ff  <span class="string">".G...HxD.....F.</span></span><br><span class="line"><span class="string">ceab17b5  f7 86 ef 06 46 50 46 ff f7 82 ef 80 46 50 46 ff  ....FPF.....FPF.</span></span><br><span class="line"><span class="string">ceab17c5  f7 7e ef 83 46 30 46 51 46 ff f7 80 ef 40 46 51  .~..F0FQF....@FQ</span></span><br><span class="line"><span class="string">ceab17d5  46 ff f7 7c ef 58 46 51 46 ff f7 78 ef ba f1 00  F..|.XFQF..x....</span></span><br><span class="line"><span class="string">ceab17e5  0f 46 d0 aa 49 00 20 52 46 79 44 0b 78 01 31 2d  .F..I. RFyD.x.1-</span></span><br><span class="line"><span class="string">ceab17f5  2b 1c bf 08 f8 00 30 01 30 01 3a f6 d1 01 28 37  +.....0.0.:...(7</span></span><br></pre></td></tr></table></figure>
+<p>dump出了对应位置的函数数据。</p>
+<p>之后尝试过的GDB动态调试选为备用，可以参考这篇</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/zhu929033262/article/details/76064044" target="_blank" rel="noopener">https://blog.csdn.net/zhu929033262/article/details/76064044</a></p>
+</blockquote>
+<p>更好的IDA动态调试可以参考这篇，重点推荐，可能会买本书看看</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/jiangwei0910410003/article/details/82812941" target="_blank" rel="noopener">https://blog.csdn.net/jiangwei0910410003/article/details/82812941</a></p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题目实际解法参考这个，变形RC4+Base64</p>
+<blockquote>
+<p><code>https://bbs.pediy.com/thread-250376.htm</code></p>
+</blockquote>
+<p>一道题目走完了Frida,QEMU,GDB,IDA,感觉学到了不少，新发布的JEB3.0新加入native层反编译也很强。好想学编译啊！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/FXTi/tags/Security/" rel="tag"># Security</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/FXTi/2018/11/14/xiaomi-router-analysis/" rel="next" title="xiaomi-router-analysis">
+                <i class="fa fa-chevron-left"></i> xiaomi-router-analysis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/FXTi/archives/">
+              
+                  <span class="site-state-item-count">169</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/FXTi/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#看雪2019CTF-变形金刚WP"><span class="nav-number">1.</span> <span class="nav-text">看雪2019CTF-变形金刚WP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java层坑点"><span class="nav-number">1.2.</span> <span class="nav-text">Java层坑点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Native层坑点"><span class="nav-number">1.3.</span> <span class="nav-text">Native层坑点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加密还原"><span class="nav-number">1.3.1.</span> <span class="nav-text">加密还原</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Radare2"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Radare2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QEMU"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">QEMU</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数动态注册"><span class="nav-number">1.3.2.</span> <span class="nav-text">函数动态注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida"><span class="nav-number">1.3.3.</span> <span class="nav-text">Frida</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/FXTi/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/FXTi/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/FXTi/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/FXTi/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/FXTi/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/FXTi/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/FXTi/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/FXTi/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/FXTi/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/FXTi/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

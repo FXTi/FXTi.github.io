@@ -78,7 +78,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
 <meta property="og:url" content="http://blog.fxti.xyz/categories/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="FXTi&#39;s blog">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-03-28T16:40:56.663Z">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
 
 
 
-  <title>radare2-reverse-self-modified-binary | Hexo</title>
+  <title>radare2-reverse-self-modified-binary | FXTi's blog</title>
   
 
 
@@ -150,7 +150,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">FXTi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -246,7 +246,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="FXTi's blog">
     </span>
 
     
@@ -311,7 +311,7 @@
 <p>这篇文章是为已经熟悉Radare2的人所写的。如果你不是，我建议你从系列“Radare2之旅”的<a href="https://www.megabeets.net/a-journey-into-radare-2-part-1/" target="_blank" rel="noopener">第一部分</a>(<a href="https://www.anquanke.com/post/id/86850" target="_blank" rel="noopener">安全客</a>)开始。</p>
 <p>闲话少叙，让我们开始分析这个二进制文件。</p>
 <a id="more"></a> 
-<img src="/FXTi/2019/02/12/radare2-reverse-self-modified-binary/r2.png">
+<img src="/2019/02/12/radare2-reverse-self-modified-binary/r2.png">
 <h2 id="获取Radare2"><a href="#获取Radare2" class="headerlink" title="获取Radare2"></a>获取Radare2</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Radare2的开发非常迅速，这个项目每天都在更新所以建议你使用最新的github版本，不要使用stable版，因为有时候stable版可能还没有最新的github 版稳定。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/radare/radare2.git</span><br><span class="line">$ <span class="built_in">cd</span> radare2</span><br><span class="line">$ ./sys/install.sh</span><br></pre></td></tr></table></figure>
 <p>如果你不想使用github版，或者想要每个平台(Windows,OS X,iOS,等等)相对应的二进制文件，那就点击<a href="http://radare.org/r/down.html" target="_blank" rel="noopener">Radare2下载页面</a>去下载。</p>
@@ -346,7 +346,7 @@
 <p>所以基本上，seek指令接受地址或者数学表达式作为参数。定位到main函数很简单，直接执行<code>s main</code>即可。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[0x004004d0]&gt; s main</span><br><span class="line">[0x0040060c]&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="反汇编"><a href="#反汇编" class="headerlink" title="反汇编"></a>反汇编</h3><p>现在位于main函数需要打印汇编代码看看。Radare2提供了多种方式反汇编一个函数。可以用<code>pdf</code>(显示函数反汇编)或者交互性更强的可视化模式(<code>v</code>)和图形模式(<code>VV</code>)，选哪个你喜欢就好。我惯用可视化模式因为信息更加丰富，交互性也好。我在<a href="https://www.megabeets.net/a-journey-into-radare-2-part-1/" target="_blank" rel="noopener">上一篇</a>详细讲解过，所以这里只是使用。</p>
-<img src="/FXTi/2019/02/12/radare2-reverse-self-modified-binary/visual.png">
+<img src="/2019/02/12/radare2-reverse-self-modified-binary/visual.png">
 <p>让我们看看main函数的开始部分：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[0x0040060c]&gt; pdf</span><br><span class="line">╭ (fcn) main 244</span><br><span class="line">│   main ();</span><br><span class="line">│           ; var int local_10h @ rbp-0x10</span><br><span class="line">│           ; var int local_ch @ rbp-0xc</span><br><span class="line">│           ; var int local_8h @ rbp-0x8</span><br><span class="line">│              ; JMP XREF from 0x00400605 (entry2.init)</span><br><span class="line">│              ; DATA XREF from 0x004004ed (entry0)</span><br><span class="line">│           0x0040060c      55             push rbp</span><br><span class="line">│           0x0040060d      4889e5         mov rbp, rsp</span><br><span class="line">│           0x00400610      4883ec10       sub rsp, 0x10</span><br><span class="line">│              ; DATA XREF from 0x00400653 (main)</span><br><span class="line">│              ; DATA XREF from 0x004005e7 (entry2.init)</span><br><span class="line">│           0x00400614      ba30000000     mov edx, 0x30</span><br><span class="line">│           0x00400619      bed0074000     mov esi, str.Welcome_to_packedup_for_r2crackmes_:___Flag ; 0x4007d0 ; “Welcome to packedup <span class="keyword">for</span> r2crackmes :)\nFlag &lt;&lt; “</span><br><span class="line">│           0x0040061e      bf01000000     mov edi, 1</span><br><span class="line">│           0x00400623      b800000000     mov eax, 0</span><br><span class="line">│           0x00400628      e853feffff     call sym.imp.write      ; ssize_t write(int fd, void *ptr, size_t nbytes)</span><br><span class="line">│           0x0040062d      ba2c000000     mov edx, 0x2c           ; ‘,’ ; 44</span><br><span class="line">│           0x00400632      be80106000     mov esi, 0x601080</span><br><span class="line">│           0x00400637      bf00000000     mov edi, 0</span><br><span class="line">│           0x0040063c      b800000000     mov eax, 0</span><br><span class="line">│           0x00400641      e84afeffff     call sym.imp.read       ; ssize_t <span class="built_in">read</span>(int fildes, void *buf, size_t nbyte)</span><br><span class="line">│           0x00400646      4898           cdqe</span><br><span class="line">│           0x00400648      488945f8       mov qword [local_8h], rax</span><br><span class="line">│           0x0040064c      c745f0000000.  mov dword [local_10h], 0</span><br><span class="line">│           0x00400653      b814064000     mov eax, 0x400614</span><br><span class="line">│           0x00400658      bbf6064000     mov ebx, 0x4006f6</span><br><span class="line">│           0x0040065d      29c3           sub ebx, eax</span><br><span class="line">│           0x0040065f      31c9           xor ecx, ecx</span><br></pre></td></tr></table></figure>
 <p>在函数初始化之后，能看到参数传递到<code>write()</code>打印出banner信息然后另一个参数传递给<code>read()</code>从stdin读取输入。<code>read()</code>从stdin读取0x2c(十进制:44)字节存储到位于0x601080的缓冲区。假设flag很可能长为44个字符，重命名保存输入的地址来方便自己识别。</p>

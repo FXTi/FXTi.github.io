@@ -78,7 +78,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
 <meta property="og:url" content="http://blog.fxti.xyz/categories/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="FXTi&#39;s blog">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-03-28T16:40:56.663Z">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
 
 
 
-  <title>Transformers-debugging-wp | Hexo</title>
+  <title>Transformers-debugging-wp | FXTi's blog</title>
   
 
 
@@ -150,7 +150,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">FXTi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -246,7 +246,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="FXTi's blog">
     </span>
 
     
@@ -306,16 +306,16 @@
 <p>主要包括安卓动态调试，环境模拟等</p>
 <a id="more"></a> 
 <h2 id="Java层坑点"><a href="#Java层坑点" class="headerlink" title="Java层坑点"></a>Java层坑点</h2><p><a href="Transformers.apk">Apk</a></p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/mainactivity.png">
+<img src="/2019/03/31/Transformers-debugging-wp/mainactivity.png">
 <p>在这里<code>MainActivity</code>拓展的并不是常见的<code>AppCompatActivity</code>，而是出题人自己编写的<code>AppCompiatActivity</code>。</p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/appcompiat.png">
+<img src="/2019/03/31/Transformers-debugging-wp/appcompiat.png">
 <p>关键在于出题人在<code>MainActivity</code>中定义onCreate()，然后在<code>AppCompiatActivity</code>中定义onStart()。带来的效果是onCreate()先执行然后被onStart()所覆盖。于是真正执行的逻辑位于<code>AppCompatActivity</code>中而非障眼法<code>MainActivity</code>。</p>
 <h2 id="Native层坑点"><a href="#Native层坑点" class="headerlink" title="Native层坑点"></a>Native层坑点</h2><p>核心的密码校验位于<code>liboo000oo.so</code>，但是打开之后导出的函数只有两个:</p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/exported.png">
+<img src="/2019/03/31/Transformers-debugging-wp/exported.png">
 <p>查看<code>.init_array</code>发现:</p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/initarray.png">
+<img src="/2019/03/31/Transformers-debugging-wp/initarray.png">
 <p>于是查看做了什么初始化操作:</p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/init.png">
+<img src="/2019/03/31/Transformers-debugging-wp/init.png">
 <p>对于库内<code>.data</code>段内数据进行异或还原，这里实际上是解密了字符串。但在还不清楚的情况下可以自行进行还原。</p>
 <h3 id="加密还原"><a href="#加密还原" class="headerlink" title="加密还原"></a>加密还原</h3><h4 id="Radare2"><a href="#Radare2" class="headerlink" title="Radare2"></a>Radare2</h4><p>Radare2对于这种情况有专用指令<code>wox</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Usage: wo[asmdxoArl24]   [hexpairs] @ addr[!bsize]</span><br><span class="line">| wo[24aAdlmorwx]               without hexpair values, clipboard is used</span><br><span class="line">| wo2 [val]                     2=  2 byte endian swap</span><br><span class="line">| wo4 [val]                     4=  4 byte endian swap</span><br><span class="line">| woa [val]                     +=  addition (f.ex: woa 0102)</span><br><span class="line">| woA [val]                     &amp;=  and</span><br><span class="line">| wod [val]                     /=  divide</span><br><span class="line">| woD[algo] [key] [IV]          decrypt current block with given algo and key</span><br><span class="line">| woe [from to] [step] [wsz=1]  ..  create sequence</span><br><span class="line">| woE [algo] [key] [IV]         encrypt current block with given algo and key</span><br><span class="line">| wol [val]                     &lt;&lt;= <span class="built_in">shift</span> left</span><br><span class="line">| wom [val]                     *=  multiply</span><br><span class="line">| woo [val]                     |=  or</span><br><span class="line">| wop[DO] [arg]                 De Bruijn Patterns</span><br><span class="line">| wor [val]                     &gt;&gt;= <span class="built_in">shift</span> right</span><br><span class="line">| woR                           random bytes (<span class="built_in">alias</span> <span class="keyword">for</span> <span class="string">'wr $b'</span>)</span><br><span class="line">| wos [val]                     -=  substraction</span><br><span class="line">| wow [val]                     ==  write looped value (<span class="built_in">alias</span> <span class="keyword">for</span> <span class="string">'wb'</span>)</span><br><span class="line">| wox [val]                     ^=  xor  (f.ex: wox 0x90)</span><br></pre></td></tr></table></figure>
@@ -333,13 +333,13 @@
 <p>这些是回显。</p>
 <h3 id="函数动态注册"><a href="#函数动态注册" class="headerlink" title="函数动态注册"></a>函数动态注册</h3><p>解密完成，但是没有eq函数的话程序是怎么执行的？</p>
 <p>答案是出题人在JNI_OnLoad函数中动态注册，通过<code>RegisterNatives</code>函数：</p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/jni_onload.png">
+<img src="/2019/03/31/Transformers-debugging-wp/jni_onload.png">
 <p>该函数的签名如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``art::JNI::RegisterNatives(_JNIEnv*, _jclass*, JNINativeMethod <span class="keyword">const</span>*, <span class="keyword">int</span>)</span><br></pre></td></tr></table></figure>
 <p>其中第三个参数是实际注册的Native方法，查看安卓源代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//https://android.googlesource.com/platform/libnativehelper/+/master/include_jni/jni.h#129 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> </span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* name; </span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* signature; </span><br><span class="line">	<span class="keyword">void</span>* fnPtr; </span><br><span class="line">&#125; JNINativeMethod;</span><br></pre></td></tr></table></figure>
 <p>分别是函数名，函数签名和函数指针，都是CString和C风格函数指针，对应在题目中就位于<code>off_4014</code>上。</p>
-<img src="/FXTi/2019/03/31/Transformers-debugging-wp/off4014.png">
+<img src="/2019/03/31/Transformers-debugging-wp/off4014.png">
 <p>查看对应的结构题，第一个0xCBBCF0CA对应函数名，可以看到是eq没有问题（注意之前QEMU部分提到过的偏移计算）。那么对应的第三个地址的位置就是eq函数的实际所在了。</p>
 <h3 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h3><p>在没有查明结构题定义之前绕了弯路，但是也学到了Frida这个工具。 Frida类似于pin之于x86调试，只不过实际的函数定义使用javascript，有些不适应。 </p>
 <p>Frida支持直接附加安卓程序进程，也可以从Frida进行创建之后先行hook再恢复程序执行。但是在直接root的小米5x上一旦调用spawn就会卡顿重启，于是只好刷机换成更加原生的系统。感谢室友和XDA论坛的帮助，先刷入TWRP，再三清之后刷入Pixel Experience这个ROM，还要刷入ROM提供的包来避免启动黑屏，最后刷入Magisk管理root。</p>

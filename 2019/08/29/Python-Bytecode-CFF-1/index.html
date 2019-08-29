@@ -302,7 +302,7 @@
       
 
       
-        <h1 id="Python字节码解混淆-1"><a href="#Python字节码解混淆-1" class="headerlink" title="Python字节码解混淆 - 1"></a>Python字节码解混淆 - 1</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上次打NISCCTF2019留下来的一道题，关于pyc文件逆向，接着这道题把Python Bytecode解混淆相关的知识和工具全部过一遍。同时在已有的基础上进一步创新得到自己的成果，这是上篇，做基础铺垫和已有工具梳理。</p>
+        <h1 id="Python字节码解混淆"><a href="#Python字节码解混淆" class="headerlink" title="Python字节码解混淆"></a>Python字节码解混淆</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上次打NISCCTF2019留下来的一道题，关于pyc文件逆向，接着这道题把Python Bytecode解混淆相关的知识和工具全部过一遍。同时在已有的基础上进一步创新得到自己的成果，这是上篇，做基础铺垫和已有工具梳理。</p>
 <a id="more"></a>
 <h2 id="pyc文件结构"><a href="#pyc文件结构" class="headerlink" title="pyc文件结构"></a>pyc文件结构</h2><p>首先pyc文件是python源码进行编译之后得到的字节码文件。虽然Python是解释型语言，但并非直接解释源码，而是先编译到字节码然后解释执行字节码。Python2和Python3字节码有区别不通用，同时目前以及可遇见范围内的事实标准都是CPython实现。</p>
 <p>Pyc文件由3部分组成：</p>
@@ -373,11 +373,11 @@
 </li>
 <li><p><code>./configure --with-pydebug</code> 配置启用debug选项并编译</p>
 </li>
-<li><p>在执行上下文设置<code>__lltrace = True</code>启动字节码级别的执行log</p>
+<li><p>在执行上下文设置<code>__lltrace__ = True</code>启动字节码级别的执行log</p>
 </li>
 </ul>
-<p>首先是<code>--with-pydebug</code>启动调试选项激活对应编译分支，之后用<code>__lltrace__</code>同时抛弃<code>FAST_DISPATCH</code>优化来log得到每一行的信息。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这篇博文总结了针对pyc文件的反汇编相关的内容和工具的bypass方法。</p>
+<p>首先是<code>--with-pydebug</code>启动调试选项激活对应编译分支，之后用<code>__lltrace__</code>开启对应的log分支，同时关闭<code>FAST_DISPATCH</code>优化来避免漏掉指令。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这篇博文总结了针对pyc文件的反汇编相关的内容和工具的针对修复方法。</p>
 
       
     </div>
@@ -418,7 +418,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/29/Python-Bytecode-CFF-2/" rel="prev" title="Python-Bytecode-CFF-2">
+              <a href="/2019/08/30/Python-Bytecode-CFF-2/" rel="prev" title="Python-Bytecode-CFF-2">
                 Python-Bytecode-CFF-2 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -535,11 +535,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://qsang.xin/" title="姜姜酱" target="_blank">姜姜酱</a>
+                    <a href="http://iv4n.xyz/" title="iv4n" target="_blank">iv4n</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://iv4n.xyz/" title="iv4n" target="_blank">iv4n</a>
+                    <a href="http://qsang.xin/" title="姜姜酱" target="_blank">姜姜酱</a>
                   </li>
                 
               </ul>
@@ -561,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python字节码解混淆-1"><span class="nav-number">1.</span> <span class="nav-text">Python字节码解混淆 - 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyc文件结构"><span class="nav-number">1.2.</span> <span class="nav-text">pyc文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyCodeObject"><span class="nav-number">1.3.</span> <span class="nav-text">PyCodeObject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#co-code"><span class="nav-number">1.4.</span> <span class="nav-text">co_code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绕过恶意指令的阻碍"><span class="nav-number">1.5.</span> <span class="nav-text">绕过恶意指令的阻碍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改dis模块"><span class="nav-number">1.5.1.</span> <span class="nav-text">修改dis模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#活跃代码分析"><span class="nav-number">1.5.2.</span> <span class="nav-text">活跃代码分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改CPython启用debug"><span class="nav-number">1.6.</span> <span class="nav-text">修改CPython启用debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.7.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python字节码解混淆"><span class="nav-number">1.</span> <span class="nav-text">Python字节码解混淆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyc文件结构"><span class="nav-number">1.2.</span> <span class="nav-text">pyc文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyCodeObject"><span class="nav-number">1.3.</span> <span class="nav-text">PyCodeObject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#co-code"><span class="nav-number">1.4.</span> <span class="nav-text">co_code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绕过恶意指令的阻碍"><span class="nav-number">1.5.</span> <span class="nav-text">绕过恶意指令的阻碍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改dis模块"><span class="nav-number">1.5.1.</span> <span class="nav-text">修改dis模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#活跃代码分析"><span class="nav-number">1.5.2.</span> <span class="nav-text">活跃代码分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改CPython启用debug"><span class="nav-number">1.6.</span> <span class="nav-text">修改CPython启用debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.7.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
 
           </div>

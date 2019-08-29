@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://blog.fxti.xyz/categories/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T16:40:56.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.fxti.xyz/categories/">
+
+
+
+
+
+  <title>Python-Bytecode-CFF-2 | FXTi's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FXTi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2019/08/30/Python-Bytecode-CFF-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python-Bytecode-CFF-2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-30T13:17:33+08:00">2019-08-30</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Python字节码解混淆之反控制流扁平化"><a href="#Python字节码解混淆之反控制流扁平化" class="headerlink" title="Python字节码解混淆之反控制流扁平化"></a>Python字节码解混淆之反控制流扁平化</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上次打NISCCTF2019留下来的一道题，关于pyc文件逆向，接着这道题把Python Bytecode解混淆相关的知识和工具全部过一遍。同时在已有的基础上进一步创新得到自己的成果，这是下篇，更近一步进行还原混淆过的pyc文件。</p>
+<a id="more"></a>
+<h2 id="图表示法"><a href="#图表示法" class="headerlink" title="图表示法"></a>图表示法</h2><p>目前可以见到最多的解混淆或者去花指令的手段类似于对于指令的匹配替换，甚至于可以说上一篇中的活跃代码分析也是带执行流分析的简单替换过程。但如果我想构建一个对于某种混淆方式的通用解法，只是工作于指令级别始终不够方便。那么需要一种新的方式去处理这些指令。</p>
+<p>在这里选用一种<strong><em>基于有向图</em></strong>的表示法，也即在执行流跳转的位置进行分割，使指令之间成块，相互之间用箭头相关联。如下图：</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/flow_graph.png">
+<p>有了这种表示法之后就可以方便的在独立的块之间进行遍历和处理。</p>
+<h2 id="Bytecode-graph"><a href="#Bytecode-graph" class="headerlink" title="Bytecode graph"></a>Bytecode graph</h2><p>这个工具来自<a href="https://www.fireeye.com/blog/threat-research/2016/05/deobfuscating_python.html" target="_blank" rel="noopener">这里</a>,实现了基本的Python字节码到图表示的转换过程，但是相比起来功能较为单薄。</p>
+<p>上一篇中把恶意指令全部NOP掉了，现在想把NOP指令用这个库全部去除，首先尝试调用API画出所有函数的图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bytecode_graph </span><br><span class="line"><span class="keyword">from</span> dis <span class="keyword">import</span> opmap</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line">pyc_file = open(sys.argv[<span class="number">1</span>], <span class="string">"rb"</span>).read()</span><br><span class="line">pyc = marshal.loads(pyc_file[<span class="number">8</span>:])</span><br><span class="line">bcg = bytecode_graph.BytecodeGraph(pyc)</span><br><span class="line">graph = bytecode_graph.Render(bcg, pyc).dot()</span><br><span class="line">graph.write_png(<span class="string">'example_graph.png'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果崩溃了:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"./gen_graph.py"</span>, line <span class="number">9</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    graph = bytecode_graph.Render(bcg, pyc).dot()</span><br><span class="line">  File <span class="string">"/tmp/flare-bytecode_graph/bytecode_gra/render.py"</span>, line <span class="number">112</span>, <span class="keyword">in</span> dot</span><br><span class="line">    lbl = disassemble(self.co, start=start.addr, stop=stop.addr+<span class="number">1</span>,</span><br><span class="line">AttributeError: <span class="string">'NoneType'</span> object has no attribute <span class="string">'addr'</span></span><br></pre></td></tr></table></figure>
+<p>查看源码发现是渲染模块里获取block的函数写的时候没有考虑到一个corner case，修复之后成功生成图像：</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/p_f.png">
+<p>首先观察执行流可以很明显的看出是进行过控制流扁平化处理的，然后尝试阅读文档去除多余的NOP分支。</p>
+<p>去除NOP的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_nop_inner</span><span class="params">(co)</span>:</span></span><br><span class="line">    bcg = bytecode_graph.BytecodeGraph(co)</span><br><span class="line">    nodes = [x <span class="keyword">for</span> x <span class="keyword">in</span> bcg.nodes()]</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> nodes:</span><br><span class="line">        <span class="keyword">if</span> n.opcode == NOP:</span><br><span class="line">            bcg.delete_node(n)</span><br><span class="line">    <span class="keyword">return</span> bcg.get_code()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_nop</span><span class="params">(co)</span>:</span></span><br><span class="line">    <span class="comment">#co = remove_nop_inner(co)</span></span><br><span class="line"></span><br><span class="line">    inner = list()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(co.co_consts)):</span><br><span class="line">        <span class="keyword">if</span> hasattr(co.co_consts[i], <span class="string">'co_code'</span>):</span><br><span class="line">            inner.append(remove_nop_inner(co.co_consts[i]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            inner.append(co.co_consts[i])</span><br><span class="line"></span><br><span class="line">    co.co_consts = tuple(inner)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> co</span><br></pre></td></tr></table></figure>
+<p>再次运行然后再次崩溃：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"./de.py"</span>, line <span class="number">163</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    mode = remove_nop(mode)</span><br><span class="line">  File <span class="string">"./de.py"</span>, line <span class="number">108</span>, <span class="keyword">in</span> remove_nop</span><br><span class="line">    inner.append(remove_nop_inner(co.co_consts[i]))</span><br><span class="line">  File <span class="string">"./de.py"</span>, line <span class="number">100</span>, <span class="keyword">in</span> remove_nop_inner</span><br><span class="line">    <span class="keyword">return</span> bcg.get_code()</span><br><span class="line">  File <span class="string">"/home/fx-ti/ctf/nisc2019/py/deconfus/flare-bytecode_graph/bytecode_gra/bytecode_graph.py"</span>, line <span class="number">225</span>, <span class="keyword">in</span> get_code</span><br><span class="line">    new_co_lineno = self.calc_lnotab()</span><br><span class="line">  File <span class="string">"/home/fx-ti/ctf/nisc2019/py/deconfus/flare-bytecode_graph/bytecode_gra/bytecode_graph.py"</span>, line <span class="number">173</span>, <span class="keyword">in</span> calc_lnotab</span><br><span class="line">    new_offset = current.co_lnotab - prev_lineno</span><br><span class="line">TypeError: unsupported operand type(s) <span class="keyword">for</span> -: <span class="string">'NoneType'</span> <span class="keyword">and</span> <span class="string">'int'</span></span><br></pre></td></tr></table></figure>
+<p>这个错误就很有意思了，和之后成功还原仍然不能使用<code>uncompyle6</code>得到源码有关。都是在对<code>co_lnotab</code>这个部分的解析中出现了错误导致的崩溃。</p>
+<p><a href="https://svn.python.org/projects/python/branches/pep-0384/Objects/lnotab_notes.txt" target="_blank" rel="noopener">co_lnotab的文档</a></p>
+<p>Python通过<code>co_lnotab</code>将字节码和源码行数对齐，服务于源码调试。<code>co_lnotab</code>中的数据两字节为一组，分别是字节码的增量偏移和源码的增量偏移。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> marshal</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'../../mo.pyc'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read(<span class="number">8</span>)</span><br><span class="line"><span class="string">'\x03\xf3\r\nLiT\\'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = marshal.load(f)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(map(ord,c.co_lnotab))</span><br><span class="line">[<span class="number">12</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">18</span>, <span class="number">37</span>, <span class="number">2</span>, <span class="number">18</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>也即都从0开始计算，首先字节码增加了12条指令，源码就到了第2行，这样不断递增得到的对应关系。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dis.dis(c.co_code)</span><br><span class="line">          <span class="number">0</span> JUMP_ABSOLUTE     <span class="number">670</span></span><br><span class="line">          <span class="number">3</span> NOP</span><br><span class="line">          <span class="number">4</span> NOP</span><br><span class="line">          <span class="number">5</span> NOP</span><br><span class="line">          <span class="number">6</span> NOP</span><br><span class="line">          <span class="number">7</span> NOP</span><br><span class="line">          <span class="number">8</span> NOP</span><br><span class="line">          <span class="number">9</span> NOP</span><br><span class="line">         <span class="number">10</span> NOP</span><br><span class="line">         <span class="number">11</span> NOP</span><br><span class="line">    &gt;&gt;   <span class="number">12</span> LOAD_FAST           <span class="number">0</span> (<span class="number">0</span>)  <span class="comment"># 源码第2行</span></span><br><span class="line">         <span class="number">15</span> COMPARE_OP          <span class="number">2</span> (==)</span><br><span class="line">         <span class="number">18</span> POP_JUMP_IF_TRUE    <span class="number">39</span></span><br></pre></td></tr></table></figure>
+<p>然而这样的对应关系在修改了指令成为NOP之后便没有意义，因为从带参数的指令变成不带参数的指令定然会导致字节码偏移计算出错。更何况这个样本的pyc文件有的函数的<code>co_lnotab</code>是残缺的，便会导致尝试解析它的过程失败。然而不巧这个库和<code>uncompyle6</code>都是会解析的。</p>
+<p>但即使是这样，这款库作为图的生成器，自带的指令解析和引用解析都不错，仍旧写出图生成脚本予以采用。并对之前的补丁操作提出了pr。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bytecode_gra <span class="keyword">as</span> bytecode_graph</span><br><span class="line"><span class="keyword">from</span> dis <span class="keyword">import</span> opmap</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line">pyc_file = open(sys.argv[<span class="number">1</span>], <span class="string">"rb"</span>).read()</span><br><span class="line">pyc = marshal.loads(pyc_file[<span class="number">8</span>:])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> pyc.co_consts:</span><br><span class="line">    <span class="keyword">if</span> hasattr(x, <span class="string">'co_code'</span>):</span><br><span class="line">        bcg = bytecode_graph.BytecodeGraph(x)</span><br><span class="line">        graph = bytecode_graph.Render(bcg, x).dot()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            graph.write_png(x.co_name + <span class="string">'.png'</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception, e:</span><br><span class="line">            print(e)</span><br><span class="line">            print(x.co_name)</span><br><span class="line"></span><br><span class="line">bcg = bytecode_graph.BytecodeGraph(pyc)</span><br><span class="line">graph = bytecode_graph.Render(bcg, pyc).dot()</span><br><span class="line">graph.write_png(<span class="string">'module.png'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Bytecode-simplifier"><a href="#Bytecode-simplifier" class="headerlink" title="Bytecode simplifier"></a>Bytecode simplifier</h2><p>这个比之前那个更加强大，来自于这篇<a href="https://0xec.blogspot.com/2017/07/deobfuscating-pjorion-using-bytecode.html" target="_blank" rel="noopener">博客</a>。</p>
+<p>这个简化器原本是为了针对PjOrion解混淆而开发的，说来也是有意思，我这个<a href="py交易.pyc">样本</a>被命中了PjOrion v2的特征签名。</p>
+<p>在分析上它同样使用遍历执行流的方式得到实际字节码并分离成一个一个基本块，特指只有一个入口和一个出口的一连串指令</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/analysis.png">
+<p>可以看到完全无视之前生成的NOP。</p>
+<p>在表示上直接使用<code>networkx.DiGraph</code>组织有向图，提供完整API，在类似<code>if</code>分支时正确分支为<code>explicit</code>属性的边，失败分支是<code>implicit</code>属性的边。正常的跳转的边都是<code>explicit</code>的。</p>
+<h3 id="自带的解混淆功能"><a href="#自带的解混淆功能" class="headerlink" title="自带的解混淆功能"></a>自带的解混淆功能</h3><h4 id="Forwarder-elimination"><a href="#Forwarder-elimination" class="headerlink" title="Forwarder elimination"></a>Forwarder elimination</h4><p>forwarder定义为只由一条跳转语句构成的基本块，只是转移了执行流没有任何有用操作。</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/before_forwarder.png">
+<p>黄色高亮的基本块就是一个forwarder，下图是去除以后。</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/after_forwarder.png">
+<h4 id="Basic-block-merging"><a href="#Basic-block-merging" class="headerlink" title="Basic block merging"></a>Basic block merging</h4><p>一个基本块可以被它的父基本块合并，当且仅当它只有这一个父基本块，且它的父基本块只有它一个子基本块。</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/before-merge.png">
+<p>高亮的基本块都能合并成为一个基本块，既然没有用，那么控制流转移指令被全部删除。</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/after-merge.png">
+<p>具体实现可以参考<code>simplifier.py</code>里的源码。</p>
+<h3 id="自己写的反控制流扁平化功能"><a href="#自己写的反控制流扁平化功能" class="headerlink" title="自己写的反控制流扁平化功能"></a>自己写的反控制流扁平化功能</h3><p>首先还是在不添加简化流程的情况下运行，程序再次崩溃：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">INFO:simplifier:<span class="number">43</span> basic blocks eliminated</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"./main.py"</span>, line <span class="number">72</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    process(args.ifile, args.ofile)</span><br><span class="line">  File <span class="string">"./main.py"</span>, line <span class="number">58</span>, <span class="keyword">in</span> process</span><br><span class="line">    deob = parse_code_object(rootCodeObject)</span><br><span class="line">  File <span class="string">"./main.py"</span>, line <span class="number">20</span>, <span class="keyword">in</span> parse_code_object</span><br><span class="line">    co_codestring = deobfuscate(codeObject.co_code)</span><br><span class="line">  File <span class="string">"/tmp/sim/deobfuscator.py"</span>, line <span class="number">75</span>, <span class="keyword">in</span> deobfuscate</span><br><span class="line">    render_graph(simplifier.bb_graph, <span class="string">'after_forwarder.svg'</span>)</span><br><span class="line">  File <span class="string">"/tmp/sim/utils/rendergraph.py"</span>, line <span class="number">34</span>, <span class="keyword">in</span> render_graph</span><br><span class="line">    entryblock = nx.get_node_attributes(bb_graph, <span class="string">'isEntry'</span>).keys()[<span class="number">0</span>]</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure>
+<p>分析之后发现是在forwarder elimination之后把有入口点属性的基本块给消除了。修改源码在修改之后传递属性即可，同样提交<a href="https://github.com/extremecoders-re/bytecode_simplifier/pull/5" target="_blank" rel="noopener">pr</a>。</p>
+<p>终于来到编写部分，在这里阐明控制流扁平化之后在本样本的特征：</p>
+<ul>
+<li><p>入口点指定好第一个执行的块的常量然后进入分发基本块链</p>
+</li>
+<li><p>在分发基本块链中不断查找，只有在常量相等时进入正确分支执行对应基本块，否则进入失败分支继续查找</p>
+</li>
+<li><p>在实际执行基本块结尾指定下一块实际基本块的常量值</p>
+</li>
+</ul>
+<p>举例如下：</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/tree.png">
+<p>那么整个过程可以分成几步：</p>
+<ul>
+<li><p>沿着分发基本块遍历得到分发关系，再找到实际基本块的尾端确认下一基本块的常量，之后配对得到实际关系</p>
+</li>
+<li><p>再修改配对的基本块之间的执行流，还原他们的先后执行次序</p>
+</li>
+</ul>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/dispatcher1.png">
+<ul>
+<li><p>对入口点设置的常量的对应实际基本块设置成为入口点</p>
+</li>
+<li><p>把分发基本块链和入口点全部删除</p>
+</li>
+<li><p>把所有基本块尾部存在的设置常量的指令删除</p>
+</li>
+</ul>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/dispatcher2.png">
+<p>可以看到原来打乱的控制流还原了，但是基本块之间还是有些琐碎，怎么办呢？</p>
+<p>很简单，再跑一次forwarder elimination和merge blocks就行了！</p>
+<img src="/2019/08/30/Python-Bytecode-CFF-2/dispatcher3.png">
+<p>可以看到这样就已经还原到近似于<code>CPython</code>生成的字节码了。虽然因为之前说过的原因用不了<code>uncompyle6</code>,但是可以用<code>unpyc</code>进行反编译可以得到：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2hex</span><span class="params">(string)</span>:</span></span><br><span class="line">	<span class="comment">#[NODE: 0]</span></span><br><span class="line">	ret = []</span><br><span class="line"></span><br><span class="line">	<span class="comment">#[NODE: 19]</span></span><br><span class="line">	<span class="keyword">for</span> char <span class="keyword">in</span> string:</span><br><span class="line">	ret(ord(char))</span><br><span class="line"></span><br><span class="line">	<span class="comment">#[NODE: 48]</span></span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hex2str</span><span class="params">(data)</span>:</span></span><br><span class="line">	<span class="comment">#[NODE: 19]</span></span><br><span class="line">	<span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line"></span><br><span class="line">	<span class="comment">#[NODE: 37]</span></span><br><span class="line">	<span class="keyword">return</span> [](data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p_s</span><span class="params">()</span>:</span></span><br><span class="line">	sys(hex2str([<span class="number">115L</span>, <span class="number">117L</span>, <span class="number">99L</span>, <span class="number">99L</span>, <span class="number">101L</span>, <span class="number">115L</span>, <span class="number">115L</span>, <span class="number">33L</span>]))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p_f</span><span class="params">()</span>:</span></span><br><span class="line">	sys(hex2str([<span class="number">102L</span>, <span class="number">97L</span>, <span class="number">105L</span>, <span class="number">108L</span>, <span class="number">33L</span>]))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(data)</span>:</span></span><br><span class="line">	<span class="comment">#[NODE: 0]</span></span><br><span class="line">	a = [<span class="number">13433L</span>, <span class="number">4747L</span>, <span class="number">17752L</span>, <span class="number">33060L</span>, <span class="number">31051L</span>, <span class="number">48809L</span>, <span class="number">29988L</span>, <span class="number">6421L</span>, <span class="number">20021L</span>, <span class="number">38888L</span>, <span class="number">24844L</span>, <span class="number">20706L</span>, <span class="number">11713L</span>, <span class="number">34938L</span>, <span class="number">12865L</span>, <span class="number">6085L</span>, <span class="number">37391L</span>, <span class="number">32840L</span>, <span class="number">31964L</span>, <span class="number">27194L</span>, <span class="number">8701L</span>, <span class="number">48142L</span>, <span class="number">27066L</span>, <span class="number">28626L</span>, <span class="number">37431L</span>, <span class="number">39142L</span>, <span class="number">46795L</span>, <span class="number">21771L</span>, <span class="number">44280L</span>, <span class="number">40628L</span>, <span class="number">35013L</span>, <span class="number">18583L</span>, <span class="number">5418L</span>, <span class="number">4347L</span>, <span class="number">43929L</span>, <span class="number">9934L</span>, <span class="number">46892L</span>, <span class="number">19868L</span>]</span><br><span class="line">	b = [<span class="number">13711L</span>, <span class="number">7074L</span>, <span class="number">79833L</span>, <span class="number">42654L</span>, <span class="number">23241L</span>, <span class="number">41412L</span>, <span class="number">61795L</span>, <span class="number">6373L</span>, <span class="number">19304L</span>, <span class="number">1363L</span>, <span class="number">1682L</span>, <span class="number">66279L</span>, <span class="number">76134L</span>, <span class="number">60748L</span>, <span class="number">10355L</span>, <span class="number">63484L</span>, <span class="number">30491L</span>, <span class="number">34005L</span>, <span class="number">51393L</span>, <span class="number">38029L</span>, <span class="number">7241L</span>, <span class="number">4998L</span>, <span class="number">18562L</span>, <span class="number">16935L</span>, <span class="number">66677L</span>, <span class="number">51321L</span>, <span class="number">13771L</span>, <span class="number">49108L</span>, <span class="number">52166L</span>, <span class="number">8851L</span>, <span class="number">16900L</span>, <span class="number">31682L</span>, <span class="number">16684L</span>, <span class="number">12046L</span>, <span class="number">16764L</span>, <span class="number">64315L</span>, <span class="number">76742L</span>, <span class="number">14022L</span>]</span><br><span class="line">	c = [<span class="number">832832835L</span>, <span class="number">-924053193L</span>, <span class="number">-307134635L</span>, <span class="number">-527578092L</span>, <span class="number">998625960L</span>, <span class="number">-715102211L</span>, <span class="number">3572182L</span>, <span class="number">-963194083L</span>, <span class="number">-475718185L</span>, <span class="number">-361574731L</span>, <span class="number">-678171563L</span>, <span class="number">107566155L</span>, <span class="number">608670527L</span>, <span class="number">254218946L</span>, <span class="number">-81206308L</span>, <span class="number">-284228457L</span>, <span class="number">373369420L</span>, <span class="number">659110852L</span>, <span class="number">165298084L</span>, <span class="number">-389004184L</span>, <span class="number">893094421L</span>, <span class="number">-868933443L</span>, <span class="number">44838205L</span>, <span class="number">-98551062L</span>, <span class="number">-59800920L</span>, <span class="number">-575871298L</span>, <span class="number">-748337118L</span>, <span class="number">696390966L</span>, <span class="number">427210246L</span>, <span class="number">-266607884L</span>, <span class="number">-555200820L</span>, <span class="number">-594235119L</span>, <span class="number">-233255094L</span>, <span class="number">229291711L</span>, <span class="number">711922719L</span>, <span class="number">14476464L</span>, <span class="number">-783373820L</span>, <span class="number">892608580L</span>]</span><br><span class="line">	d = []</span><br><span class="line"></span><br><span class="line">	<span class="comment">#[NODE: 385]</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">38L</span>):</span><br><span class="line">	d(a[i] * data[i] * data[i] + b[i] * data[i] + c[i])</span><br><span class="line"></span><br><span class="line">	<span class="comment">#[NODE: 452]</span></span><br><span class="line">	e = [<span class="number">973988289L</span>, <span class="number">-867920193L</span>, <span class="number">-132362266L</span>, <span class="number">-172451190L</span>, <span class="number">1471255182L</span>, <span class="number">-242282199L</span>, <span class="number">321870424L</span>, <span class="number">-897049789L</span>, <span class="number">-428663209L</span>, <span class="number">-256350703L</span>, <span class="number">-613466537L</span>, <span class="number">321254055L</span>, <span class="number">641759727L</span>, <span class="number">344601346L</span>, <span class="number">-40281788L</span>, <span class="number">-217030057L</span>, <span class="number">476060216L</span>, <span class="number">767746297L</span>, <span class="number">503093626L</span>, <span class="number">-102198850L</span>, <span class="number">984358207L</span>, <span class="number">-415480559L</span>, <span class="number">322813233L</span>, <span class="number">178032672L</span>, <span class="number">48876640L</span>, <span class="number">-467362638L</span>, <span class="number">-260077296L</span>, <span class="number">923436845L</span>, <span class="number">536082660L</span>, <span class="number">-138702820L</span>, <span class="number">-210365307L</span>, <span class="number">-397666023L</span>, <span class="number">-215329942L</span>, <span class="number">274852104L</span>, <span class="number">818217684L</span>, <span class="number">41479433L</span>, <span class="number">-632022956L</span>, <span class="number">1204798830L</span>]</span><br><span class="line">	p_s()</span><br><span class="line"></span><br><span class="line">	<span class="comment">#[NODE: 594]</span></span><br><span class="line">	<span class="number">594</span></span><br><span class="line"></span><br><span class="line"><span class="number">-1L</span></span><br><span class="line">flag = sys(<span class="number">38L</span>)</span><br><span class="line">count(str2hex(flag))</span><br></pre></td></tr></table></figure>
+<p>虽然有反编译出来的结果有问题，但还是不错了的。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>使用基于图的表示法成功针对控制流平坦化进行了还原。虽然针对ollvm的解混淆已经有了，但是针对Python字节码的还没看到，所以也算是做出了自己的成果。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Security/" rel="tag"># Security</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/29/Python-Bytecode-CFF-1/" rel="next" title="Python-Bytecode-CFF-1">
+                <i class="fa fa-chevron-left"></i> Python-Bytecode-CFF-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2077/01/01/TODO/" rel="prev" title="TODO">
+                TODO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">179</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://iv4n.xyz/" title="iv4n" target="_blank">iv4n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://qsang.xin/" title="姜姜酱" target="_blank">姜姜酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python字节码解混淆之反控制流扁平化"><span class="nav-number">1.</span> <span class="nav-text">Python字节码解混淆之反控制流扁平化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表示法"><span class="nav-number">1.2.</span> <span class="nav-text">图表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bytecode-graph"><span class="nav-number">1.3.</span> <span class="nav-text">Bytecode graph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bytecode-simplifier"><span class="nav-number">1.4.</span> <span class="nav-text">Bytecode simplifier</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自带的解混淆功能"><span class="nav-number">1.4.1.</span> <span class="nav-text">自带的解混淆功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Forwarder-elimination"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Forwarder elimination</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-block-merging"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Basic block merging</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己写的反控制流扁平化功能"><span class="nav-number">1.4.2.</span> <span class="nav-text">自己写的反控制流扁平化功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.5.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

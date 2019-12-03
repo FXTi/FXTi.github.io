@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Security,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CUMTCTF2019决赛-逆向题WP">
+<meta name="keywords" content="Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTCTF2019-Final-WP">
+<meta property="og:url" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:description" content="CUMTCTF2019决赛-逆向题WP">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-fake.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-sub.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-real.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-winmain.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-dispatch.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-main.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-first.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-second.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/block-imp.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/mbr-black.png">
+<meta property="og:updated_time" content="2019-09-29T08:28:45.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CUMTCTF2019-Final-WP">
+<meta name="twitter:description" content="CUMTCTF2019决赛-逆向题WP">
+<meta name="twitter:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/">
+
+
+
+
+
+  <title>ACM-Tem | FXTi's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FXTi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2019/10/27/ACM-Tem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ACM-Tem</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-27T08:39:15+08:00">2019-10-27</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">20</span>];</span><br><span class="line">ll dp[<span class="number">20</span>][state];<span class="comment">//不同题目状态不同</span></span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> pos,<span class="comment">/*state变量*/</span>,<span class="keyword">bool</span> lead<span class="comment">/*前导零*/</span>,<span class="keyword">bool</span> limit<span class="comment">/*数位上界变量*/</span>)</span><span class="comment">//不是每个题都要判断前导零</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//递归边界，既然是按位枚举，最低位是0，那么pos==-1说明这个数我枚举完了</span></span><br><span class="line">    <span class="keyword">if</span>(pos==<span class="number">-1</span>) <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">/*这里一般返回1，表示你枚举的这个数是合法的，那么这里就需要你在枚举时必须每一位都要满足题目条件，也就是说当前枚举到pos位，一定要保证前面已经枚举的数位是合法的。不过具体题目不同或者写法不同的话不一定要返回1 */</span></span><br><span class="line">    <span class="comment">//第二个就是记忆化(在此前可能不同题目还能有一些剪枝)</span></span><br><span class="line">    <span class="keyword">if</span>(!limit &amp;&amp; !lead &amp;&amp; dp[pos][state]!=<span class="number">-1</span>) <span class="keyword">return</span> dp[pos][state];</span><br><span class="line">    <span class="comment">/*常规写法都是在没有限制的条件记忆化，这里与下面记录状态是对应，具体为什么是有条件的记忆化后面会讲*/</span></span><br><span class="line">    <span class="keyword">int</span> up=limit?a[pos]:<span class="number">9</span>;<span class="comment">//根据limit判断枚举的上界up;这个的例子前面用213讲过了</span></span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//开始计数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=up;i++)<span class="comment">//枚举，然后把不同情况的个数加到ans就可以了</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>() ...</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>()...</span><br><span class="line">        ans+=dfs(pos<span class="number">-1</span>,<span class="comment">/*状态转移*/</span>,lead &amp;&amp; i==<span class="number">0</span>,limit &amp;&amp; i==a[pos]) <span class="comment">//最后两个变量传参都是这样写的</span></span><br><span class="line">        <span class="comment">/*这里还算比较灵活，不过做几个题就觉得这里也是套路了</span></span><br><span class="line"><span class="comment">        大概就是说，我当前数位枚举的数是i，然后根据题目的约束条件分类讨论</span></span><br><span class="line"><span class="comment">        去计算不同情况下的个数，还有要根据state变量来保证i的合法性，比如题目</span></span><br><span class="line"><span class="comment">        要求数位上不能有62连续出现,那么就是state就是要保存前一位pre,然后分类，</span></span><br><span class="line"><span class="comment">        前一位如果是6那么这意味就不能是2，这里一定要保存枚举的这个数是合法*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计算完，记录状态</span></span><br><span class="line">    <span class="keyword">if</span>(!limit &amp;&amp; !lead) dp[pos][state]=ans;</span><br><span class="line">    <span class="comment">/*这里对应上面的记忆化，在一定条件下时记录，保证一致性，当然如果约束条件不需要考虑lead，这里就是lead就完全不用考虑了*/</span></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pos=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)<span class="comment">//把数位都分解出来</span></span><br><span class="line">    &#123;</span><br><span class="line">        a[pos++]=x%<span class="number">10</span>;<span class="comment">//个人老是喜欢编号为[0,pos),看不惯的就按自己习惯来，反正注意数位边界就行</span></span><br><span class="line">        x/=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(pos<span class="number">-1</span><span class="comment">/*从最高位开始枚举*/</span>,<span class="comment">/*一系列状态 */</span>,<span class="literal">true</span>,<span class="literal">true</span>);<span class="comment">//刚开始最高位都是有限制并且有前导零的，显然比最高位还要高的一位视为0嘛</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll le,ri;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;le,&amp;ri))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//初始化dp数组为-1,这里还有更加优美的优化,后面讲</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,solve(ri)-solve(le<span class="number">-1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不怕别人比你聪明，就怕别人比你聪明还比你努力</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">int</span> n,w;</span><br><span class="line"><span class="keyword">char</span> str[MAXN];</span><br><span class="line"><span class="keyword">int</span> SA[MAXN];</span><br><span class="line"><span class="keyword">int</span> buc[MAXN];</span><br><span class="line"><span class="keyword">int</span> x[MAXN],y[MAXN],len;</span><br><span class="line"><span class="keyword">int</span> rank[MAXN],height[MAXN];<span class="comment">///rank[i] 用来记录后缀 i 在 SA 数组的位置,表示字符串i的排名</span></span><br><span class="line"><span class="comment">///height[i] 记录后缀 SA[i] 和 SA[i - 1] 的 LCP 的长度。</span></span><br><span class="line"><span class="keyword">int</span> h[MAXN]; <span class="comment">//h[i] = height[rank[i]]:排名为i的后缀与排名靠前一位的最长公共前缀</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//rank:这个排在第几，SA：排在第几的是谁</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">da</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,str);</span><br><span class="line">    len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">127</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span> ;i &lt; m;i ++) buc[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len;i ++) buc[x[i] = str[i]] ++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ;i &lt; m;i ++) buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len <span class="number">-1</span>;i &gt;= <span class="number">0</span>;i --) SA[-- buc[x[i]]] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>;k &lt;= len;k &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len- <span class="number">1</span>;i &gt;= len - k;i --) y[p++] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; len;i ++) <span class="keyword">if</span>(SA[i] &gt;= k) y[p++] = SA[i] - k;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span> ;i &lt; m;i ++) buc[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt;len;i ++) buc[x[y[i]]] ++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span> ;i &lt; m;i ++) buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len<span class="number">-1</span>;i &gt;= <span class="number">0</span>;i -- ) SA[ -- buc[x[y[i]]]] = y[i];</span><br><span class="line"></span><br><span class="line">        swap(x,y);</span><br><span class="line">        p = <span class="number">1</span>;x[SA[<span class="number">0</span>]] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; len;i ++)</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">if</span>(y[SA[i<span class="number">-1</span>]] == y[SA[i]] &amp;&amp; y[SA[i<span class="number">-1</span>]+k] == y[SA[i]+k])</span><br><span class="line">                x[SA[i]] = p<span class="number">-1</span>;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">                x[SA[i]] = p++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p &gt;= len) <span class="keyword">break</span>;</span><br><span class="line">        m = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果直接求的话，复杂度为O(n^2)，但是我们按照h[1],h[2],h[3]....的顺序求解，并利用h数组的性质，时间复杂度可以降为O(n)</span></span><br><span class="line"><span class="comment">//h[i] &gt;= h[i-1]+1                   h[i] = height[rank[i]]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_height</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; len;i ++) rank[SA[i]] = i;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (rank[i] == <span class="number">0</span>) &#123;height[<span class="number">0</span>] = <span class="number">0</span>; <span class="keyword">continue</span>;&#125; <span class="comment">// 第一个后缀的 LCP 为 0。</span></span><br><span class="line">        <span class="keyword">if</span> (k) k--; <span class="comment">// 从 k - 1 开始推</span></span><br><span class="line">        <span class="keyword">int</span> j = SA[rank[i] - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (str[i + k] == str[j + k] &amp;&amp; i + k &lt; len &amp;&amp; j + k &lt; len) k++;</span><br><span class="line">        height[rank[i]] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    da();</span><br><span class="line">    get_height();</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"height: "</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; len;i ++)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;height[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"  rank: "</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len;i ++)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;rank[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sa[%2d ] = %2d\t"</span>,i,SA[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=SA[i]; j&lt;len; ++j)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,str[j]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"  %d"</span>,height[i]);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_height</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; len;i ++) rank[SA[i]] = i;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (rank[i] == <span class="number">0</span>) &#123;height[<span class="number">0</span>] = <span class="number">0</span>; <span class="keyword">continue</span>;&#125; <span class="comment">// 当排名为0时，因为他前面没有字符串，所以这里就应该定为0</span></span><br><span class="line">        <span class="keyword">if</span> (k) k--; <span class="comment">// 从 k - 1 开始推，这里我们就利用了上面h数组的性质</span></span><br><span class="line">        <span class="keyword">int</span> j = SA[rank[i] - <span class="number">1</span>];   <span class="comment">//得到上一名的开始位置</span></span><br><span class="line">        <span class="keyword">while</span> (str[i + k] == str[j + k] &amp;&amp; i + k &lt; len &amp;&amp; j + k &lt; len) k++;<span class="comment">//相同的话，我们就一直向后加</span></span><br><span class="line">        height[rank[i]] = k; <span class="comment">//更新height数值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不怕别人比你聪明，就怕别人比你聪明还比你努力</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">int</span> n,w;</span><br><span class="line"><span class="keyword">char</span> str[MAXN];</span><br><span class="line"><span class="keyword">int</span> SA[MAXN];</span><br><span class="line"><span class="keyword">int</span> buc[MAXN];</span><br><span class="line"><span class="keyword">int</span> x[MAXN],y[MAXN],len;</span><br><span class="line"><span class="comment">//x数组表示第一元素，y数组表示第二元素</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">da</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//SA表示我排在第几位的是谁，SA[k] = i，排在第k位的是第i个后缀</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,str);</span><br><span class="line">    len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">127</span>;<span class="comment">//m表示第一次我们字符串的范围</span></span><br><span class="line">    <span class="comment">//在进行倍增之前首先对每一个元素进行一次基数排序，然后放到数组SA中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; m;i ++) buc[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; len;i ++) buc[x[i] = str[i]] ++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; m;i ++) buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len<span class="number">-1</span>;i &gt;= <span class="number">0</span>;i --) SA[ -- buc[x[i]]] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>;k &lt;= len; k &lt;&lt;= <span class="number">1</span>)    <span class="comment">//进行倍增</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= len -k; i --) y[p++] = i;    <span class="comment">//我们要得到第二元素，因为要向后移动k个，所以这里表示的是添零操作</span></span><br><span class="line">        <span class="comment">//因为零一定会排在最前面，所以y[p++] = i;表示排在第p位的是第i个后缀，表示的就是最后面的后缀</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len;i ++) <span class="keyword">if</span>(SA[i] &gt;= k) y[p++] = SA[i] - k;   <span class="comment">//然后我们删除前面几个跳过的元素，这些跳过的元素都是在k之前的，也就是SA[i] &lt; k</span></span><br><span class="line">        <span class="comment">//比如我们要排序的数是：92,81,30,24,57,96；</span></span><br><span class="line">        <span class="comment">//我们得到的y数组是对第二元素进行的排序，即：y[] = 3,2,1,4,6,5</span></span><br><span class="line">        <span class="comment">//x[y[]] = 30,81,92,24,96,57  ：即表示对第二元素进行排序的结果</span></span><br><span class="line">        <span class="comment">//下面的排序就和只有一个元素的排序相同了</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i &lt; m;i ++) buc[i] = <span class="number">0</span>;        <span class="comment">//再进行一次基数排序</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len;i ++) buc[x[y[i]]] ++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; m;i ++) buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len<span class="number">-1</span>;i &gt;= <span class="number">0</span>;i --) SA[ -- buc[x[y[i]]]] = y[i];</span><br><span class="line"></span><br><span class="line">        swap(x,y);  <span class="comment">//交换之后现在y表示每个位置上现在的数字</span></span><br><span class="line">        <span class="comment">//SA表示现在排在第几位置上的是谁</span></span><br><span class="line">        p = <span class="number">1</span>;x[SA[<span class="number">0</span>]] = <span class="number">0</span>;  <span class="comment">//首先是将排在第0位置上的</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; len;i ++)   <span class="comment">//这里我们要更新最大的范围，只有当前面和后面不相同的时候我们才进行p++操作，否则表示上一个数</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(y[SA[i<span class="number">-1</span>]] == y[SA[i]] &amp;&amp; y[SA[i<span class="number">-1</span>]+k] == y[SA[i] + k])</span><br><span class="line">                x[SA[i]] = p<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                x[SA[i]] = p++;</span><br><span class="line">        &#125;<span class="comment">//当</span></span><br><span class="line">        <span class="keyword">if</span>(p &gt;= len)<span class="comment">//当每一个元素都是不同的排名的时候，可以结束循环</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        m = p;<span class="comment">//更新范围</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    da();</span><br><span class="line">    <span class="comment">//最终我们得到的后缀数组内容就在SA数组中,</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"sa[%2d ] = %2d\t"</span>,i,SA[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=SA[i]; j&lt;len; ++j)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,str[j]);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/29/CUMTCTF2019-Final-WP/" rel="next" title="CUMTCTF2019-Final-WP">
+                <i class="fa fa-chevron-left"></i> CUMTCTF2019-Final-WP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/31/PWNHUB-WP/" rel="prev" title="PWNHUB-WP">
+                PWNHUB-WP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">186</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://iv4n.xyz/" title="iv4n" target="_blank">iv4n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://qsang.xin/" title="姜姜酱" target="_blank">姜姜酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://3nd.xyz/" title="3ND" target="_blank">3ND</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

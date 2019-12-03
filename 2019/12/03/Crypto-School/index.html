@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Security,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CUMTCTF2019决赛-逆向题WP">
+<meta name="keywords" content="Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTCTF2019-Final-WP">
+<meta property="og:url" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:description" content="CUMTCTF2019决赛-逆向题WP">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-fake.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-sub.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-real.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-winmain.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-dispatch.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-main.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-first.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-second.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/block-imp.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/mbr-black.png">
+<meta property="og:updated_time" content="2019-09-29T08:28:45.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CUMTCTF2019-Final-WP">
+<meta name="twitter:description" content="CUMTCTF2019决赛-逆向题WP">
+<meta name="twitter:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/">
+
+
+
+
+
+  <title>加密学-学校课程内容 | FXTi's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FXTi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2019/12/03/Crypto-School/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">加密学-学校课程内容</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-03T14:36:17+08:00">2019-12-03</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="学校课程设涉及到的加密学算法实现"><a href="#学校课程设涉及到的加密学算法实现" class="headerlink" title="学校课程设涉及到的加密学算法实现"></a>学校课程设涉及到的加密学算法实现</h1><p>本来下午在寝室写代码写的好好的，既然被叫到了实验室，索性把之前的代码记录下。</p>
+<h2 id="Verginia相关"><a href="#Verginia相关" class="headerlink" title="Verginia相关"></a>Verginia相关</h2><h3 id="加密实现"><a href="#加密实现" class="headerlink" title="加密实现"></a>加密实现</h3><p>本质上是多表替换，直接给出源码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">m = input()</span><br><span class="line">k = input().lower()</span><br><span class="line"></span><br><span class="line">m = list(map(<span class="keyword">lambda</span> x: (ord(x) - ord(<span class="string">'A'</span>), <span class="string">'A'</span>) <span class="keyword">if</span> <span class="string">'A'</span> &lt;= x &lt;= <span class="string">'Z'</span> <span class="keyword">else</span> (ord(x) - ord(<span class="string">'a'</span>), <span class="string">'a'</span>), m))</span><br><span class="line"><span class="comment">#print(m)</span></span><br><span class="line">c = [chr(((m[i][<span class="number">0</span>]+(ord(k[i%len(k)]) - ord(<span class="string">'a'</span>)))%<span class="number">26</span>) + ord(m[i][<span class="number">1</span>])) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(m))]</span><br><span class="line">print(<span class="string">""</span>.join(c))</span><br></pre></td></tr></table></figure>
+<h3 id="破解实现"><a href="#破解实现" class="headerlink" title="破解实现"></a>破解实现</h3><p>针对唯密文攻击，这里给出重合指数法的解密实现，自然是要求给出的密文一定要够长，不然不足以得到统计结论。</p>
+<p>Verginia加密时利用密钥的每一位给出一个偏移，如果密钥长度为5,则相当与存在5张不同的表。对应的，这5张表内应该符合来自明文的自然语言字符频率。故先确定密钥长度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">c = input().upper()</span><br><span class="line"></span><br><span class="line">res = dict()</span><br><span class="line"><span class="comment">#for i in range(1,len(c)):</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,min(<span class="number">128</span>, len(c))):</span><br><span class="line">    tlist = []</span><br><span class="line">    <span class="keyword">for</span> tmp <span class="keyword">in</span> split(c,i):</span><br><span class="line">        alpha = dict()</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">            alpha[chr(ord(<span class="string">'A'</span>)+z)] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> tmp:</span><br><span class="line">            alpha[x] += <span class="number">1</span></span><br><span class="line">        acc = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ke <span class="keyword">in</span> alpha.keys():</span><br><span class="line">            acc += alpha[ke] * (alpha[ke] - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> len(tmp) &gt; <span class="number">1</span>:</span><br><span class="line">            tlist.append(acc / (len(tmp) * (len(tmp) - <span class="number">1</span>)))</span><br><span class="line">    <span class="comment">#print(str(i) + " " + str(tlist))</span></span><br><span class="line">    res[i] = sum(tlist) / len(tlist)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 0.065</span></span><br><span class="line"></span><br><span class="line">ss = sorted(res.items(), key=<span class="keyword">lambda</span> a: abs(a[<span class="number">1</span>] - <span class="number">0.065</span>))[:<span class="number">10</span>]</span><br><span class="line">pprint.pprint(ss)</span><br></pre></td></tr></table></figure>
+<p>之后选取最可能的密钥长度，将密文按照所属的替换表分割，在各组上尝试所有可能偏移，取最符合统计规律的偏移将密文全部解密。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    key_size = int(input(<span class="string">"Choose key size: "</span>))</span><br><span class="line">    off = []</span><br><span class="line">    <span class="keyword">for</span> block <span class="keyword">in</span> split(c, key_size):</span><br><span class="line">        <span class="comment">#print(block)</span></span><br><span class="line">        alpha = dict()</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">            alpha[chr(ord(<span class="string">'A'</span>)+z)] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> block:</span><br><span class="line">            alpha[x] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> alpha.keys():</span><br><span class="line">            alpha[k] /= len(block)</span><br><span class="line">        <span class="comment">#statics is over</span></span><br><span class="line">        ress = dict()</span><br><span class="line">        <span class="keyword">for</span> offset <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">26</span>):</span><br><span class="line">            acc = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> alpha.keys():</span><br><span class="line">                acc += alpha[k] * prob[chr(((ord(k) - ord(<span class="string">'A'</span>) + offset) % <span class="number">26</span>) + ord(<span class="string">'A'</span>))]</span><br><span class="line">            ress[offset] = acc</span><br><span class="line">        pro = sorted(ress.items(), key=<span class="keyword">lambda</span> a: abs(a[<span class="number">1</span>] - <span class="number">0.065</span>))</span><br><span class="line">        off.append(chr(<span class="number">26</span> - pro[<span class="number">0</span>][<span class="number">0</span>] + ord(<span class="string">'a'</span>)))</span><br><span class="line">        key = <span class="string">''</span>.join(off)</span><br><span class="line">    print(key)</span><br><span class="line">    print(<span class="string">''</span>.join(dec(c, key)))</span><br></pre></td></tr></table></figure>
+<p>这里给出该方法的详细讲解<a href="virginia.pptx">PPT</a></p>
+<p>以下为脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">enc</span><span class="params">(m, k)</span>:</span></span><br><span class="line">    m = list(map(<span class="keyword">lambda</span> x: (ord(x) - ord(<span class="string">'A'</span>), <span class="string">'A'</span>) <span class="keyword">if</span> <span class="string">'A'</span> &lt;= x &lt;= <span class="string">'Z'</span> <span class="keyword">else</span> (ord(x) - ord(<span class="string">'a'</span>), <span class="string">'a'</span>), m))</span><br><span class="line">    c = [chr(((m[i][<span class="number">0</span>]+(ord(k[i%len(k)]) - ord(<span class="string">'a'</span>)))%<span class="number">26</span>) + ord(m[i][<span class="number">1</span>])) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(m))]</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dec</span><span class="params">(m, k)</span>:</span></span><br><span class="line">    m = list(map(<span class="keyword">lambda</span> x: (ord(x) - ord(<span class="string">'A'</span>), <span class="string">'A'</span>) <span class="keyword">if</span> <span class="string">'A'</span> &lt;= x &lt;= <span class="string">'Z'</span> <span class="keyword">else</span> (ord(x) - ord(<span class="string">'a'</span>), <span class="string">'a'</span>), m))</span><br><span class="line">    c = [chr(((m[i][<span class="number">0</span>]-(ord(k[i%len(k)]) - ord(<span class="string">'a'</span>))+<span class="number">26</span>)%<span class="number">26</span>) + ord(m[i][<span class="number">1</span>])) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(m))]</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">prob = &#123;</span><br><span class="line">        <span class="string">'A'</span>: <span class="number">0.082</span>,</span><br><span class="line">        <span class="string">'B'</span>: <span class="number">0.015</span>,</span><br><span class="line">        <span class="string">'C'</span>: <span class="number">0.028</span>,</span><br><span class="line">        <span class="string">'D'</span>: <span class="number">0.043</span>,</span><br><span class="line">        <span class="string">'E'</span>: <span class="number">0.127</span>,</span><br><span class="line">        <span class="string">'F'</span>: <span class="number">0.022</span>,</span><br><span class="line">        <span class="string">'G'</span>: <span class="number">0.02</span>,</span><br><span class="line">        <span class="string">'H'</span>: <span class="number">0.061</span>,</span><br><span class="line">        <span class="string">'I'</span>: <span class="number">0.07</span>,</span><br><span class="line">        <span class="string">'J'</span>: <span class="number">0.002</span>,</span><br><span class="line">        <span class="string">'K'</span>: <span class="number">0.008</span>,</span><br><span class="line">        <span class="string">'L'</span>: <span class="number">0.04</span>,</span><br><span class="line">        <span class="string">'M'</span>: <span class="number">0.024</span>,</span><br><span class="line">        <span class="string">'N'</span>: <span class="number">0.067</span>,</span><br><span class="line">        <span class="string">'O'</span>: <span class="number">0.075</span>,</span><br><span class="line">        <span class="string">'P'</span>: <span class="number">0.019</span>,</span><br><span class="line">        <span class="string">'Q'</span>: <span class="number">0.001</span>,</span><br><span class="line">        <span class="string">'R'</span>: <span class="number">0.06</span>,</span><br><span class="line">        <span class="string">'S'</span>: <span class="number">0.063</span>,</span><br><span class="line">        <span class="string">'T'</span>: <span class="number">0.091</span>,</span><br><span class="line">        <span class="string">'U'</span>: <span class="number">0.028</span>,</span><br><span class="line">        <span class="string">'V'</span>: <span class="number">0.01</span>,</span><br><span class="line">        <span class="string">'W'</span>: <span class="number">0.023</span>,</span><br><span class="line">        <span class="string">'X'</span>: <span class="number">0.001</span>,</span><br><span class="line">        <span class="string">'Y'</span>: <span class="number">0.02</span>,</span><br><span class="line">        <span class="string">'Z'</span>: <span class="number">0.001</span>,</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split</span><span class="params">(c, i)</span>:</span></span><br><span class="line">    c = list(c)</span><br><span class="line">    <span class="keyword">return</span> [list(map(<span class="keyword">lambda</span> x: c[x], filter(<span class="keyword">lambda</span> x: x % i == j, range(len(c))))) <span class="keyword">for</span> j <span class="keyword">in</span> range(i)]</span><br><span class="line"></span><br><span class="line">c = input().upper()</span><br><span class="line"></span><br><span class="line">res = dict()</span><br><span class="line"><span class="comment">#for i in range(1,len(c)):</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,min(<span class="number">128</span>, len(c))):</span><br><span class="line">    tlist = []</span><br><span class="line">    <span class="keyword">for</span> tmp <span class="keyword">in</span> split(c,i):</span><br><span class="line">        alpha = dict()</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">            alpha[chr(ord(<span class="string">'A'</span>)+z)] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> tmp:</span><br><span class="line">            alpha[x] += <span class="number">1</span></span><br><span class="line">        acc = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ke <span class="keyword">in</span> alpha.keys():</span><br><span class="line">            acc += alpha[ke] * (alpha[ke] - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> len(tmp) &gt; <span class="number">1</span>:</span><br><span class="line">            tlist.append(acc / (len(tmp) * (len(tmp) - <span class="number">1</span>)))</span><br><span class="line">    <span class="comment">#print(str(i) + " " + str(tlist))</span></span><br><span class="line">    res[i] = sum(tlist) / len(tlist)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 0.065</span></span><br><span class="line"></span><br><span class="line">ss = sorted(res.items(), key=<span class="keyword">lambda</span> a: abs(a[<span class="number">1</span>] - <span class="number">0.065</span>))[:<span class="number">10</span>]</span><br><span class="line">pprint.pprint(ss)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    key_size = int(input(<span class="string">"Choose key size: "</span>))</span><br><span class="line">    off = []</span><br><span class="line">    <span class="keyword">for</span> block <span class="keyword">in</span> split(c, key_size):</span><br><span class="line">        <span class="comment">#print(block)</span></span><br><span class="line">        alpha = dict()</span><br><span class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">            alpha[chr(ord(<span class="string">'A'</span>)+z)] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> block:</span><br><span class="line">            alpha[x] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> alpha.keys():</span><br><span class="line">            alpha[k] /= len(block)</span><br><span class="line">        <span class="comment">#statics is over</span></span><br><span class="line">        ress = dict()</span><br><span class="line">        <span class="keyword">for</span> offset <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">26</span>):</span><br><span class="line">            acc = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> alpha.keys():</span><br><span class="line">                acc += alpha[k] * prob[chr(((ord(k) - ord(<span class="string">'A'</span>) + offset) % <span class="number">26</span>) + ord(<span class="string">'A'</span>))]</span><br><span class="line">            ress[offset] = acc</span><br><span class="line">        pro = sorted(ress.items(), key=<span class="keyword">lambda</span> a: abs(a[<span class="number">1</span>] - <span class="number">0.065</span>))</span><br><span class="line">        off.append(chr(<span class="number">26</span> - pro[<span class="number">0</span>][<span class="number">0</span>] + ord(<span class="string">'a'</span>)))</span><br><span class="line">        key = <span class="string">''</span>.join(off)</span><br><span class="line">    print(key)</span><br><span class="line">    print(<span class="string">''</span>.join(dec(c, key)))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/23/LingHang2019/" rel="next" title="LingHang2019">
+                <i class="fa fa-chevron-left"></i> LingHang2019
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2077/01/01/TODO/" rel="prev" title="TODO">
+                TODO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">186</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://iv4n.xyz/" title="iv4n" target="_blank">iv4n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://qsang.xin/" title="姜姜酱" target="_blank">姜姜酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://3nd.xyz/" title="3ND" target="_blank">3ND</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学校课程设涉及到的加密学算法实现"><span class="nav-number">1.</span> <span class="nav-text">学校课程设涉及到的加密学算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Verginia相关"><span class="nav-number">1.1.</span> <span class="nav-text">Verginia相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加密实现"><span class="nav-number">1.1.1.</span> <span class="nav-text">加密实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#破解实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">破解实现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

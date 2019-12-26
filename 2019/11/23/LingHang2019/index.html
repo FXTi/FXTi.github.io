@@ -302,7 +302,9 @@
       
 
       
-        <h1 id="usb"><a href="#usb" class="headerlink" title="usb"></a>usb</h1><p>直接流量包上tshark提取数据，然后用脚本输出鼠标轨迹坐标点，如下：</p>
+        <p>2019年11月领航杯线上赛WP</p>
+<a id="more"></a>
+<h1 id="usb"><a href="#usb" class="headerlink" title="usb"></a>usb</h1><p>直接流量包上tshark提取数据，然后用脚本输出鼠标轨迹坐标点，如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">nums = []</span><br><span class="line">keys = open(<span class="string">'./usbdata.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">posx = <span class="number">0</span></span><br><span class="line">posy = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> keys:</span><br><span class="line">    x = int(line[<span class="number">2</span>:<span class="number">4</span>],<span class="number">16</span>)</span><br><span class="line">    y = int(line[<span class="number">4</span>:<span class="number">6</span>],<span class="number">16</span>)</span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">127</span> :</span><br><span class="line">        x -= <span class="number">256</span></span><br><span class="line">    <span class="keyword">if</span> y &gt; <span class="number">127</span> :</span><br><span class="line">        y -= <span class="number">256</span></span><br><span class="line">    posx += x</span><br><span class="line">    posy += y</span><br><span class="line">    btn_flag = int(line[<span class="number">0</span>:<span class="number">2</span>],<span class="number">16</span>)  <span class="comment"># 1 for left , 2 for right , 0 for nothing</span></span><br><span class="line">    <span class="keyword">if</span> btn_flag == <span class="number">1</span> :</span><br><span class="line">        <span class="keyword">print</span> posx , -posy</span><br><span class="line">keys.close()</span><br></pre></td></tr></table></figure>
 <p>最后gnuplot画下点就可以得到flag图片。</p>
 <h1 id="easyRe"><a href="#easyRe" class="headerlink" title="easyRe"></a>easyRe</h1><p>简单题，如下：</p>
@@ -326,6 +328,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Security/" rel="tag"># Security</a>
+          
+        </div>
       
 
       
@@ -425,7 +433,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">186</span>
+                  <span class="site-state-item-count">185</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Security,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="XNUCA2019 Flag Teller按照寒假的计划好好的研究了这道XNUCA2019资格赛中零解的Flag Teller，本题是出题方基于WCTF2019中的TPM2137这道题目出的题。属于非常少见的FPGA逆向，在经历一周的努力之后可以确认在当前的条件下这道题目近乎于无解，除非做题方拥有非常高超的仿真能力和丰富的经验。">
+<meta name="keywords" content="Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XNUCA2019-FlagTeller">
+<meta property="og:url" content="http://blog.fxti.xyz/2020/02/23/XNUCA2019-FlagTeller/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:description" content="XNUCA2019 Flag Teller按照寒假的计划好好的研究了这道XNUCA2019资格赛中零解的Flag Teller，本题是出题方基于WCTF2019中的TPM2137这道题目出的题。属于非常少见的FPGA逆向，在经历一周的努力之后可以确认在当前的条件下这道题目近乎于无解，除非做题方拥有非常高超的仿真能力和丰富的经验。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/02/23/XNUCA2019-FlagTeller/TPM2137.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/02/23/XNUCA2019-FlagTeller/icebox_verilog.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/02/23/XNUCA2019-FlagTeller/simulation.png">
+<meta property="og:updated_time" content="2020-02-23T19:10:50.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XNUCA2019-FlagTeller">
+<meta name="twitter:description" content="XNUCA2019 Flag Teller按照寒假的计划好好的研究了这道XNUCA2019资格赛中零解的Flag Teller，本题是出题方基于WCTF2019中的TPM2137这道题目出的题。属于非常少见的FPGA逆向，在经历一周的努力之后可以确认在当前的条件下这道题目近乎于无解，除非做题方拥有非常高超的仿真能力和丰富的经验。">
+<meta name="twitter:image" content="http://blog.fxti.xyz/2020/02/23/XNUCA2019-FlagTeller/TPM2137.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.fxti.xyz/2020/02/23/XNUCA2019-FlagTeller/">
+
+
+
+
+
+  <title>npointer-qual | FXTi's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FXTi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2020/03/07/npointer-qual/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">npointer-qual</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-07T04:02:41+08:00">2020-03-07</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder>
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="fe0044426a0bae62b5d0610d100d257030487dd1b8c3450b5a3fbd31909b3615">57868c828b1f42bc0a9f30d8d5d468721de142ce209b8440cc5b424ac09dfd6697b5d6f5a7be573fbf22e0d8f81ff4b10a0ce46afe42608ff8923b55df897356796c41700824d2a469b2df647ad1c1f64e53929d2c230121a773b5ffded3e8dfa870836989f4013f0962c2c88d18762c839c60218190245eb1b04992952a393de9609ff5c9850d2235bf5913db6543f4b80cde4cbc8e3b92bb7a69aa0cfd820c0f66a117aa4f93e200e13f69ba33147fc63ce67723d11737bfd34cd4e358d36cb036db52d1924055062aedde7df6c193f48891ef8e135a9fcc23c64d2a512c500e172a3aded2cf21d08f29ec5005da008ea335c30afbd4cc527e59315c9e9848ce9ccc2e6307379641a8096fb612a0a55dc940140f30705bb19289d7d484f8b0127078b4bdd1e31c25c52e81389f43ea5dd4931db4c36c03e005d9438a580d1d4f6078d86a5f3ed0dc6d1b600c283c80db9ddc428c2362868784a6904608390910c8e115dad31d79072323ebcb93c6f4aac041465a4f2e10621a9e0a1dc6e8c9e807b33041c6916a01facfd0960328ed9cda449cd9d0f1da89d0bb2c9b4115c6a9f8bdb242507064fd2194d30c5e5b115e9ce08d452ba848a5c04ee624240c88f4603e1033dc394b1bf93890ecd0dba9baf9d48dba44402113d0c80cf44291cab82076bccdaca83c04edb853b22887501b8e7215dc7d223454c85716199b37c6b9aaed977f55b48e25336bf94d621cd8c9158e1d58b3de0233b40463836d0429891110846aa1a372fae892497386d111b59db7636c3e1d8fbaa705e4335cb7d33dee8fe487f7aa865e7da86da0e7cdb62aae8229ef535178342213282d4d9c007e67297d4215e17db046618b1cf44f208741db064d2b43dc64f093d0901eb494b59ab63e490630153383ded8d16de53830dd80dcb8d132a372f4b247c7ed8e68fe2312bd9c092769ec5ea72d65ba73c55e009fb4cedc975072b85d5878d07c393c77b421b23f100a3ce82727bdc39b21b52ff665e5df61e465f661d84e2d5d45ca00c2ebafdc9a85e5f001fc84eba75cf746951a6ddabdfbdeccd9dd8f62950e4b568d62add0588d0dc99793216199269ea5c344a3784bea24e7bc9e92daa5b0118c86b8913def91800bc23f1d0fd529c06d14305ecc750b89bcae6b8037e262279ad00ac7cac1bdd04ced3b301418a27a34c41a772c8bee965b18d706eb97296eb180ccb7d0f44876ddd424635fd26a93285ea8f674d57cebe20037e820f68ea4bc23b2f3c42080cac127fe11095aa540cb08c4c9131536fd693975b3fd7fe8a515ed0143283931aee5c4cf86a5a63766d1002289f0d4bd663efb2ca4eebddf05419e2cbc402a94d0f81c06de4779c225a1efd85f4db461265434630f2bf93bbe5aa4bc1c32e3ab862d1f9bfc5dddf7ec2380ba0f382867db416eeb84499caeda5663a311aacbc6d91b3021671f4f5d2e28307c6fa0f5019cf6276293dfce75afa64342cee651be5b8c0111a7a632de5ee5e79bcb76f676ea3fc9c83c0b3a683ae75dc08b76a2906013eb4e79e365d03e1a7b93d6e4b9e5d2f0e844230c426551abedf61a22ea290505acf95a9131f82bfad8e2597a1f1b6c70f92d8577315097400d024615e34e424a921f8fa83e1ab761894019ec6ef331c8024ec60f1e203c7484fd5fea6273587efe5d6a2dbc952985bbda7731a1440faec7ea55d8e6d9f8870b587395ad2b6334f035bd3e81c8e340b532fa04b660bdf462d23ef5b495aa797907ecf15783754513b7028d291caa38d4c7ec2919ca3c989bf8c86c48c9c39f7cc91e3a555f85feef2d8d4d94de5f6cb1182be283c9336afe6dec9fb59e6c68139a163ca98b1d2306c7f82a179cf3f80767cb27f6bc707a301a08235a28</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Security/" rel="tag"># Security</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/23/XNUCA2019-FlagTeller/" rel="next" title="XNUCA2019-FlagTeller">
+                <i class="fa fa-chevron-left"></i> XNUCA2019-FlagTeller
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2077/01/01/TODO/" rel="prev" title="TODO">
+                TODO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FX-Ti</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">189</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://iv4n.xyz/" title="iv4n" target="_blank">iv4n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://qsang.xin/" title="姜姜酱" target="_blank">姜姜酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://3nd.xyz/" title="3ND" target="_blank">3ND</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

